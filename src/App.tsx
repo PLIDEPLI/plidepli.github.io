@@ -127,6 +127,7 @@ function App() {
           </a>
           <nav className="nav" aria-label="Primary">
             <a href="#spec">Specs</a>
+            <a href="#fcc">Certification</a>
             <a href="#modes">Modes</a>
             <a href="#story">Story</a>
             <a href="#roadmap">Roadmap</a>
@@ -385,6 +386,65 @@ function App() {
               by our Hong Kong entity, Light Folding Science and Technology Co.,
               Limited — same team, just the name on the filing.
             </p>
+          </div>
+        </section>
+
+        {/* ---------- FCC grant ---------- */}
+        <section className="section" id="fcc">
+          <div className="container">
+            <span className="section__label">FCC certification</span>
+            <h2 className="section__title">Here's the actual grant.</h2>
+            <p className="section__lede">
+              Not a claim — the grant itself. FCC ID, grantee, date, all public.
+            </p>
+
+            <div className="cert">
+              <a
+                className="cert__sheet"
+                href={`${BASE}fcc/grant-page-1.png`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open the full-resolution FCC grant"
+              >
+                <img
+                  src={`${BASE}fcc/grant-page-1.png`}
+                  alt="FCC Grant of Equipment Authorization for PLIDEPLI, FCC ID 2BWMS-L5-5B-2006"
+                  loading="lazy"
+                />
+              </a>
+              <div className="cert__facts">
+                <div className="cert__fact">
+                  <span className="cert__label">FCC ID</span>
+                  <div className="cert__value cert__value--mono">2BWMS-L5-5B-2006</div>
+                </div>
+                <div className="cert__fact">
+                  <span className="cert__label">Grantee</span>
+                  <div className="cert__value">
+                    Light Folding Science and Technology Co., Ltd.
+                  </div>
+                </div>
+                <div className="cert__fact">
+                  <span className="cert__label">Date of grant</span>
+                  <div className="cert__value">Aug 19, 2026</div>
+                </div>
+                <div className="cert__fact">
+                  <span className="cert__label">Device class</span>
+                  <div className="cert__value">
+                    Part 20 wideband consumer booster (CMRS)
+                  </div>
+                </div>
+              </div>
+              <p className="cert__note">
+                Click the image for the full-resolution grant.{' '}
+                <a
+                  href={`${BASE}fcc/grant-page-2.png`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View page 2
+                </a>
+              </p>
+            </div>
           </div>
         </section>
 

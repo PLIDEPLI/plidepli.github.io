@@ -288,8 +288,8 @@ function App() {
               <div className="problem__item">
                 <h3>A brand tax</h3>
                 <p>
-                  WeBoost's Home MultiRoom is $549.99 for 65 dB. The bill of
-                  materials on these things is a fraction of that.
+                  The market-leading home booster runs $550 for 65 dB. The bill
+                  of materials on these things is a fraction of that.
                 </p>
               </div>
             </div>
@@ -379,6 +379,11 @@ function App() {
               One honest limit: this is a fixed-location booster (FCC class:
               fixed). It's built for homes, cabins, and campsites with the rig
               parked — not for boosting while you drive.
+            </p>
+            <p className="spec__sheet-note mono">
+              The paperwork: PLIDEPLI is the brand. The FCC grant itself is held
+              by our Hong Kong entity, Light Folding Science and Technology Co.,
+              Limited — same team, just the name on the filing.
             </p>
           </div>
         </section>
@@ -574,6 +579,7 @@ function App() {
           </div>
           <div className="footer__meta">
             <div>FCC ID 2BWMS-L5-5B-2006</div>
+            <div>Grant held by Light Folding Science and Technology Co., Ltd.</div>
             <div>Pre-production specs may shift slightly before mass production.</div>
             <div>
               &copy; {new Date().getFullYear()} PLIDEPLI

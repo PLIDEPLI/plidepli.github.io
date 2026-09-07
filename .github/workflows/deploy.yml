@@ -26,7 +26,7 @@ jobs:
       - run: npm ci
       - run: npm run build
         env:
-          VITE_BASE: /${{ github.event.repository.name }}/
+          VITE_BASE: /
           VITE_FORMSPREE_ID: ${{ vars.VITE_FORMSPREE_ID }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

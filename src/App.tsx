@@ -117,6 +117,29 @@ function EmailForm({ id }: { id: string }) {
   )
 }
 
+const TICKER_ITEMS = [
+  'FCC Part 20 certified',
+  '65–70 dB gain',
+  'Five bands · B12 B13 B5 B4 B2',
+  '5V USB-C powered',
+  'Built by RF engineers',
+  'Coming to Kickstarter soon',
+]
+
+function Ticker() {
+  return (
+    <div className="ticker" aria-hidden="true">
+      <div className="ticker__track">
+        {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
+          <span className="ticker__item" key={i}>
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function App() {
   return (
     <>
@@ -137,6 +160,8 @@ function App() {
           </nav>
         </div>
       </header>
+
+      <Ticker />
 
       <main id="top">
         {/* ---------- hero ---------- */}
@@ -254,6 +279,37 @@ function App() {
               A booster amplifies what's already there. Zero bars outside means
               nothing to amplify — we'll be honest about that every time.
             </p>
+          </div>
+        </section>
+
+        {/* ---------- scenarios ---------- */}
+        <section className="section">
+          <div className="container">
+            <span className="section__label">Where it fixes things</span>
+            <h2 className="section__title">Built for the places signal dies.</h2>
+            <div className="scenarios">
+              <div className="scenario">
+                <h3>The remote cabin</h3>
+                <p>
+                  One bar on the roof, nothing inside. A good booster turns that
+                  into calls and texts that actually go through.
+                </p>
+              </div>
+              <div className="scenario">
+                <h3>The basement office</h3>
+                <p>
+                  Concrete, metal, low-E glass — they all eat signal. Boost from
+                  where the signal still exists.
+                </p>
+              </div>
+              <div className="scenario">
+                <h3>The parked campsite</h3>
+                <p>
+                  Boondocking with a weak-but-present signal. Usable data
+                  without driving to a hill first.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -477,6 +533,41 @@ function App() {
                   Built-in and external together nearly double your range, for
                   the deep basements and the far-off-grid sites.
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ---------- install ---------- */}
+        <section className="section">
+          <div className="container">
+            <span className="section__label">Install</span>
+            <h2 className="section__title">Four steps to done.</h2>
+            <div className="install">
+              <div className="install__step">
+                <span className="install__num">01</span>
+                <h3>Find the signal</h3>
+                <p>
+                  Walk the yard with your phone, find where the signal is
+                  strongest outside.
+                </p>
+              </div>
+              <div className="install__step">
+                <span className="install__num">02</span>
+                <h3>Mount the antenna</h3>
+                <p>
+                  One outdoor antenna — the only thing that goes outside.
+                </p>
+              </div>
+              <div className="install__step">
+                <span className="install__num">03</span>
+                <h3>Plug it in</h3>
+                <p>5V USB-C. No special wiring, no hole in the wall.</p>
+              </div>
+              <div className="install__step">
+                <span className="install__num">04</span>
+                <h3>Forget it</h3>
+                <p>It rebroadcasts inside. You stop thinking about it.</p>
               </div>
             </div>
           </div>

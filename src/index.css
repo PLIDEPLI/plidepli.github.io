@@ -170,6 +170,43 @@ button {
   cursor: default;
 }
 
+/* ---------- ticker ---------- */
+.ticker {
+  overflow: hidden;
+  background: var(--ink);
+  border-bottom: 1px solid #2a323c;
+  white-space: nowrap;
+}
+
+.ticker__track {
+  display: inline-flex;
+  animation: ticker 42s linear infinite;
+}
+
+.ticker__item {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #d6dde5;
+  padding: 11px 0;
+}
+
+.ticker__item + .ticker__item::before {
+  content: '·';
+  padding: 0 22px;
+  color: var(--accent);
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* ---------- sections ---------- */
 .section {
   padding: 88px 0;
@@ -705,6 +742,64 @@ button {
   font-size: 0.96rem;
 }
 
+/* ---------- scenarios ---------- */
+.scenarios {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.scenario {
+  border-top: 2px solid var(--accent);
+  padding-top: 18px;
+}
+
+.scenario h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.scenario p {
+  margin-top: 10px;
+  color: var(--ink-2);
+  font-size: 0.96rem;
+}
+
+/* ---------- install ---------- */
+.install {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.install__step {
+  border-top: 1px solid var(--line-strong);
+  padding-top: 16px;
+}
+
+.install__num {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--accent-deep);
+  font-weight: 600;
+}
+
+.install__step h3 {
+  margin-top: 8px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.install__step p {
+  margin-top: 8px;
+  color: var(--ink-2);
+  font-size: 0.92rem;
+}
+
 /* ---------- story ---------- */
 .story {
   display: grid;
@@ -1018,6 +1113,14 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .scenarios {
+    grid-template-columns: 1fr;
+  }
+
+  .install {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .story__aside {
     position: static;
   }
@@ -1059,6 +1162,10 @@ button {
 
   .form {
     flex-direction: column;
+  }
+
+  .install {
+    grid-template-columns: 1fr;
   }
 }
 

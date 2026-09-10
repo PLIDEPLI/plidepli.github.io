@@ -4,6 +4,7 @@ type FormStatus = 'idle' | 'submitting' | 'done' | 'error'
 
 const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID as string | undefined
 const BASE = import.meta.env.BASE_URL
+const EBAY_URL = 'https://ebay.io/m/HqC0BV'
 
 function Wordmark() {
   return (
@@ -184,6 +185,14 @@ function App() {
               <div className="hero__cta">
                 <a href="#cta" className="btn btn--primary">
                   Get notified at launch
+                </a>
+                <a
+                  href={EBAY_URL}
+                  className="btn btn--ghost"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Buy on eBay
                 </a>
                 <a href="#spec" className="btn btn--ghost">
                   Read the specs
@@ -729,6 +738,11 @@ function App() {
             </p>
           </div>
           <div className="footer__meta">
+            <div>
+              <a href={EBAY_URL} target="_blank" rel="noopener noreferrer">
+                Available on eBay
+              </a>
+            </div>
             <div>FCC ID 2BWMS-L5-5B-2006</div>
             <div>Grant held by Light Folding Science and Technology Co., Ltd.</div>
             <div>Pre-production specs may shift slightly before mass production.</div>

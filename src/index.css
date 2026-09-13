@@ -846,6 +846,85 @@ button {
   margin: 34px 0;
 }
 
+/* ---------- faq ---------- */
+.faq {
+  margin-top: 40px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq__q-wrap {
+  margin: 0;
+}
+
+.faq__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 22px 0;
+  font-family: var(--sans);
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  color: var(--ink);
+  transition: color 0.15s ease;
+}
+
+.faq__q:hover {
+  color: var(--accent-deep);
+}
+
+.faq__icon {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  position: relative;
+}
+
+.faq__icon::before,
+.faq__icon::after {
+  content: '';
+  position: absolute;
+  background: var(--accent-deep);
+  border-radius: 1px;
+  transition: transform 0.2s ease;
+}
+
+.faq__icon::before {
+  top: 8px;
+  left: 0;
+  width: 18px;
+  height: 2px;
+}
+
+.faq__icon::after {
+  top: 0;
+  left: 8px;
+  width: 2px;
+  height: 18px;
+}
+
+.faq__item.is-open .faq__icon::after {
+  transform: scaleY(0);
+}
+
+.faq__a {
+  padding: 0 0 24px;
+  max-width: 66ch;
+  color: var(--ink-2);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
 /* ---------- roadmap ---------- */
 .roadmap {
   background: var(--paper-2);

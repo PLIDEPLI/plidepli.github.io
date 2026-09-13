@@ -118,6 +118,76 @@ function EmailForm({ id }: { id: string }) {
   )
 }
 
+const FAQ_ITEMS: { q: string; a: string }[] = [
+  {
+    q: 'Do I still need to install an outdoor antenna?',
+    a: "Yes — that doesn't change. What's built in is the indoor antenna, so internal mode skips a separate indoor antenna and cable run. (External and dual modes are also available if you want more control.) Power is 5V USB-C.",
+  },
+  {
+    q: "Will it work where there's no cell signal?",
+    a: "A booster needs an existing outdoor signal to amplify—it can't create one from nothing. If the outdoor signal is weak, that limits what you can expect indoors.",
+  },
+  {
+    q: 'Can I use it in my RV while driving?',
+    a: 'No. PLIDEPLI is a fixed device for buildings and stationary use. For RV camp sites, that means parked and stationary use — not while driving or towing.',
+  },
+  {
+    q: 'Which carriers and bands does it support?',
+    a: "PLIDEPLI supports five cellular bands: B12, B13, B5, B4, and B2. Compatibility depends on the bands your carrier uses at your location, so we can't promise support based on the carrier's name alone.",
+  },
+  {
+    q: 'How much of my home will it cover?',
+    a: 'Coverage is up to about 2,500 square feet, depending on outdoor signal strength and placement. Think of that as a best-case number — actual coverage depends on your walls, layout, and outdoor signal.',
+  },
+  {
+    q: 'Is the gain 65 dB or 70 dB?',
+    a: 'The amplifier gain is 65 dB. Total system gain, including the antenna, is about 70 dB—an FCC-measured figure, not a marketing number.',
+  },
+  {
+    q: 'What does FCC Part 20 certification mean?',
+    a: 'PLIDEPLI is certified under FCC Part 20 for its fixed cellular booster use, with FCC ID 2BWMS-L5-5B-2006. The certification is under Light Folding Science and Technology Co., Limited (Hong Kong); it does not make this an in-motion RV booster or guarantee coverage in your home.',
+  },
+  {
+    q: 'What will it cost, and when will it ship?',
+    a: 'Our target price is about $275—roughly half the price of mainstream brands—but final pricing and a ship date can only be confirmed after crowdfunding. The current prototype is a CNC-machined solid-aluminum unit; Kickstarter funding will pay for injection-molding tooling.',
+  },
+]
+
+function Faq() {
+  const [open, setOpen] = useState<number | null>(null)
+
+  return (
+    <div className="faq">
+      {FAQ_ITEMS.map((item, i) => {
+        const isOpen = open === i
+        return (
+          <div className={`faq__item${isOpen ? ' is-open' : ''}`} key={i}>
+            <h3 className="faq__q-wrap">
+              <button
+                type="button"
+                className="faq__q"
+                aria-expanded={isOpen}
+                aria-controls={`faq-panel-${i}`}
+                onClick={() => setOpen(isOpen ? null : i)}
+              >
+                <span>{item.q}</span>
+                <span className="faq__icon" aria-hidden="true" />
+              </button>
+            </h3>
+            <div
+              className="faq__a"
+              id={`faq-panel-${i}`}
+              hidden={!isOpen}
+            >
+              <p>{item.a}</p>
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 const TICKER_ITEMS = [
   'FCC Part 20 certified',
   '65 dB amplifier gain',
@@ -154,6 +224,7 @@ function App() {
             <a href="#fcc">Certification</a>
             <a href="#modes">Modes</a>
             <a href="#story">Story</a>
+            <a href="#faq">FAQ</a>
             <a href="#roadmap">Roadmap</a>
             <a href="#cta" className="btn btn--primary">
               Notify me at launch
@@ -624,6 +695,18 @@ function App() {
                 That's the prototype you see here.
               </blockquote>
             </div>
+          </div>
+        </section>
+
+        {/* ---------- faq ---------- */}
+        <section className="section" id="faq">
+          <div className="container">
+            <span className="section__label">FAQ</span>
+            <h2 className="section__title">Questions, answered plainly.</h2>
+            <p className="section__lede">
+              The honest answers to what people ask most — including the limits.
+            </p>
+            <Faq />
           </div>
         </section>
 

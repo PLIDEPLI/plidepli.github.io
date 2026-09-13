@@ -1,93 +1,81 @@
-# PLIDEPLI 落地页
+# PLIDEPLI 品牌网站
 
-PLIDEPLI 蜂窝信号放大器（Kickstarter 预热）的单页落地页。纯英文、极客人设、透明硬核风格。
+面向美国用户的 Kickstarter 预热网站。React + TypeScript + Vite，四个独立页面静态部署到 GitHub Pages，字体自托管。
 
-- 线上地址：https://plidepli.github.io/
-- 技术栈：React + TypeScript + Vite（纯静态站，无后端）
-- 字体自托管（`@fontsource`），不依赖 Google Fonts CDN
+页面地址：`/` 首页、`/product/` 产品详情、`/stories/` 完整故事、`/installation/` 安装图解。Vite 会为每个地址生成真实的 HTML 文件，支持直接打开、刷新和独立分享。
 
----
-
-## 一、本地开发
+## 本地查看
 
 ```bash
-cd plidepli-landing
-npm install          # 首次运行
-npm run dev          # 启动本地开发服务器，浏览器打开终端提示的地址（默认 http://localhost:5173）
+npm install
+npm run dev
 ```
 
-改完代码后开发服务器会自动热更新，无需手动刷新。
-
-## 二、构建（本地打包预览）
+打开终端显示的本地地址。检查与构建：
 
 ```bash
-npm run build        # 产出 dist/ 静态文件
-npm run preview      # 本地预览构建产物
+npm run lint
+npm run build
+npm run preview
 ```
 
-## 三、部署（GitHub Pages，自动）
+## 文件位置
 
-项目已配置好 GitHub Actions，**push 到 `main` 分支即自动构建并部署**，1–2 分钟后生效。
+| 文件 | 用途 |
+| --- | --- |
+| `src/App.tsx` | 首页、表单、安装示意图、FAQ 和隐私说明 |
+| `src/index.css` | 配色、字体、电脑及手机布局 |
+| `src/stories.ts` | 七章研发日志文案及原始媒体引用 |
+| `src/pages/StoriesPage.tsx` | 完整七章故事、50 张照片、28 段视频、章节目录 |
+| `src/pages/ProductPage.tsx` | 产品图库、结构、三种模式、套装和适用条件 |
+| `src/pages/InstallationPage.tsx` | 墙面、横杆、顶部三套安装步骤图解 |
+| `src/HomeSections.tsx` | 首页产品入口和生活场景横幅 |
+| `src/HomeBench.tsx` | 首页团队开场白、两段原始调试视频和工作台照片 |
+| `src/components/HashNavigation.tsx` | 跨页锚点在内容和字体加载完成后的准确定位 |
+| `src/home-refinements.css` | 四页统一配色、宽幅安装示意图和团队媒体布局 |
+| `src/components/PhotoViewer.tsx` | 公用照片放大、左右切换和键盘操作 |
+| `src/pages.css` | 多页设计、图库和手机布局 |
+| `src/main.tsx` | React 入口和字体加载 |
+| `public/stories/` | 原有研发照片与视频 |
+| `public/video/` | 宣传片与封面；目前按要求保留原视频 |
+| `public/fcc/` | FCC 授权书、完整测试报告及原有截图 |
+| `public/product/` | 套装、零件、安装步骤的压缩图片及场景图 |
+| `public/bench/` | 首页指定的两段未剪辑原视频、视频封面和工作台照片 |
+| `index.html`、各页面目录下的 `index.html` | 各页面独立标题、描述、社交分享信息 |
+| `docs/product-assets.json` | 新增渲染素材与网页图片文件的对应表 |
+| `docs/image-generation.md` | 内置绘图模型生成图片的路径、提示词和使用说明 |
+| `docs/redesign-notes.md` | 设计取舍、数据出处、后续内容与验证说明 |
 
-```bash
-git add .
-git commit -m "说明这次改了什么"
-git push
+## 邮箱订阅与联系地址
+
+在 `.env` 设置（该文件不上传）：
+
+```dotenv
+VITE_FORMSPREE_ID=你的表单ID
+VITE_CONTACT_EMAIL=你的公开联系邮箱
 ```
 
-> 如果 push 失败（国内网络偶尔连不上 github.com），多试几次，或改用：
-> ```bash
-> gh workflow run deploy.yml --ref main   # 手动触发一次构建，无需 push
-> ```
+`VITE_FORMSPREE_ID` 沿用现有 Formspree 配置。表单只发送用户主动填写的邮箱和表单位置信息，不自动提交测试数据。成功、失败、重试、提交中与超时均有处理。
 
-## 四、邮箱收集（Formspree）
+`VITE_CONTACT_EMAIL` 可选。提供真实地址后，FAQ、页脚和隐私说明会显示联系入口；未配置时隐藏，不使用虚构邮箱。
 
-「Get notified」表单通过 Formspree 收集邮箱。
+上线环境在 GitHub 仓库 Settings → Secrets and variables → Actions → Variables 中配置同名变量。现有工作流已接入这两个变量。修改变量后需重新构建。
 
-- 当前 form ID：`xqpkylrv`（配置在 GitHub 仓库变量 `VITE_FORMSPREE_ID` 中）
-- 查看收集到的邮箱：登录 https://formspree.io → 对应 form → Submissions
+## 发布
 
-**更换 form ID 的方法**：
+当前工作流在 push 到 `main` 时自动构建并部署至 https://plidepli.github.io/。本地改动和本地构建不会更新线上页面。
 
-```bash
-gh variable set VITE_FORMSPREE_ID --repo PLIDEPLI/plidepli.github.io --body "你的新ID"
-```
+发布前先检查 Git diff，再提交和推送经确认的文件。
 
-然后触发一次构建（`gh workflow run deploy.yml --ref main`）。
+## 内容维护
 
-本地 `.env`（已 gitignore，不会上传）里也可写一行 `VITE_FORMSPREE_ID=xxx` 供本地调试。
+- 目标价约 $275，不是已确定的销售价格；众筹上线前公布最终价格、配件、交付和售后条款。
+- 首屏强调室内天线内置；室外天线及连接线仍然需要安装。
+- 以固定住宅、小屋场景为主，不宣传行驶中使用。
+- 实测增益按完整 FCC 报告第 18 页标明为 61.27–64.69 dB，不将天线增益相加后称为 FCC 实测系统增益。
+- 运营商支持取决于当地频段；实验室合规测试不能替代家庭覆盖/测速证据。
+- 首页已移除未验证的覆盖面积和笼统“半价”比较。
+- 新的实地测试结果应同时标明手机、运营商、频段、测试位置、安装条件和测量方法。
+- 桌面的原始说明书含历史品牌信息和需核对的说明，未直接发布为用户安装指南，详见设计记录。
 
-## 五、文件结构（改文案看这里）
-
-```
-src/
-  App.tsx        # 页面全部内容与文案（改文字、改卖点都在这）
-  index.css      # 全部样式（配色、字体、间距）
-  main.tsx       # 入口 + 字体引入
-public/
-  video/         # 宣传视频 promo.mp4 与封面 poster.jpg
-  favicon.svg    # 网站图标
-index.html       # 页面标题、SEO 描述
-```
-
-改页面文字：直接编辑 `src/App.tsx`，搜索对应英文句子替换即可。
-
-## 六、内容红线（上线前务必核对）
-
-以下内容来自 FCC 授权文件（FCC ID `2BWMS-L5-5B-2006`），对外文案不要超出：
-
-- **增益**：放大器增益实测约 62–65 dB，页面统一写「65–70 dB」（65 dB 放大增益 + 含天线约 70 dB 系统增益）。700/850 频段的 FCC 增益上限仅 63.5–65 dB，**不要宣称单频段 70 dB**。
-- **设备类型**：FCC 认证为 **Fixed（固定式）**，仅限建筑内/固定位置使用；营地仅指「停靠状态下」。不要宣传为车载/移动中使用。
-- **天线**：套装含室外对数周期天线（7.5–9 dBi），室内侧可选内置或天花板天线。**不要写「免走线/免钻孔」**，正确说法是「室内天线内置，室外只需装一根天线，比双天线系统少装一半」。
-- **持证主体**：品牌为 PLIDEPLI，FCC 授权由香港主体 Light Folding Science and Technology Co., Limited 持有（页面已注明）。
-- **竞品**：对比时不直接点名竞品品牌（避免法律/公关风险），统一用「市场主流产品」等泛指。
-
-## 七、常用维护命令
-
-| 操作 | 命令 |
-|---|---|
-| 本地跑起来 | `npm run dev` |
-| 打包检查 | `npm run build` |
-| 推送上线 | `git add . && git commit -m "更新" && git push` |
-| 手动触发构建 | `gh workflow run deploy.yml --ref main` |
-| 看构建状态 | `gh run list` |
+已生成的预览图位于桌面的 `plidepli-preview` 文件夹，最新截图以 `v4-` 开头。

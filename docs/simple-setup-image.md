@@ -1,0 +1,16 @@
+# Simple setup 示意图
+
+- 模式：内置 imagegen，基于用户提供的图进行风格化编辑，然后修正屋顶处的一条多余线缆笔画。
+- 原图：`/Users/galaxy/Desktop/plidepli_growth/渲染导出/散图/simple-setup.jpg`，保持原文件不变。
+- 网页最终文件：`public/product/simple-setup.webp`，1774 × 887。
+- 模型最终输出：`/Users/galaxy/.codex/generated_images/01a0965d-0faf-7ef3-983e-588c84334315/exec-3dc1e175-a229-4f7b-afd4-1a96a047aace.png`。
+- 用途：首页宽幅安装概念图，配合三步 HTML 说明，可点击放大。
+- 配色：浅灰蓝背景、深蓝轮廓和薄荷绿信号路径。保留室外天线、同轴连接、内置室内天线和独立电源关系。未将原图的 25/50 英尺说明作为已确认产品安装规范写入新图；最终间距遵循随产品提供的安装说明。
+
+## 第一轮完整提示词
+
+Use case: style-transfer, infographic-diagram. Edit target: supplied simple-setup.jpg cellular booster installation diagram. Redesign this exact signal-path concept as a polished premium PLIDEPLI website illustration. Wide landscape 2:1 composition. Preserve a cutaway two-storey house on right, small distant cell tower at far left, directional outdoor antenna on roof facing left towards tower, one continuous cable from outdoor antenna down to the small indoor booster on downstairs left wall, separate short power cable from booster to wall socket, subtle mint signal arcs immediately around the booster (built-in indoor antenna). Preserve these physical relationships. Refine the house into elegant simplified architectural line art with subtle dimensional pale blue-gray planes, minimal bedroom and home-office upstairs, sofa downstairs. Background solid cool off-white #F3F7F9. Crisp restrained dark navy #123044 strokes, muted blue-gray secondary lines, mint teal #30D8B7 cable and restrained signal arcs; no neon or heavy glow. Modern editorial technical diagram, lots of breathing room and unmistakably legible hardware paths. Remove the original feet/distance annotation, diagonal measurement arrow, all original text and all numerical measurements. Put only three small clear labels in restrained dark navy sans serif: 'Cell tower', 'Outdoor antenna', 'PLIDEPLI'. No other text, watermarks, logos, coverage promises, room-wide signal coloring, extra indoor antenna, or extra outdoor cables. Booster remains a small white rectangular wall unit with beveled ridged corners inspired by the source. Do not invent alternate hardware. Keep the complete house and tower within frame, avoid cropping. This image is used above three HTML explanation steps and can be enlarged, not a substitute for final installation instructions.
+
+## 局部修正提示词
+
+Use case: precise-object-edit. Edit this provided finished PLIDEPLI house infographic with ONE localized correction only. There is an extraneous mint-green diagonal stroke running down the roof slope from just below the outdoor antenna mast toward the upper-floor corner (roughly x 515 y 215 to x 645 y 425 in the 1774x887 source). Remove that stray diagonal green stroke and restore the pale blue-gray roof plane and navy roof edge behind it. Keep exactly ONE continuous mint cable: from the outdoor antenna down along the LEFT route, vertical on the left wall, then right into the top of the indoor booster. Preserve the intended continuous left cable intact. Do not add any new branches or junctions. Preserve every other detail unchanged: composition, labels Cell tower / Outdoor antenna / PLIDEPLI, house, furniture, power cable, signal arcs, linework, colors, sizing, background. Output same full wide 2:1 illustration.

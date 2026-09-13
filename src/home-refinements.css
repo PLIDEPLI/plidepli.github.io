@@ -1,0 +1,74 @@
+/* Every page opens on the same cool-paper surface; navy anchors navigation and evidence. */
+.hero, .product-page-hero, .stories-hero, .installation-page-hero { background: var(--paper); color: var(--ink); }
+.hero .launch-status, .hero-description, .hero-price, .hero .signup-note, .hero-condition, .hero-product figcaption { color: var(--muted); }
+.hero-price strong { color: var(--ink); }
+.hero .signup-form { border-color: var(--line); }
+.hero .signup-success { color: #0b6351; background: #d9f5ed; border-color: #9cd8c8; }
+.hero .form-error { color: #a43220; }
+.kit-hero::before { display: none; }
+.kit-hero .product-frame { padding: 28px 0; background: transparent; border-radius: 0; isolation: auto; overflow: visible; }
+.kit-hero .product-frame > img { mix-blend-mode: multiply; }
+.hero-product-link { color: var(--ink); }
+.hero-product-link:hover { color: var(--accent-dark); }
+.hero-bottom { border-color: var(--line); color: var(--muted); }
+.hero-bottom a:hover { color: var(--accent-dark); }
+.hero-bottom a:first-child svg { color: var(--accent-dark); }
+.stories-hero .breadcrumb, .stories-hero-grid > div > p:not(.eyebrow), .stories-hero-grid figcaption, .journal-facts { color: var(--muted); }
+.stories-hero .eyebrow { color: var(--accent-dark); }
+.journal-facts { border-color: var(--line); }
+.hero-product-link, .stories-hero .text-link { color: var(--ink); }
+.hero-product-link:hover, .stories-hero .text-link:hover { color: var(--accent-dark); }
+.gallery-main, .gallery-thumbs button { background: var(--paper); }
+.gallery-main img, .gallery-thumbs img { mix-blend-mode: multiply; }
+
+/* The wide house drawing gets the full column; explanations stay live HTML. */
+.setup-layout { display: block; }
+.setup-diagram { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.setup-diagram > button { display: block; width: 100%; padding: 0; background: transparent; position: relative; cursor: zoom-in; }
+.setup-diagram img { width: 100%; height: auto; aspect-ratio: 2 / 1; object-fit: contain; }
+.setup-diagram button > span, .bench-photograph button > span { position: absolute; right: 18px; bottom: 18px; display: flex; align-items: center; gap: 9px; background: #ffffffed; border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px; font-size: 11px; }
+.setup-diagram button svg, .bench-photograph button svg { width: 15px; height: 15px; }
+.setup-diagram figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding: 17px 24px; border-top: 1px solid var(--line); font-size: 12px; }
+.setup-diagram figcaption > span { color: var(--muted); font-size: 10px; }
+.setup-layout .installation-steps { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 26px; margin-top: 25px; align-items: start; }
+.setup-layout .installation-step { padding: 20px 0; height: 100%; align-items: start; gap: 14px; }
+.setup-layout .installation-step strong { font-size: 20px; }
+.setup-layout .step-number { color: var(--accent-dark); border-color: #9dd4c8; background: #eef9f5; }
+.setup-layout .installation-steps > .small-print { grid-column: 1 / -1; margin-top: 0; }
+
+.bench-opening { display: grid; grid-template-columns: .85fr 1.15fr; gap: 90px; align-items: start; margin-bottom: 45px; }
+.bench-opening h2 { font-size: clamp(38px,4vw,55px); }
+.bench-introduction h3 { font-size: 27px; line-height: 1.25; margin-bottom: 23px; max-width: 520px; }
+.bench-introduction p { color: var(--muted); font-size: 14px; line-height: 1.85; }
+.bench-introduction p + p { margin-top: 20px; }
+.bench-films { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.bench-films video { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: var(--navy); border-radius: 8px; }
+.bench-films figcaption, .bench-photograph figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 5px 15px; font-size: 11px; padding-top: 13px; }
+.bench-films figcaption > span:last-child, .bench-photograph figcaption > span:last-child { color: var(--muted); font-size: 10px; }
+.bench-photograph { margin-top: 36px; }
+.bench-photograph button { display: block; width: 100%; padding: 0; background: var(--paper); border-radius: 8px; overflow: hidden; position: relative; cursor: zoom-in; }
+.bench-photograph img { width: 100%; height: auto; max-height: 620px; object-fit: cover; object-position: center 67%; }
+@media(max-width: 850px) {
+  .bench-opening { gap: 35px; grid-template-columns: .8fr 1.2fr; }
+  .bench-introduction h3 { font-size: 24px; }
+  .setup-layout .installation-steps { gap: 20px; }
+  .setup-layout .installation-step { flex-direction: column; }
+  .setup-layout .installation-step strong { font-size: 18px; }
+}
+@media(max-width: 600px) {
+  .kit-hero .product-frame { padding: 8px 0; }
+  .setup-diagram button > span { font-size: 9px; padding: 5px 8px; right: 9px; bottom: 9px; }
+  .setup-diagram figcaption { padding: 13px 15px; font-size: 10px; }
+  .setup-diagram figcaption > span { font-size: 9px; }
+  .setup-layout .installation-steps { display: block; margin-top: 15px; }
+  .setup-layout .installation-step { flex-direction: row; padding-block: 20px; gap: 17px; }
+  .setup-layout .installation-step strong { font-size: 21px; }
+  .setup-layout .installation-steps > .small-print { margin-top: 20px; }
+  .bench-opening { display: block; margin-bottom: 30px; }
+  .bench-introduction { margin-top: 30px; }
+  .bench-introduction h3 { font-size: 25px; margin-bottom: 20px; }
+  .bench-films { grid-template-columns: 1fr; gap: 26px; }
+  .bench-photograph { margin-top: 28px; }
+  .bench-photograph img { max-height: none; }
+  .bench-photograph button > span { font-size: 10px; right: 10px; bottom: 10px; }
+}

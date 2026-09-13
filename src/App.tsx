@@ -1,870 +1,135 @@
-import { useEffect, useState, type FormEvent } from 'react'
-import StoryCarousel from './StoryCarousel'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
+import Icon from './components/Icon'
+import HashNavigation from './components/HashNavigation'
+import HomeBench from './HomeBench'
+import PhotoViewer from './components/PhotoViewer'
+import ProductPage from './pages/ProductPage'
+import StoriesPage from './pages/StoriesPage'
+import InstallationPage from './pages/InstallationPage'
+import { ProductTeaser, LifestyleSection } from './HomeSections'
 
-type FormStatus = 'idle' | 'submitting' | 'done' | 'error'
-
-const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID as string | undefined
 const BASE = import.meta.env.BASE_URL
+const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID as string | undefined
+const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL as string | undefined
+const FCC_URL = 'https://apps.fcc.gov/oetcf/tcb/reports/Tcb731GrantForm.cfm?mode=COPY&RequestTimeout=500&tcb_code=&application_id=%2FxeBkw1BpqfOIvNhtA4odg%3D%3D&fcc_id=2BWMS-L5-5B-2006'
+
 
 function Wordmark() {
-  return (
-    <span className="wordmark">
-      <span className="wordmark__mark" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-        <span />
-      </span>
-      PLIDEPLI
-    </span>
-  )
+  return <span className="wordmark"><span className="wordmark-signal" aria-hidden="true"><i /><i /><i /><i /></span>PLIDEPLI<span className="wordmark-period">.</span></span>
 }
 
-function SignalMeter() {
-  const [on, setOn] = useState(false)
-  return (
-    <div className="meter">
-      <div className="meter__status">
-        <span className="meter__tag">How boosting works · Illustration</span>
-        <p className={`meter__state ${on ? 'is-on' : 'is-off'}`}>
-          {on ? 'Booster on' : 'Booster off'}
-        </p>
-      </div>
-
-      <div className={`meter__bars ${on ? 'is-on' : 'is-off'}`} aria-hidden="true">
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-      </div>
-
-      <button
-        type="button"
-        className={`switch ${on ? 'is-on' : ''}`}
-        onClick={() => setOn((v) => !v)}
-        aria-pressed={on}
-        aria-label={on ? 'Turn booster off' : 'Turn booster on'}
-      />
-    </div>
-  )
-}
-
-function EmailForm({ id }: { id: string }) {
+function EmailForm({ id, onPrivacy }: { id: string; onPrivacy: () => void }) {
   const [email, setEmail] = useState('')
-  const [status, setStatus] = useState<FormStatus>('idle')
-
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    const value = email.trim()
-    if (!value) return
-
-    if (!FORMSPREE_ID) {
-      setStatus('error')
-      return
-    }
-
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle')
+  const request = useRef<AbortController | null>(null)
+  useEffect(() => () => request.current?.abort(), [])
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    if (request.current || !email.trim()) return
+    if (!FORMSPREE_ID) { setStatus('error'); return }
+    const controller = new AbortController()
+    request.current = controller
     setStatus('submitting')
+    const timeout = window.setTimeout(() => controller.abort(), 15000)
     try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({ email: value }),
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ email: email.trim(), source: id }), signal: controller.signal,
       })
-      setStatus(res.ok ? 'done' : 'error')
-    } catch {
-      setStatus('error')
-    }
+      setStatus(response.ok ? 'done' : 'error')
+    } catch { setStatus('error') }
+    finally { window.clearTimeout(timeout); request.current = null }
   }
-
-  if (status === 'done') {
-    return (
-      <div className="form__done">
-        You're on the list. We'll email you when the campaign launches.
-      </div>
-    )
-  }
-
-  return (
-    <>
-      <form id={id} className="form" onSubmit={handleSubmit}>
-        <input
-          type="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="you@example.com"
-          aria-label="Email address"
-        />
-        <button
-          type="submit"
-          className="btn btn--primary"
-          disabled={status === 'submitting'}
-        >
-          {status === 'submitting' ? 'Signing up…' : 'Notify me at launch'}
-        </button>
-      </form>
-      {status === 'error' && (
-        <p className="form__error">
-          {FORMSPREE_ID
-            ? "We couldn't save your email. Please try again."
-            : 'Email signup is currently unavailable. Please check back later.'}
-        </p>
-      )}
-    </>
-  )
+  return <div className="signup">
+    {status === 'done' ? <div className="signup-success" role="status"><Icon name="check" /><div><strong>You’re on the list.</strong><p>We’ll email you when PLIDEPLI launches on Kickstarter.</p></div></div> :
+      <form className="signup-form" onSubmit={submit} aria-label={`${id === 'hero' ? 'First' : 'Final'} launch notification signup`} aria-busy={status === 'submitting'}>
+        <label className="sr-only" htmlFor={`${id}-email`}>Email address</label>
+        <input id={`${id}-email`} name="email" type="email" autoComplete="email" required value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Email address" aria-describedby={status === 'error' ? `${id}-error` : undefined} />
+        <button className="button button-primary" type="submit" disabled={status === 'submitting'}>{status === 'submitting' ? 'Joining…' : 'Notify me at launch'}<Icon name="arrow" /></button>
+      </form>}
+    {status === 'error' && <p id={`${id}-error`} className="form-error" role="alert">{FORMSPREE_ID ? 'Your signup didn’t go through. Please try again.' : 'Launch notifications are temporarily unavailable. Please check back soon.'}</p>}
+    <p className="signup-note">One launch email. No payment today. <button type="button" onClick={onPrivacy}>Privacy</button></p>
+  </div>
 }
 
-const FAQ_ITEMS: { q: string; a: string }[] = [
-  {
-    q: 'Do I still need to install an outdoor antenna?',
-    a: "Yes — that doesn't change. What's built in is the indoor antenna, so internal mode skips a separate indoor antenna and cable run. (External and dual modes are also available if you want more control.) Power is 5V USB-C.",
-  },
-  {
-    q: "Will it work where there's no cell signal?",
-    a: "A booster needs an existing outdoor signal to amplify—it can't create one from nothing. If the outdoor signal is weak, that limits what you can expect indoors.",
-  },
-  {
-    q: 'Can I use it in my RV while driving?',
-    a: 'No. PLIDEPLI is a fixed device for buildings and stationary use. For RV camp sites, that means parked and stationary use — not while driving or towing.',
-  },
-  {
-    q: 'Which carriers and bands does it support?',
-    a: "PLIDEPLI supports five cellular bands: B12, B13, B5, B4, and B2. Compatibility depends on the bands your carrier uses at your location, so we can't promise support based on the carrier's name alone.",
-  },
-  {
-    q: 'How much of my home will it cover?',
-    a: 'Coverage is up to about 2,500 square feet, depending on outdoor signal strength and placement. Think of that as a best-case number — actual coverage depends on your walls, layout, and outdoor signal.',
-  },
-  {
-    q: 'Is the gain 65 dB or 70 dB?',
-    a: 'The amplifier gain is 65 dB. Total system gain, including the antenna, is about 70 dB—an FCC-measured figure, not a marketing number.',
-  },
-  {
-    q: 'What does FCC Part 20 certification mean?',
-    a: 'PLIDEPLI is certified under FCC Part 20 for its fixed cellular booster use, with FCC ID 2BWMS-L5-5B-2006. The certification is under Light Folding Science and Technology Co., Limited (Hong Kong); it does not make this an in-motion RV booster or guarantee coverage in your home.',
-  },
-  {
-    q: 'What will it cost, and when will it ship?',
-    a: 'Our target price is about $275—roughly half the price of mainstream brands—but final pricing and a ship date can only be confirmed after crowdfunding. The current prototype is a CNC-machined solid-aluminum unit; Kickstarter funding will pay for injection-molding tooling.',
-  },
+const INSTALL_STEPS = [
+  { title: 'Find your outdoor signal', body: 'Mount the outdoor antenna where your existing cellular signal is strongest. Route its cable inside.' },
+  { title: 'Connect your PLIDEPLI', body: 'Connect the outdoor antenna cable to the booster, then connect the supplied 5V power adapter.' },
+  { title: 'Bring the signal indoors', body: 'The built-in indoor antenna distributes the amplified signal. Check reception and adjust placement for your space.' },
 ]
 
-function Faq() {
-  const [open, setOpen] = useState<number | null>(null)
-
-  return (
-    <div className="faq">
-      {FAQ_ITEMS.map((item, i) => {
-        const isOpen = open === i
-        return (
-          <div className={`faq__item${isOpen ? ' is-open' : ''}`} key={i}>
-            <h3 className="faq__q-wrap">
-              <button
-                type="button"
-                className="faq__q"
-                aria-expanded={isOpen}
-                aria-controls={`faq-panel-${i}`}
-                onClick={() => setOpen(isOpen ? null : i)}
-              >
-                <span>{item.q}</span>
-                <span className="faq__icon" aria-hidden="true" />
-              </button>
-            </h3>
-            <div
-              className="faq__a"
-              id={`faq-panel-${i}`}
-              hidden={!isOpen}
-            >
-              <p>{item.a}</p>
-            </div>
-          </div>
-        )
-      })}
+function Installation() {
+  const [diagramOpen, setDiagramOpen] = useState(false)
+  return <section className="section installation" id="product"><div className="container">
+    <div className="section-heading"><div><p className="eyebrow">A simpler setup</p><h2>Your signal.<br />A better way in.</h2></div><p>You already have a signal outside. We designed PLIDEPLI to help bring it inside—with one less antenna to mount.</p></div>
+    <div className="installation-grid setup-layout">
+      <figure className="setup-diagram"><button type="button" onClick={() => setDiagramOpen(true)} aria-label="Enlarge the simple setup illustration"><img src={`${BASE}product/simple-setup.webp`} alt="House cutaway showing a roof-mounted outdoor antenna connected by cable to the PLIDEPLI booster downstairs, with a separate power connection and the indoor antenna built in" width="2048" height="1024" loading="lazy" /><span>View the setup<Icon name="plus" /></span></button><figcaption>One outdoor cable. Indoor antenna built in. <span>Concept illustration · Not to scale</span></figcaption></figure>
+      <div className="installation-steps">{INSTALL_STEPS.map((item, index) => <div className="installation-step" key={item.title}><span className="step-number">{index + 1}</span><span><strong>{item.title}</strong><span className="step-description">{item.body}</span></span></div>)}<p className="small-print">An outdoor signal is required. Antenna separation and building materials affect coverage. Follow the installation instructions for your setup.</p></div>
     </div>
-  )
+    <div className="mode-note" id="modes"><span className="mode-note-mark" aria-hidden="true">+</span><div><h3>More flexibility, when you need it.</h3><p>Start with the built-in indoor antenna. External and dual modes let you use a separate indoor antenna for different layouts. Final accessory options will be listed at launch.</p></div></div>
+    {diagramOpen && <PhotoViewer photos={[{ src: `${BASE}product/simple-setup.webp`, alt: 'PLIDEPLI installation concept: outdoor antenna, cable route, booster with built-in indoor antenna, and power. Not to scale.' }]} initial={0} onClose={() => setDiagramOpen(false)} />}
+  </div></section>
 }
 
-const TICKER_ITEMS = [
-  'FCC Part 20 certified',
-  '65 dB amplifier gain',
-  'Five bands · B12 B13 B5 B4 B2',
-  '5V USB-C',
-  'Engineered in Shenzhen',
-  'Coming to Kickstarter',
+const FAQS = [
+  ['Will this work in my home?', 'PLIDEPLI is designed for fixed installations in US homes and cabins where a usable cellular signal is available outside. Your carrier’s local bands must match B12, B13, B5, B4, or B2. Walls, layout, and antenna placement affect the indoor result.'],
+  ['What if there is no signal outside?', 'A booster amplifies an existing signal. It cannot create cellular coverage where there is no usable outdoor signal. Check reception at the planned outdoor antenna location before choosing a booster.'],
+  ['Do I still need an outdoor antenna?', 'Yes. An outdoor antenna and its cable are required. The antenna built into PLIDEPLI is the indoor antenna, which means internal mode does not need a separate indoor antenna or its cable run.'],
+  ['Which carriers and networks are supported?', 'The supported bands are B12, B13, B5, B4, and B2. Compatibility with Verizon, AT&T, T-Mobile, or another provider depends on the bands used at your location. A carrier name or a 5G icon alone does not confirm compatibility.'],
+  ['Can I use it in a moving vehicle?', 'PLIDEPLI is designed for fixed installations. It is not offered as an in-motion vehicle booster. The current campaign focuses on homes and cabins.'],
+  ['What do I need to do before using it?', 'Register the booster with your wireless provider and obtain their consent before use. Use the approved antennas and cables and follow the installation instructions, including antenna separation requirements.'],
+  ['What will it cost, and what comes in the box?', 'Our target price is approximately $275. Final campaign pricing, the complete kit contents, and any optional accessories will be published when the Kickstarter campaign launches. Joining the notification list is free and does not place an order.'],
+  ['When will it ship? What will the production version look like?', 'We have working prototypes and are preparing for production tooling. The campaign will help fund injection molds and the first production run. The prototypes shown are CNC-machined aluminum; the production housing will be injection-molded. Final milestones, shipping estimates, and warranty terms will be published with the campaign.'],
 ]
 
-function Ticker() {
-  return (
-    <div className="ticker" aria-hidden="true">
-      <div className="ticker__track">
-        {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
-          <span className="ticker__item" key={i}>
-            {item}
-          </span>
-        ))}
-      </div>
-    </div>
-  )
+function PrivacyDialog({ onClose }: { onClose: () => void }) {
+  const dialog = useRef<HTMLDialogElement>(null)
+  useEffect(() => { const el = dialog.current; el?.showModal(); const previous = document.body.style.overflow; document.body.style.overflow = 'hidden'; return () => { el?.close(); document.body.style.overflow = previous } }, [])
+  return <dialog ref={dialog} className="privacy-dialog" onCancel={(event) => { event.preventDefault(); onClose() }} onClick={(event) => { if (event.target === event.currentTarget) onClose() }} aria-labelledby="privacy-title"><div className="privacy-content"><button type="button" className="dialog-close" onClick={onClose} aria-label="Close privacy notice">×</button><p className="eyebrow">PLIDEPLI</p><h2 id="privacy-title">Your email, explained.</h2><p>This signup is operated by PLIDEPLI, the brand of Light Folding Science and Technology Co., Limited, Hong Kong.</p><p>We collect the email address you enter and which signup form you used so we can notify you when our Kickstarter campaign launches. Signing up does not place an order or authorize a payment.</p><p>Submissions are processed by Formspree, our form service. It may process technical information needed to deliver the form and prevent spam. Read <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noreferrer">Formspree’s privacy policy</a>.</p><p>We use this list for the launch notification described on this page. This site does not include advertising trackers or an analytics service.</p>{CONTACT_EMAIL && <p>For questions or removal from the launch list, email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>}<button type="button" className="button button-dark" onClick={onClose}>Back to PLIDEPLI</button></div></dialog>
 }
 
-function App() {
-  useEffect(() => {
-    document.documentElement.classList.add('reveal-active')
-    const sections = document.querySelectorAll<HTMLElement>('.section')
-    sections.forEach((el) => el.classList.add('reveal'))
+export default function App() {
+  const [privacy, setPrivacy] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const page = window.location.pathname.replace(import.meta.env.BASE_URL, '').split('/')[0]
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible')
-            observer.unobserve(entry.target)
-          }
-        })
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' },
-    )
-
-    sections.forEach((el) => observer.observe(el))
-    return () => {
-      observer.disconnect()
-      document.documentElement.classList.remove('reveal-active')
-    }
-  }, [])
-
-  return (
-    <>
-      <header className="header">
-        <div className="container header__inner">
-          <a href="#top" aria-label="PLIDEPLI home">
-            <Wordmark />
-          </a>
-          <nav className="nav" aria-label="Primary">
-            <a href="#spec">Specs</a>
-            <a href="#fcc">Certification</a>
-            <a href="#modes">Modes</a>
-            <a href="#story">Story</a>
-            <a href="#faq">FAQ</a>
-            <a href="#roadmap">Roadmap</a>
-            <a href="#cta" className="btn btn--primary">
-              Notify me at launch
-            </a>
-          </nav>
-        </div>
-      </header>
-
-      <Ticker />
-
-      <main id="top">
-        {/* ---------- hero ---------- */}
-        <section className="hero">
-          <div className="container hero__grid">
-            <div>
-              <span className="hero__eyebrow">
-                <span className="hero__dot" aria-hidden="true" />
-                PLIDEPLI · Five-band cellular signal booster
-              </span>
-              <h1 className="hero__title">
-                Better signal.
-                <br />
-                One less antenna to install.
-              </h1>
-              <p className="hero__sub">
-                A cellular booster with the indoor antenna built in. Designed
-                for US homes, cabins, and stationary RV campsites. 65 dB
-                amplifier gain — up to approximately 70 dB system gain with the
-                antenna. You still mount an outdoor log-periodic antenna.
-              </p>
-              <div className="hero__cta">
-                <a href="#cta" className="btn btn--primary">
-                  Notify me at launch
-                </a>
-                <a href="#spec" className="btn btn--ghost">
-                  Explore the specs
-                </a>
-              </div>
-              <div className="hero__trust">
-                <span>
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <path
-                      d="M3 8.5 6.5 12 13 4"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  FCC Part 20 certified
-                </span>
-                <span>
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <path
-                      d="M3 8.5 6.5 12 13 4"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  65 dB amplifier gain
-                </span>
-                <span>
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <path
-                      d="M3 8.5 6.5 12 13 4"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  5V USB-C power
-                </span>
-                <span>
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <path
-                      d="M3 8.5 6.5 12 13 4"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  B12 · B13 · B5 · B4 · B2
-                </span>
-                <span>
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <path
-                      d="M3 8.5 6.5 12 13 4"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  CNC-machined solid aluminum prototype
-                </span>
-              </div>
-            </div>
-
-            <div className="hero__media">
-              <div className="video-shell">
-                <video
-                  controls
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  poster={`${BASE}video/poster.jpg`}
-                >
-                  <source src={`${BASE}video/promo.mp4`} type="video/mp4" />
-                </video>
-              </div>
-              <p className="hero__note">Meet PLIDEPLI in 44 seconds.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* ---------- signal meter ---------- */}
-        <section className="meter-band" aria-label="Before and after demo">
-          <div className="container">
-            <SignalMeter />
-            <p className="meter__footnote">
-              A booster amplifies an existing cellular signal — it cannot create
-              one. You need usable signal outdoors to improve coverage indoors.
-              This illustration is not a measured result.
-            </p>
-          </div>
-        </section>
-
-        {/* ---------- scenarios ---------- */}
-        <section className="section">
-          <div className="container">
-            <span className="section__label">Where it fits</span>
-            <h2 className="section__title">Signal outside. Connection inside.</h2>
-            <div className="scenarios">
-              <div className="scenario">
-                <h3>The remote cabin</h3>
-                <p>
-                  Weak signal outdoors can fade further inside. Bring that
-                  existing signal into your living space.
-                </p>
-              </div>
-              <div className="scenario">
-                <h3>The basement office</h3>
-                <p>
-                  Concrete, metal, and low-E glass can weaken cellular reception.
-                  An outdoor antenna picks up signal beyond those barriers.
-                </p>
-              </div>
-              <div className="scenario">
-                <h3>The stationary RV campsite</h3>
-                <p>
-                  Set up where an outdoor signal is available. Designed for fixed
-                  use with your RV parked — not for use while driving.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ---------- problem ---------- */}
-        <section className="section">
-          <div className="container split">
-            <div>
-              <span className="section__label">The problem</span>
-              <h2 className="section__title">
-                Better reception shouldn't mean more hardware indoors.
-              </h2>
-              <p className="section__lede">
-                We built the indoor antenna into the booster to simplify setup.
-                Outdoor installation still matters.
-              </p>
-            </div>
-            <div className="problem__list">
-              <div className="problem__item">
-                <h3>One less antenna to mount</h3>
-                <p>
-                  In internal mode, there's no separate indoor antenna or indoor
-                  antenna cable to install. Mount the outdoor antenna and connect
-                  it to the unit.
-                </p>
-              </div>
-              <div className="problem__item">
-                <h3>Placement still matters</h3>
-                <p>
-                  Too little separation between the outdoor and indoor antennas
-                  can cause feedback and limit performance. A built-in antenna
-                  doesn't remove that constraint.
-                </p>
-              </div>
-              <div className="problem__item">
-                <h3>A lower price target</h3>
-                <p>
-                  We're targeting about $275 — roughly half the price of
-                  mainstream brand alternatives. Final campaign pricing will be
-                  announced at launch.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ---------- spec sheet ---------- */}
-        <section className="section spec" id="spec">
-          <div className="container">
-            <span className="section__label">Technical specifications</span>
-            <h2 className="section__title">The details that matter.</h2>
-            <p className="section__lede">
-              Amplifier gain, system gain, and the conditions behind coverage.
-            </p>
-
-            <div className="spec__sheet">
-              <div className="spec__head">
-                <span>PLIDEPLI · L5-5B · REV A</span>
-                <span>FCC ID 2BWMS-L5-5B-2006</span>
-              </div>
-              <div className="spec__grid">
-                <div className="spec__cell">
-                  <div className="spec__value spec__value--accent">65 dB</div>
-                  <div className="spec__key">Amplifier gain</div>
-                  <div className="spec__sub">up to ~70 dB system gain with the antenna</div>
-                </div>
-                <div className="spec__cell">
-                  <div className="spec__value">5</div>
-                  <div className="spec__key">Supported bands</div>
-                  <div className="spec__sub">B12 · B13 · B5 · B4 · B2</div>
-                </div>
-                <div className="spec__cell">
-                  <div className="spec__value">2,500</div>
-                  <div className="spec__key">Indoor coverage</div>
-                  <div className="spec__sub">sq. ft. — depends on outdoor signal &amp; placement</div>
-                </div>
-                <div className="spec__cell">
-                  <div className="spec__value">3</div>
-                  <div className="spec__key">Antenna modes</div>
-                  <div className="spec__sub">internal · external · dual</div>
-                </div>
-                <div className="spec__cell">
-                  <div className="spec__value">US carriers</div>
-                  <div className="spec__key">Band compatibility</div>
-                  <div className="spec__sub">Verizon, AT&amp;T, T-Mobile where bands match</div>
-                </div>
-                <div className="spec__cell">
-                  <div className="spec__value">Part 20</div>
-                  <div className="spec__key">FCC certification</div>
-                  <div className="spec__sub">oscillation monitoring, auto-shutdown</div>
-                </div>
-                <div className="spec__cell">
-                  <div className="spec__value">5V USB-C</div>
-                  <div className="spec__key">Power input</div>
-                  <div className="spec__sub">included adapter or compatible USB-C source</div>
-                </div>
-                <div className="spec__cell">
-                  <div className="spec__value">3 options</div>
-                  <div className="spec__key">Unit mounting</div>
-                  <div className="spec__sub">wall · ceiling · pole bracket</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="band-strip" aria-label="Supported bands">
-              {[
-                ['B12', 'Lower 700 MHz'],
-                ['B13', 'Upper 700 MHz'],
-                ['B5', 'Cellular 850'],
-                ['B4', 'AWS 1700/2100'],
-                ['B2', 'PCS 1900'],
-              ].map(([band, label]) => (
-                <div className="band" key={band}>
-                  <span className="band__name">{band}</span>
-                  <span className="band__gain">{label}</span>
-                </div>
-              ))}
-            </div>
-
-            <p className="spec__sheet-note mono">
-              Antenna feedback can cause interference. PLIDEPLI monitors for
-              oscillation and shuts down automatically when detected.
-            </p>
-            <p className="spec__sheet-note mono">
-              Fixed-location booster: designed for homes, cabins, and stationary
-              RV campsite installations — not for use while driving.
-            </p>
-            <p className="spec__sheet-note mono">
-              PLIDEPLI is the brand. The FCC grant is held by our Hong Kong
-              entity, Light Folding Science and Technology Co., Limited — the
-              same team, under the legal name on the filing.
-            </p>
-          </div>
-        </section>
-
-        {/* ---------- FCC grant ---------- */}
-        <section className="section" id="fcc">
-          <div className="container">
-            <span className="section__label">FCC certification</span>
-            <h2 className="section__title">Read the grant.</h2>
-            <p className="section__lede">
-              The authorization is public record. Here are the core details, and
-              a direct link to the official FCC filing.
-            </p>
-
-            <div className="cert">
-              <div className="cert__table">
-                <div className="cert__row">
-                  <span className="cert__label">FCC ID</span>
-                  <span className="cert__value cert__value--mono">2BWMS-L5-5B-2006</span>
-                </div>
-                <div className="cert__row">
-                  <span className="cert__label">Grantee</span>
-                  <span className="cert__value">Light Folding Science and Technology Co., Ltd.</span>
-                </div>
-                <div className="cert__row">
-                  <span className="cert__label">Date of grant</span>
-                  <span className="cert__value">Aug 19, 2026</span>
-                </div>
-                <div className="cert__row">
-                  <span className="cert__label">Device class</span>
-                  <span className="cert__value">Part 20 wideband consumer booster (CMRS)</span>
-                </div>
-                <div className="cert__row">
-                  <span className="cert__label">Model</span>
-                  <span className="cert__value">L5-5B-2006</span>
-                </div>
-                <div className="cert__row">
-                  <span className="cert__label">Rules covered</span>
-                  <span className="cert__value">47 CFR 20.21(a) · 20.21(g) — Parts 22H / 24E / 27</span>
-                </div>
-                <div className="cert__row">
-                  <span className="cert__label">Certification body</span>
-                  <span className="cert__value">KL-Certification GmbH</span>
-                </div>
-              </div>
-
-              <div className="cert__cta">
-                <a
-                  className="btn btn--primary"
-                  href="https://apps.fcc.gov/oetcf/tcb/reports/Tcb731GrantForm.cfm?mode=COPY&RequestTimeout=500&tcb_code=&application_id=%2FxeBkw1BpqfOIvNhtA4odg%3D%3D&fcc_id=2BWMS-L5-5B-2006"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View the FCC grant
-                </a>
-                <a
-                  className="btn btn--ghost"
-                  href="https://apps.fcc.gov/oetcf/eas/reports/ViewExhibitReport.cfm?mode=Exhibits&RequestTimeout=500&calledFromFrame=N&application_id=%2FxeBkw1BpqfOIvNhtA4odg%3D%3D&fcc_id=2BWMS-L5-5B-2006"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View test exhibits
-                </a>
-              </div>
-
-              <p className="cert__note">
-                PLIDEPLI is the brand. The FCC grant is held by our Hong Kong
-                entity, Light Folding Science and Technology Co., Limited — the
-                same team, under the legal name on the filing.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ---------- modes ---------- */}
-        <section className="section" id="modes">
-          <div className="container">
-            <span className="section__label">Three antenna modes</span>
-            <h2 className="section__title">Start with the antenna inside.</h2>
-            <div className="modes">
-              <div className="mode">
-                <span className="mode__name">01 · internal</span>
-                <h3>Built in. Ready for the room.</h3>
-                <p>
-                  Use the indoor antenna inside the booster. No separate indoor
-                  antenna to mount or cable to route.
-                </p>
-              </div>
-              <div className="mode">
-                <span className="mode__name">02 · external</span>
-                <h3>Put the indoor antenna where you need it.</h3>
-                <p>
-                  Use a separate ceiling antenna to position indoor coverage
-                  independently of the booster.
-                </p>
-              </div>
-              <div className="mode">
-                <span className="mode__name">03 · dual</span>
-                <h3>Use both indoor antennas.</h3>
-                <p>
-                  Run the built-in and separate indoor antennas together.
-                  Coverage depends on layout, antenna separation, and the signal
-                  available outdoors.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ---------- install ---------- */}
-        <section className="section">
-          <div className="container">
-            <span className="section__label">Installation</span>
-            <h2 className="section__title">One outdoor antenna. Four steps.</h2>
-            <div className="install">
-              <div className="install__step">
-                <span className="install__num">01</span>
-                <h3>Find the outdoor signal</h3>
-                <p>
-                  Check reception around the property. Choose a location with
-                  usable signal for the outdoor antenna.
-                </p>
-              </div>
-              <div className="install__step">
-                <span className="install__num">02</span>
-                <h3>Mount and connect</h3>
-                <p>
-                  Mount the log-periodic antenna outdoors. Route its cable to the
-                  booster, following the installation guide for antenna
-                  separation.
-                </p>
-              </div>
-              <div className="install__step">
-                <span className="install__num">03</span>
-                <h3>Connect power</h3>
-                <p>Place the booster indoors and connect 5V USB-C power.</p>
-              </div>
-              <div className="install__step">
-                <span className="install__num">04</span>
-                <h3>Check your coverage</h3>
-                <p>
-                  Test reception where you use your phone. Adjust antenna
-                  placement and mode as needed.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ---------- story ---------- */}
-        <section className="section" id="story">
-          <div className="container">
-            <span className="section__label">Our story</span>
-            <h2 className="section__title">RF engineers. Building under our own name.</h2>
-            <p className="section__lede">
-              Seven chapters from the bench — the tuning, the failed revisions,
-              and the measurements behind each one.
-            </p>
-            <StoryCarousel />
-          </div>
-        </section>
-
-        {/* ---------- faq ---------- */}
-        <section className="section" id="faq">
-          <div className="container">
-            <span className="section__label">FAQ</span>
-            <h2 className="section__title">Questions, answered plainly.</h2>
-            <p className="section__lede">
-              The honest answers to what people ask most — including the limits.
-            </p>
-            <Faq />
-          </div>
-        </section>
-
-        {/* ---------- roadmap ---------- */}
-        <section className="section roadmap" id="roadmap">
-          <div className="container">
-            <span className="section__label">Roadmap</span>
-            <h2 className="section__title">First, the booster.</h2>
-            <p className="section__lede">
-              Two more ideas are on our roadmap. Bringing this product into
-              production comes first.
-            </p>
-            <div className="steps">
-              <div className="step">
-                <div className="step__num">
-                  <em>01</em>
-                </div>
-                <div>
-                  <h3>
-                    The cellular signal booster
-                    <span className="step__tag">current project</span>
-                  </h3>
-                  <p>
-                    Five supported bands. 65 dB amplifier gain. A built-in indoor
-                    antenna. FCC Part 20 certified, with working CNC-machined
-                    prototypes.
-                  </p>
-                </div>
-              </div>
-              <div className="step">
-                <div className="step__num">
-                  <em>02</em>
-                </div>
-                <div>
-                  <h3>
-                    Travel power bank
-                    <span className="step__tag">planned</span>
-                  </h3>
-                  <p>
-                    A power bank with integrated plugs for international travel.
-                    Designed to reduce the adapters you carry.
-                  </p>
-                </div>
-              </div>
-              <div className="step">
-                <div className="step__num">
-                  <em>03</em>
-                </div>
-                <div>
-                  <h3>
-                    Signal and power hub
-                    <span className="step__tag">concept</span>
-                  </h3>
-                  <p>
-                    An integrated device combining cellular boosting and power.
-                    Regional band support and regulatory requirements will shape
-                    where it can be used.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <p className="spec__sheet-note mono" style={{ marginTop: 24 }}>
-              These future projects are separate from this campaign.
-              Specifications and timing are not yet set.
-            </p>
-          </div>
-        </section>
-
-        {/* ---------- mold ---------- */}
-        <section className="section">
-          <div className="container mold">
-            <div>
-              <span className="section__label">Why Kickstarter</span>
-              <h2 className="section__title">The next step is tooling.</h2>
-              <p className="section__lede">
-                We have working prototypes machined from solid aluminum.
-                Kickstarter will help fund the injection molds for the
-                production housing.
-              </p>
-              <div className="mold__stat">
-                <div>
-                  <div className="num">65 dB</div>
-                  <div className="lbl">amplifier gain · five bands</div>
-                </div>
-                <div>
-                  <div className="num">~$275</div>
-                  <div className="lbl">target price · roughly half mainstream</div>
-                </div>
-                <div>
-                  <div className="num">Part 20</div>
-                  <div className="lbl">certified · FCC ID 2BWMS-L5-5B-2006</div>
-                </div>
-              </div>
-            </div>
-            <div className="mold__card">
-              <h3>What the campaign funds</h3>
-              <ul>
-                <li>Injection-mold tooling for the production housing</li>
-                <li>The first production run for backers</li>
-                <li>
-                  The aluminum units shown are prototypes — the production
-                  housing will be injection-molded
-                </li>
-                <li>
-                  Final pricing, milestones, and delivery timing come with the
-                  campaign
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* ---------- final CTA ---------- */}
-        <section className="cta" id="cta">
-          <div className="container">
-            <h2 className="cta__title">Know when we launch.</h2>
-            <p className="cta__sub">
-              Leave your email for one message when the Kickstarter campaign
-              goes live.
-            </p>
-            <EmailForm id="cta-form" />
-            <p className="form__note">
-              Have a technical question? We're happy to explain the details.
-            </p>
-          </div>
-        </section>
-      </main>
-
-      <footer className="footer">
-        <div className="container footer__grid">
-          <div className="footer__brand">
-            <Wordmark />
-            <p style={{ marginTop: 12 }}>
-              Cellular signal hardware. Engineered by a small RF team in
-              Shenzhen.
-            </p>
-          </div>
-          <div className="footer__meta">
-            <div>FCC ID 2BWMS-L5-5B-2006</div>
-            <div>
-              FCC grant held by Light Folding Science and Technology Co.,
-              Limited, Hong Kong.
-            </div>
-            <div>
-              Fixed-location use only. An outdoor antenna is required.
-            </div>
-            <div>Pre-production specifications may change before manufacturing.</div>
-            <div>
-              &copy; {new Date().getFullYear()} PLIDEPLI
-            </div>
-          </div>
-        </div>
-      </footer>
-    </>
-  )
+  const video = useRef<HTMLVideoElement>(null)
+  return <>
+    <HashNavigation />
+    <a className="skip-link" href="#main">Skip to content</a>
+    <header className="header"><div className="container header-inner">
+      <a href={BASE} aria-label="PLIDEPLI home"><Wordmark /></a>
+      <nav id="site-navigation" className={menuOpen ? 'site-nav is-open' : 'site-nav'} aria-label="Main navigation">
+        <a href={BASE} aria-current={page === '' ? 'page' : undefined}>Home</a>
+        <a href={`${BASE}product/`} aria-current={page === 'product' ? 'page' : undefined}>The booster</a>
+        <a href={`${BASE}installation/`} aria-current={page === 'installation' ? 'page' : undefined}>Installation</a>
+        <a href={`${BASE}stories/`} aria-current={page === 'stories' ? 'page' : undefined}>Our story</a>
+        <a href={`${BASE}#fcc`} onClick={() => setMenuOpen(false)}>FCC & specs</a>
+      </nav>
+      <div className="header-actions"><a className="button button-header" href="#cta" onClick={() => setMenuOpen(false)}>Get launch updates<Icon name="arrow" /></a><button className="menu-toggle" type="button" aria-controls="site-navigation" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}><span /><span /></button></div>
+    </div></header>
+    <main id="main">
+      {page === 'product' ? <ProductPage /> : page === 'stories' ? <StoriesPage /> : page === 'installation' ? <InstallationPage /> : <>
+      <section className="hero" id="top"><div className="container hero-grid">
+        <div className="hero-intro"><p className="launch-status"><span />Coming to Kickstarter</p><h1>Better signal.<br />Less to install.</h1><p className="hero-description">Meet the cellular booster with the indoor antenna built in. Made for a better connection in your home or cabin.</p></div>
+        <figure className="hero-product kit-hero"><div className="product-frame"><img src={`${BASE}product/kit.webp`} width="1672" height="941" alt="PLIDEPLI kit rendering with signal booster, outdoor antenna, cable, power adapter and packaging" fetchPriority="high" /></div><figcaption><span>Meet the PLIDEPLI signal booster kit.</span><span>Product rendering · Final contents at launch</span></figcaption><a className="hero-product-link" href={`${BASE}product/`}>Take a closer look<Icon name="arrow" /></a></figure>
+        <div className="hero-action"><div className="hero-price"><span>Target price</span><strong>~$275</strong><span>Final pricing at launch</span></div><EmailForm id="hero" onPrivacy={() => setPrivacy(true)} /><p className="hero-condition">For fixed US installations. An outdoor antenna and existing outdoor signal are required.</p></div>
+      </div><div className="container hero-bottom"><a href="#fcc"><Icon name="check" />FCC Part 20 certified</a><span>Five cellular bands</span><span>Indoor antenna built in</span><a href="#product">Explore the booster<Icon name="arrow" /></a></div></section>
+      <section className="intro-section"><div className="container intro-grid"><p className="eyebrow">A little less hardware.<br />A little more connection.</p><h2>For the calls you shouldn’t<br className="desktop-break" /> have to take outside.</h2><p>Thick walls. A basement office. A cabin just beyond easy reception. PLIDEPLI is built around one idea: bringing your existing outdoor signal into the space where you actually use your phone.</p></div></section>
+      <ProductTeaser />
+      <Installation />
+      <LifestyleSection />
+      <section className="film-section" id="film"><div className="container film-grid"><div><p className="eyebrow">Meet PLIDEPLI</p><h2>One small change<br />to your setup.</h2><p>See the built-in antenna, installation options, and the idea behind the booster in our 44-second product film.</p><button className="text-button" type="button" onClick={() => { video.current?.scrollIntoView({ block: 'center', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); video.current?.focus(); video.current?.play().catch(() => {}) }}><span className="play-icon"><Icon name="play" /></span>Watch the product film</button><p className="small-print">Product visualization. Actual coverage depends on your outdoor signal and installation.</p></div><video ref={video} controls playsInline preload="none" poster={`${BASE}video/poster.jpg`} tabIndex={0} aria-label="PLIDEPLI 44-second product film"><source src={`${BASE}video/promo.mp4`} type="video/mp4" />Your browser does not support video playback.</video></div></section>
+      <HomeBench />
+      <section className="section evidence-section" id="fcc"><div className="container evidence-grid"><div className="evidence-copy"><p className="eyebrow">Evidence you can open</p><h2>The engineering.<br />On the record.</h2><p>Our FCC authorization and test report are here to read. See the device, supported frequencies, and compliance measurements for yourself.</p><div className="certification-stamp"><span className="certification-icon"><Icon name="check" /></span><div><strong>FCC Part 20 certified</strong><span>FCC ID: 2BWMS-L5-5B-2006</span></div></div><p className="small-print">Granted August 19, 2026 to Light Folding Science and Technology Co., Limited, Hong Kong—the legal entity behind PLIDEPLI.</p><div className="document-links"><a href={`${BASE}fcc/fcc-grant.pdf`} target="_blank" rel="noreferrer"><Icon name="download" />Read the authorization<span>PDF</span></a><a href={`${BASE}fcc/fcc-test-report.pdf`} target="_blank" rel="noreferrer"><Icon name="download" />Read the test report<span>85 pages · 29 MB</span></a><a className="fcc-record" href={FCC_URL} target="_blank" rel="noreferrer">Open the official FCC record<Icon name="arrow" /></a></div></div>
+        <div className="spec-sheet" id="spec"><div className="spec-sheet-heading"><span>PLIDEPLI</span><span>Five-band cellular booster</span></div><dl><div><dt>Indoor antenna</dt><dd>Built in</dd></div><div><dt>Cellular bands</dt><dd>B12 / B13 / B5 / B4 / B2</dd></div><div><dt>Measured amplifier gain</dt><dd>61.27–64.69 dB<span>Across tested bands and signal types</span></dd></div><div><dt>Power input</dt><dd>5V USB-C<span>Use the supplied power adapter</span></dd></div><div><dt>Antenna modes</dt><dd>Internal / external / dual</dd></div><div><dt>Designed for</dt><dd>Fixed indoor installations</dd></div></dl><p>Gain values: FCC test report, page 18. Coverage varies with outdoor signal, building materials, and placement. Home RSRP and speed comparisons are still being prepared.</p></div>
+      </div></section>
+      <section className="section campaign-section" id="roadmap"><div className="container"><div className="section-heading"><div><p className="eyebrow">The next chapter needs you</p><h2>Help bring PLIDEPLI<br />off the workbench.</h2></div><p>The prototypes are working. The next investment is production tooling. Kickstarter will help fund the injection molds and our first production run.</p></div><ol className="roadmap"><li className="complete"><span className="milestone-marker"><Icon name="check" /></span><span className="milestone-status">Complete</span><h3>Working prototypes</h3><p>Board development, antenna tuning, and CNC-machined housings.</p></li><li className="complete"><span className="milestone-marker"><Icon name="check" /></span><span className="milestone-status">Complete</span><h3>FCC certification</h3><p>Authorization granted. The documents are available above.</p></li><li className="current"><span className="milestone-marker"><span /></span><span className="milestone-status">Up next</span><h3>Kickstarter & tooling</h3><p>Fund production molds and confirm the final campaign details.</p></li><li><span className="milestone-marker" /><span className="milestone-status">To follow</span><h3>First production run</h3><p>Trial production, validation, and delivery to our first backers.</p></li></ol><div className="campaign-note"><p>Shown today: aluminum prototypes.<br /><strong>Planned for production: injection-molded housing.</strong></p><p>Final specifications, kit contents, shipping estimates, and warranty terms will be published with the campaign.</p></div></div></section>
+      <section className="section faq-section" id="faq"><div className="container faq-grid"><div><p className="eyebrow">Before you join</p><h2>A few good<br />questions.</h2>{CONTACT_EMAIL && <p className="contact-note">Something else on your mind?<br /><a href={`mailto:${CONTACT_EMAIL}`}>Talk to our team<Icon name="arrow" /></a></p>}</div><div className="faq-list">{FAQS.map(([question, answer]) => <details key={question}><summary>{question}<Icon name="plus" /></summary><p>{answer}</p></details>)}</div></div></section>
+      </>}
+      <section className="final-cta" id="cta"><div className="container final-cta-grid"><div><p className="launch-status"><span />Be here for the beginning</p><h2>Great things start<br />with a connection.</h2><p>Join the launch list. Help a small engineering team take the next step.</p></div><div className="final-signup"><div className="final-price"><span>PLIDEPLI cellular booster</span><strong>~$275<span>target price</span></strong></div><EmailForm id="footer" onPrivacy={() => setPrivacy(true)} /><p className="final-disclaimer">Coming to Kickstarter. Final pricing and delivery timing will be announced with the campaign.</p></div></div></section>
+    </main>
+    <footer className="footer"><div className="container"><div className="footer-top"><div><a href={BASE} aria-label="PLIDEPLI home"><Wordmark /></a><p>Independent RF engineering.<br />Built with care in Shenzhen.</p></div><div className="footer-links"><a href={`${BASE}product/`}>The booster</a><a href={`${BASE}installation/`}>Installation</a><a href={`${BASE}stories/`}>Our story</a><a href={`${BASE}fcc/fcc-grant.pdf`} target="_blank" rel="noreferrer">FCC authorization</a><button type="button" onClick={() => setPrivacy(true)}>Privacy</button>{CONTACT_EMAIL && <a href={`mailto:${CONTACT_EMAIL}`}>Contact</a>}</div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} PLIDEPLI</span><span>Light Folding Science and Technology Co., Limited · Hong Kong</span><span>FCC ID 2BWMS-L5-5B-2006</span></div></div></footer>
+    {privacy && <PrivacyDialog onClose={() => setPrivacy(false)} />}
+  </>
 }
-
-export default App

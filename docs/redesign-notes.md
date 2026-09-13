@@ -4,7 +4,7 @@
 
 All four pages open on the same cool-paper surface, with ink headings and muted supporting copy. The homepage's separate silver gradient and decorative rings have been removed. Navy anchors the shared navigation, launch sections, selected evidence sections and footer; mint identifies launch actions and signal details. The white-background kit render blends into the shared surface without changing the source artwork. Navigation includes Home and a single active-page indicator on every page.
 
-The setup overview uses a wide AI-restyled version of the user's house diagram with three HTML steps and enlargement. The homepage team section uses the user's exact new opening copy, two specified unedited RF tuning videos, and one specified workbench photograph. See `home-bench-assets.md` and `simple-setup-image.md` for provenance.
+The setup overview uses a wide AI-restyled version of the user's house diagram with three HTML steps and enlargement. The homepage team section uses the requested workbench introduction, a 30-second edit from the two specified tuning videos, and one specified workbench photograph. See `home-bench-assets.md` and `simple-setup-image.md` for provenance.
 
 Cross-page fragment navigation now runs after React mounts and again when fonts and initial loading settle. Initial corrections stop on user interaction. Browser checks verify the actual FCC section position below the sticky navigation after arriving from each subpage and refreshing, on desktop and mobile.
 
@@ -24,12 +24,12 @@ The distinguishing feature is the actual hardware and people. The installation d
 
 - `/`: complete-kit hero, target price and signup; everyday use; product details and page links; installation overview; illustrative cabin scene; existing product film; team story and full-journal link; FCC documents, milestones, FAQ and signup.
 - `/product/`: five-view enlarged gallery, built-in antenna cutaway, three selectable antenna modes, component gallery and suitability checks.
-- `/stories/`: seven complete chapters, persistent desktop chapter directory, all original text and media, enlarged photographs with keyboard controls and clip selection. Videos load on request; starting a clip pauses other videos.
+- `/stories/`: a polished founder origin story, seven chapters, a persistent desktop chapter directory, 27 selected images and seven 30-second films. Videos load on request; starting a film pauses the others. Images include clearly labelled workshop photographs, video frames and one product rendering.
 - `/installation/`: planning overview, outdoor antenna, selectable wall (5 steps), pole/rail (3 steps) and overhead (5 steps) mounting render sequences, image enlargement and connection checks.
 
 Each address has a real generated HTML entry with its own title, description, canonical and sharing metadata. Navigation works with direct links and page refresh on GitHub Pages, without a router rewrite dependency.
 
-All 50 original photographs and 28 existing journal video references remain available through the journal. The source media and promotional video have not been edited. The watermark in the promotional film remains as requested.
+Original source media are preserved. The journal now presents a curated selection with no more than six images per chapter. Eight 30-second edits (including the homepage) use only the original instrumental score; source audio is removed. The promotional film and its watermark remain as requested. See `story-media-editing.md` for the edit plan and provenance.
 
 The new product illustrations are WebP copies of the supplied renders, preserving their appearance and keeping the originals untouched. `docs/product-assets.json` maps the files. `public/product/kit.webp` comes from `渲染导出/散图/1.png`, the exact kit image selected by the user. One AI-generated cabin photograph provides a lifestyle banner and is labelled as an illustrative scene; it is not customer evidence. Its provenance and exact prompt are in `docs/image-generation.md`.
 

@@ -26,15 +26,20 @@ npm run preview
 | `src/App.tsx` | 首页、表单、安装示意图、FAQ 和隐私说明 |
 | `src/index.css` | 配色、字体、电脑及手机布局 |
 | `src/stories.ts` | 七章研发日志文案及原始媒体引用 |
-| `src/pages/StoriesPage.tsx` | 完整七章故事、50 张照片、28 段视频、章节目录 |
+| `src/pages/StoriesPage.tsx` | 完整七章故事、27 张精选图片、7 支 30 秒短片、章节目录 |
 | `src/pages/ProductPage.tsx` | 产品图库、结构、三种模式、套装和适用条件 |
 | `src/pages/InstallationPage.tsx` | 墙面、横杆、顶部三套安装步骤图解 |
 | `src/HomeSections.tsx` | 首页产品入口和生活场景横幅 |
-| `src/HomeBench.tsx` | 首页团队开场白、两段原始调试视频和工作台照片 |
+| `src/HomeBench.tsx` | 首页团队开场白、30 秒调试短片和工作台照片 |
 | `src/components/HashNavigation.tsx` | 跨页锚点在内容和字体加载完成后的准确定位 |
 | `src/home-refinements.css` | 四页统一配色、宽幅安装示意图和团队媒体布局 |
 | `src/components/PhotoViewer.tsx` | 公用照片放大、左右切换和键盘操作 |
 | `src/pages.css` | 多页设计、图库和手机布局 |
+| `src/story-editorial.css` | 创始故事、精选图集和短片排版 |
+| `src/story-media.ts` | 由剪辑脚本生成的精选素材索引 |
+| `public/story-edits/` | 8 支 30 秒成片、精选图片、封面和原创配乐 |
+| `scripts/build-story-media.py` | 可复现剪辑、配乐合成与素材导出 |
+| `docs/story-media-editing.md` | 整理规则、素材来源、重建方法 |
 | `src/main.tsx` | React 入口和字体加载 |
 | `public/stories/` | 原有研发照片与视频 |
 | `public/video/` | 宣传片与封面；目前按要求保留原视频 |
@@ -78,4 +83,4 @@ VITE_CONTACT_EMAIL=你的公开联系邮箱
 - 新的实地测试结果应同时标明手机、运营商、频段、测试位置、安装条件和测量方法。
 - 桌面的原始说明书含历史品牌信息和需核对的说明，未直接发布为用户安装指南，详见设计记录。
 
-已生成的预览图位于桌面的 `plidepli-preview` 文件夹，最新截图以 `v4-` 开头。
+已生成的预览图位于桌面的 `plidepli-preview` 文件夹，最新截图以 `v5-` 开头。

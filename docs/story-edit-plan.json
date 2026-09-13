@@ -1,0 +1,592 @@
+{
+  "bench": {
+    "title": "The bench",
+    "photos": [
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/01_工作环境/微信图片_2026-09-13_094702_515.jpg",
+        "caption": "The workspace we are making our own.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/bench/photo-1.webp",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/01_工作环境/微信图片_2026-09-13_094305_784.jpg",
+        "caption": "An engineer at the RF workbench.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/bench/photo-2.webp",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/01_工作环境/微信图片_2026-09-13_094247_705.jpg",
+        "caption": "The instruments behind the daily work.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/bench/photo-3.webp",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/01_工作环境/微信图片_2026-09-13_094200_662.jpg",
+        "caption": "Another view of the workshop.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/bench/photo-4.webp",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/01_工作环境/微信图片_2026-09-13_094631_791.jpg",
+        "caption": "Parts and prototypes between revisions.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/bench/photo-5.webp",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/01_工作环境/微信图片_2026-09-13_094152_822.jpg",
+        "caption": "Components kept within reach.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/bench/photo-6.webp",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "shots": [
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/01_工作环境/微信视频2026-09-13_094218_666.mp4",
+        "start": 2,
+        "duration": 10,
+        "label": "A walk through our workspace",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/01_工作环境/微信视频2026-09-13_094218_666.mp4",
+        "start": 12,
+        "duration": 10,
+        "label": "The instruments we work with",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/01_工作环境/微信视频2026-09-13_094218_666.mp4",
+        "start": 22,
+        "duration": 10,
+        "label": "Where PLIDEPLI takes shape",
+        "rotate": false,
+        "kind": "video"
+      }
+    ]
+  },
+  "debugging": {
+    "title": "Debugging",
+    "photos": [
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/02_电路板调试/微信图片_2026-09-13_094317_605.jpg",
+        "caption": "Checking the board at the bench.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/debugging/photo-1.webp",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/02_电路板调试/微信图片_2026-09-13_094418_334.jpg",
+        "caption": "A component adjustment in progress.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/debugging/photo-2.webp",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/02_电路板调试/微信图片_2026-09-13_094301_849.jpg",
+        "caption": "The prototype connected to the test setup.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/debugging/photo-3.webp",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "shots": [
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/02_电路板调试/微信视频2026-09-13_094559_664.mp4",
+        "start": 2,
+        "duration": 5,
+        "label": "Start at the bench",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/02_电路板调试/微信视频2026-09-13_094445_696.mp4",
+        "start": 1,
+        "duration": 7,
+        "label": "Make the adjustment",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/02_电路板调试/微信视频2026-09-13_094412_633.mp4",
+        "start": 1,
+        "duration": 6,
+        "label": "Check the setup",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/02_电路板调试/微信视频2026-09-13_094412_633.mp4",
+        "start": 13,
+        "duration": 6,
+        "label": "Follow the measurement",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/02_电路板调试/微信视频2026-09-13_094412_633.mp4",
+        "start": 22,
+        "duration": 6,
+        "label": "Back to the instruments",
+        "rotate": false,
+        "kind": "video"
+      }
+    ]
+  },
+  "enclosure": {
+    "title": "The enclosure",
+    "photos": [
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/03_壳体演进/微信图片_2026-09-13_094348_530.jpg",
+        "caption": "Enclosure prototypes compared side by side.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/enclosure/photo-1.webp",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/03_壳体演进/微信图片_2026-09-13_094456_721.jpg",
+        "caption": "Comparing the shape and mechanical details.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/enclosure/photo-2.webp",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli-landing/public/product/booster.webp",
+        "caption": "The intended production design. Product rendering.",
+        "kind": "Product rendering",
+        "position": "50% 50%",
+        "src": "story-edits/enclosure/photo-3.webp",
+        "width": 1254,
+        "height": 1254
+      }
+    ],
+    "shots": [
+      {
+        "photo": 1,
+        "duration": 5,
+        "label": "Several versions, one evolving design",
+        "kind": "photo",
+        "chapter": "enclosure"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/03_壳体演进/微信视频2026-09-13_094504_489.mp4",
+        "start": 0.1,
+        "duration": 7,
+        "label": "Comparing the prototypes",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/03_壳体演进/微信视频2026-09-13_094520_630.mp4",
+        "start": 0.2,
+        "duration": 8,
+        "label": "Looking at the form and fit",
+        "rotate": true,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/03_壳体演进/微信视频2026-09-13_094607_864.mp4",
+        "start": 0.1,
+        "duration": 4,
+        "label": "The enclosure alongside the board",
+        "rotate": true,
+        "kind": "video"
+      },
+      {
+        "photo": 3,
+        "duration": 6,
+        "label": "The production design | rendering",
+        "kind": "photo",
+        "chapter": "enclosure"
+      }
+    ]
+  },
+  "pcb": {
+    "title": "The boards",
+    "photos": [
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/04_电路板演进/微信图片_2026-09-13_094525_000.jpg",
+        "caption": "Circuit board panels before assembly.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/pcb/photo-1.webp",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/04_电路板演进/微信图片_2026-09-13_094651_082.jpg",
+        "caption": "A board fitted inside its metal frame.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/pcb/photo-2.webp",
+        "width": 900,
+        "height": 1600
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/04_电路板演进/微信图片_2026-09-13_094722_124.jpg",
+        "caption": "Inside the prototype, with shielding and antenna components.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/pcb/photo-3.webp",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "shots": [
+      {
+        "photo": 1,
+        "duration": 6,
+        "label": "Board panels | workshop photograph",
+        "kind": "photo",
+        "chapter": "pcb"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/02_电路板调试/微信视频2026-09-13_094611_886.mp4",
+        "start": 0.1,
+        "duration": 6,
+        "label": "Boards and prototypes on the bench",
+        "rotate": true,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/02_电路板调试/微信视频2026-09-13_094615_740.mp4",
+        "start": 0,
+        "duration": 3,
+        "label": "Another stage of the build",
+        "rotate": true,
+        "kind": "video"
+      },
+      {
+        "photo": 2,
+        "duration": 7,
+        "label": "The assembled board | workshop photograph",
+        "kind": "photo",
+        "chapter": "pcb"
+      },
+      {
+        "photo": 3,
+        "duration": 8,
+        "label": "Inside the prototype | workshop photograph",
+        "kind": "photo",
+        "chapter": "pcb"
+      }
+    ]
+  },
+  "antenna": {
+    "title": "The antenna",
+    "photos": [
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/05_内置天线调试/微信图片_2026-09-13_094718_354.jpg",
+        "caption": "The antenna and RF test setup.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/antenna/photo-1.webp",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/05_内置天线调试/微信图片_2026-09-13_094538_075.jpg",
+        "caption": "Antenna components alongside the prototype.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/antenna/photo-2.webp",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/05_内置天线调试/微信图片_2026-09-13_094733_481.jpg",
+        "caption": "The integrated antenna inside the housing.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/antenna/photo-3.webp",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/05_内置天线调试/微信图片_2026-09-13_094449_699.jpg",
+        "caption": "A network-analyzer reading from development.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/antenna/photo-4.webp",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/05_内置天线调试/微信图片_2026-09-13_094725_918.jpg",
+        "caption": "A closer look at the matching measurements.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/antenna/photo-5.webp",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/05_内置天线调试/微信图片_2026-09-13_094730_007.jpg",
+        "caption": "Another measurement from the tuning process.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/antenna/photo-6.webp",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "shots": [
+      {
+        "photo": 2,
+        "duration": 5,
+        "label": "Start with the antenna",
+        "kind": "photo",
+        "chapter": "antenna"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/05_内置天线调试/微信视频2026-09-13_094354_214.mp4",
+        "start": 7,
+        "duration": 7,
+        "label": "Connect it to the RF setup",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/05_内置天线调试/微信视频2026-09-13_094354_214.mp4",
+        "start": 17,
+        "duration": 6,
+        "label": "Adjust and inspect",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/05_内置天线调试/微信视频2026-09-13_094434_866.mp4",
+        "start": 0,
+        "duration": 3,
+        "label": "Read the instruments",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "photo": 4,
+        "duration": 4,
+        "label": "Matching study | workshop photograph",
+        "kind": "photo",
+        "chapter": "antenna"
+      },
+      {
+        "photo": 5,
+        "duration": 5,
+        "label": "Antenna development continues",
+        "kind": "photo",
+        "chapter": "antenna"
+      }
+    ]
+  },
+  "onoff": {
+    "title": "Testing in progress",
+    "photos": [
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/06_开关信号效果/微信视频2026-09-13_094325_597.mp4",
+        "time": 8,
+        "caption": "Working on the prototype at the test bench.",
+        "kind": "Frame from workshop footage",
+        "position": "50% 50%",
+        "src": "story-edits/onoff/photo-1.webp",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/06_开关信号效果/微信视频2026-09-13_094343_969.mp4",
+        "time": 7,
+        "caption": "Adjusting the test setup.",
+        "kind": "Frame from workshop footage",
+        "position": "50% 50%",
+        "src": "story-edits/onoff/photo-2.webp",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/06_开关信号效果/微信视频2026-09-13_094623_108.mp4",
+        "time": 118,
+        "caption": "Checking the instruments during development.",
+        "kind": "Frame from workshop footage",
+        "position": "50% 50%",
+        "src": "story-edits/onoff/photo-3.webp",
+        "width": 960,
+        "height": 544
+      }
+    ],
+    "shots": [
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/06_开关信号效果/微信视频2026-09-13_094325_597.mp4",
+        "start": 3,
+        "duration": 7,
+        "label": "Bench checks in progress",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/06_开关信号效果/微信视频2026-09-13_094343_969.mp4",
+        "start": 2,
+        "duration": 7,
+        "label": "Adjusting the setup",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/06_开关信号效果/微信视频2026-09-13_094623_108.mp4",
+        "start": 108,
+        "duration": 8,
+        "label": "Returning to the instruments",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/06_开关信号效果/微信视频2026-09-13_094623_108.mp4",
+        "start": 177,
+        "duration": 8,
+        "label": "Controlled home comparisons come next",
+        "rotate": false,
+        "kind": "video"
+      }
+    ]
+  },
+  "manufacturing": {
+    "title": "Making the next batch",
+    "photos": [
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/07_制作过程/微信视频2026-09-13_094643_025.mp4",
+        "time": 3,
+        "caption": "Working with a solder-paste printing stencil.",
+        "kind": "Frame from workshop footage",
+        "position": "50% 50%",
+        "src": "story-edits/manufacturing/photo-1.webp",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/07_制作过程/微信视频2026-09-13_094737_747.mp4",
+        "time": 8,
+        "caption": "Assembling the board and shielding.",
+        "kind": "Frame from workshop footage",
+        "position": "50% 50%",
+        "src": "story-edits/manufacturing/photo-2.webp",
+        "width": 720,
+        "height": 1280
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/07_制作过程/微信图片_2026-09-13_094741_258.jpg",
+        "caption": "Formed metal parts from the development work.",
+        "kind": "Workshop photograph",
+        "position": "50% 50%",
+        "src": "story-edits/manufacturing/photo-3.webp",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "shots": [
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/07_制作过程/微信视频2026-09-13_094643_025.mp4",
+        "start": 0.1,
+        "duration": 6.5,
+        "label": "Solder-paste printing",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/07_制作过程/微信视频2026-09-13_094543_249.mp4",
+        "start": 5,
+        "duration": 6,
+        "label": "Work at the assembly bench",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/07_制作过程/微信视频2026-09-13_094737_747.mp4",
+        "start": 1,
+        "duration": 8,
+        "label": "Fitting the board and shielding",
+        "rotate": true,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/07_制作过程/微信视频2026-09-13_094619_670.mp4",
+        "start": 0.1,
+        "duration": 4.5,
+        "label": "Inspecting the assembly",
+        "rotate": true,
+        "kind": "video"
+      },
+      {
+        "photo": 3,
+        "duration": 5,
+        "label": "Mechanical parts | workshop photograph",
+        "kind": "photo",
+        "chapter": "manufacturing"
+      }
+    ]
+  },
+  "home": {
+    "title": "At the tuning bench",
+    "photos": [],
+    "shots": [
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/02_电路板调试/微信视频2026-09-13_094445_696.mp4",
+        "start": 1,
+        "duration": 8,
+        "label": "A component adjustment",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/02_电路板调试/微信视频2026-09-13_094412_633.mp4",
+        "start": 0,
+        "duration": 7,
+        "label": "Checking the setup",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/02_电路板调试/微信视频2026-09-13_094412_633.mp4",
+        "start": 10,
+        "duration": 7,
+        "label": "A closer look at the board",
+        "rotate": false,
+        "kind": "video"
+      },
+      {
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/02_电路板调试/微信视频2026-09-13_094412_633.mp4",
+        "start": 21,
+        "duration": 8,
+        "label": "Back to the instruments",
+        "rotate": false,
+        "kind": "video"
+      }
+    ]
+  }
+}

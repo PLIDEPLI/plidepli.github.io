@@ -1,3 +1,5 @@
+import { STORY_MEDIA, type StoryPhoto, type StoryFilm } from './story-media'
+
 type Story = {
   id: string
   num: string
@@ -5,15 +7,9 @@ type Story = {
   hook: string
   body: string[]
   facts: string[]
-  images: string[]
-  videos: string[]
+  photos: StoryPhoto[]
+  film: StoryFilm
 }
-
-const range = (n: number) => Array.from({ length: n }, (_, i) => i + 1)
-const imgs = (dir: string, n: number) =>
-  range(n).map((i) => `stories/${dir}/img-${i}.jpg`)
-const vids = (dir: string, n: number) =>
-  range(n).map((i) => `stories/${dir}/vid-${i}.mp4`)
 
 export const STORIES: Story[] = [
   {
@@ -30,8 +26,8 @@ export const STORIES: Story[] = [
       'Base stations · phones · drones · radar',
       'ESD bench · oscilloscope · spectrum analyzer',
     ],
-    images: imgs('bench', 17),
-    videos: vids('bench', 1),
+    photos: STORY_MEDIA.bench.photos,
+    film: STORY_MEDIA.bench.film,
   },
   {
     id: 'debugging',
@@ -43,8 +39,8 @@ export const STORIES: Story[] = [
       "What matters is what we measured before the change, what we measured after, and whether the difference is real. That's the part worth showing — not just the iron going in.",
     ],
     facts: ['Power-on ≠ done', 'RF stages interact', 'Measure before, then after'],
-    images: imgs('debugging', 9),
-    videos: vids('debugging', 12),
+    photos: STORY_MEDIA.debugging.photos,
+    film: STORY_MEDIA.debugging.film,
   },
   {
     id: 'enclosure',
@@ -60,8 +56,8 @@ export const STORIES: Story[] = [
       '3D print → CNC solid aluminum',
       'Material & placement are RF questions',
     ],
-    images: imgs('enclosure', 8),
-    videos: vids('enclosure', 4),
+    photos: STORY_MEDIA.enclosure.photos,
+    film: STORY_MEDIA.enclosure.film,
   },
   {
     id: 'pcb',
@@ -73,8 +69,8 @@ export const STORIES: Story[] = [
       "Each revision gives us another opportunity to refine the layout and test the assembled hardware.",
     ],
     facts: ['Five bands, one board', 'Routing · spacing · shielding', 'Revisions ≠ performance'],
-    images: imgs('pcb', 7),
-    videos: [],
+    photos: STORY_MEDIA.pcb.photos,
+    film: STORY_MEDIA.pcb.film,
   },
   {
     id: 'antenna',
@@ -90,37 +86,39 @@ export const STORIES: Story[] = [
       'Keysight E5071C VNA',
       '680 MHz – 2.5 GHz · S-params & SWR',
     ],
-    images: imgs('antenna', 8),
-    videos: vids('antenna', 2),
+    photos: STORY_MEDIA.antenna.photos,
+    film: STORY_MEDIA.antenna.film,
   },
   {
     id: 'onoff',
     num: '06',
-    title: 'The off/on test',
-    hook: 'To know if a booster works, turn it off.',
+    title: 'Testing in progress',
+    hook: 'A working prototype is the beginning of the testing.',
     body: [
       "A booster can only amplify the signal that already exists outdoors. It can't create one. So the honest test is boring: same spot, same phone, booster off, then booster on.",
-      "We're running the full RSRP and speed comparisons now. When the measured data is ready we'll publish it — including the results that aren't flattering.",
+      "The footage here shows development work at the bench. We are still preparing controlled home RSRP and speed comparisons. When those measurements are ready, we will share the conditions and the results — including the ones that tell us what needs to improve.",
     ],
     facts: ['Same spot · same phone', 'Off vs on', 'RSRP & speed tests coming'],
-    images: [],
-    videos: vids('onoff', 4),
+    photos: STORY_MEDIA.onoff.photos,
+    film: STORY_MEDIA.onoff.film,
   },
   {
     id: 'manufacturing',
     num: '07',
-    title: 'Manufacturing',
+    title: 'Making the next batch',
     hook: "Preparing to build the next batch.",
     body: [
-      "This is solder-paste printing, reflow, shield-can assembly, and sheet-metal forming. Getting a single unit working is the easy milestone.",
+      "These clips show solder-paste printing, hands-on assembly, and work on the shielding. The photos include formed metal parts from development. Getting a single unit working is the first milestone.",
       "The hard part is repeatability — every joint, every shield placement, every mechanical fit has to come out the same, unit after unit. A prototype is a starting point, not proof that production is ready.",
     ],
     facts: [
-      'Solder paste · reflow · shield can · sheet metal',
+      'Solder paste · assembly · shielding · metal parts',
       'Repeatability is the hard part',
       'Prototype ≠ production-ready',
     ],
-    images: imgs('manufacturing', 1),
-    videos: vids('manufacturing', 5),
+    photos: STORY_MEDIA.manufacturing.photos,
+    film: STORY_MEDIA.manufacturing.film,
   },
 ]
+
+export const STORY_PHOTO_COUNT = STORIES.reduce((total, story) => total + story.photos.length, 0)

@@ -1,0 +1,38 @@
+/* Short films and captioned photo essays, with the same brand surfaces as every page. */
+.stories-hero h1 { font-size: clamp(40px,4.1vw,59px); letter-spacing: -.05em; line-height: 1.1; }
+.stories-hero-grid img { height: 350px; }
+.story-opening.origin-story > .container { grid-template-columns: .8fr 1.2fr; gap: 80px; }
+.origin-heading h2 { font-size: 43px; }
+.origin-heading blockquote { margin: 38px 0 0; border-left: 2px solid var(--accent); padding-left: 22px; font-family: var(--display); font-size: 24px; line-height: 1.4; letter-spacing: -.025em; max-width: 360px; color: var(--ink); }
+.story-opening.origin-story .origin-copy p { font-size: 15px; line-height: 1.9; }
+.origin-copy .text-link { margin-top: 26px; font-size: 13px; }
+.chapter-narrative p { font-size: 14px; line-height: 1.85; }
+.film-editorial-note { color: var(--muted); font-size: 11px; margin-top: 12px; }
+.curated-photos { gap: 24px 16px; }
+.curated-photos figure { min-width: 0; }
+.curated-photos button { display: block; width: 100%; }
+.curated-photos img { height: auto; aspect-ratio: 4 / 3; }
+.curated-photos figcaption { padding-top: 12px; }
+.curated-photos figcaption > span { font-size: 10px; color: var(--accent-dark); }
+.curated-photos figcaption > p { font-size: 12px; line-height: 1.65; color: var(--muted); margin-top: 4px; }
+.bench-film-single { display: block; }
+.bench-film-single video { max-height: 620px; }
+@media(max-width: 850px) {
+  .stories-hero h1 { font-size: 43px; }
+  .story-opening.origin-story > .container { gap: 36px; }
+  .origin-heading h2 { font-size: 34px; }
+  .origin-heading blockquote { font-size: 21px; }
+}
+@media(max-width: 600px) {
+  .stories-hero h1 { font-size: 43px; }
+  .story-opening.origin-story > .container { display: block; }
+  .origin-heading h2 { font-size: 37px; }
+  .origin-heading blockquote { font-size: 23px; margin-top: 24px; }
+  .story-opening.origin-story .origin-copy { margin-top: 30px; }
+  .story-opening.origin-story .origin-copy p { font-size: 14px; }
+  .chapter-narrative p { font-size: 14px; }
+  .curated-photos { gap: 22px 12px; }
+  .curated-photos figure:first-child:nth-last-child(3) { grid-column: 1 / -1; }
+  .curated-photos figcaption > p { font-size: 12px; }
+  .film-editorial-note { font-size: 10px; }
+}

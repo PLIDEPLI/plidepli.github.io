@@ -8,6 +8,7 @@ import '@fontsource/inter/latin-600.css'
 import './index.css'
 import './pages.css'
 import './home-refinements.css'
+import './story-editorial.css'
 import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(

@@ -1,19 +1,31 @@
 :root {
-  --paper: #f2f4f7;
-  --paper-2: #e9edf2;
-  --ink: #0f141b;
-  --ink-2: #333c47;
-  --muted: #64707d;
-  --line: #cdd5de;
-  --line-strong: #aab4c0;
-  --accent: #1b8c57;
-  --accent-deep: #0f6b40;
-  --accent-soft: #e3f2ea;
-  --warn: #c23b31;
-  --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-  --sans: 'Space Grotesk', 'Helvetica Neue', system-ui, sans-serif;
+  --void: #08090b;
+  --void-2: #0f1114;
+  --void-line: #1f2328;
+  --void-ink: #f4f5f7;
+  --void-muted: #8b9199;
+  --paper: #fafafa;
+  --paper-2: #f2f3f5;
+  --surface: #ffffff;
+  --ink: #0a0b0d;
+  --ink-2: #454b53;
+  --muted: #767c85;
+  --line: #e4e6ea;
+  --line-strong: #d6d9de;
+  --accent: #00c896;
+  --accent-deep: #00a37c;
+  --accent-soft: #e3faf3;
+  --accent-glow: rgba(0, 200, 150, 0.35);
+  --warn: #ef4444;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.04), 0 0 0 1px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.06), 0 0 0 1px rgba(0,0,0,.05);
+  --shadow-lg: 0 24px 60px -30px rgba(8,9,11,.5);
+  --sans-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --sans: 'Inter', 'Helvetica Neue', system-ui, sans-serif;
+  --mono: 'Geist Mono', 'IBM Plex Mono', ui-monospace, monospace;
   --container: 1180px;
-  --radius: 4px;
 }
 
 * {
@@ -71,9 +83,13 @@ button {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(242, 244, 247, 0.86);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
+  background: rgba(8, 9, 11, 0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--void-line);
+}
+
+.header .wordmark {
+  color: var(--void-ink);
 }
 
 .header__inner {
@@ -126,12 +142,14 @@ button {
 
 .nav a {
   font-size: 0.92rem;
-  color: var(--ink-2);
+  color: var(--void-muted);
   transition: color 0.15s ease;
 }
 
 .nav a:hover {
-  color: var(--ink);
+  color: var(--void-ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .btn {
@@ -153,6 +171,7 @@ button {
 
 .btn--primary:hover {
   background: var(--accent-deep);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -2px 6px rgba(0, 0, 0, 0.18);
 }
 
 .btn--ghost {
@@ -173,8 +192,8 @@ button {
 /* ---------- ticker ---------- */
 .ticker {
   overflow: hidden;
-  background: var(--ink);
-  border-bottom: 1px solid #2a323c;
+  background: var(--void);
+  border-bottom: 1px solid var(--void-line);
   white-space: nowrap;
 }
 
@@ -188,7 +207,7 @@ button {
   font-size: 0.74rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #d6dde5;
+  color: var(--void-muted);
   padding: 11px 0;
 }
 
@@ -226,6 +245,7 @@ button {
 }
 
 .section__title {
+  font-family: var(--sans-display);
   font-size: clamp(1.6rem, 3.4vw, 2.3rem);
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -242,8 +262,22 @@ button {
 
 /* ---------- hero ---------- */
 .hero {
-  padding: 72px 0 0;
-  border-bottom: 1px solid var(--line);
+  position: relative;
+  padding: 96px 0 0;
+  border-bottom: 1px solid var(--void-line);
+  background: var(--void);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(55% 45% at 50% -5%, var(--accent-glow), transparent 62%),
+    radial-gradient(35% 35% at 82% 12%, rgba(0, 200, 150, 0.12), transparent 65%);
 }
 
 .hero__grid {
@@ -251,6 +285,8 @@ button {
   grid-template-columns: 1.05fr 0.95fr;
   gap: 56px;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .hero__eyebrow {
@@ -259,12 +295,12 @@ button {
   gap: 8px;
   font-family: var(--mono);
   font-size: 0.8rem;
-  color: var(--accent-deep);
+  color: var(--void-muted);
   padding: 6px 12px;
-  border: 1px solid var(--line-strong);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
   margin-bottom: 26px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .hero__dot {
@@ -275,23 +311,25 @@ button {
 }
 
 .hero__title {
+  font-family: var(--sans-display);
   font-size: clamp(2.2rem, 5.4vw, 3.9rem);
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.02;
   max-width: 15ch;
+  color: var(--void-ink);
 }
 
 .hero__sub {
   margin-top: 24px;
-  color: var(--ink-2);
+  color: var(--void-muted);
   font-size: 1.12rem;
   max-width: 48ch;
   line-height: 1.62;
 }
 
 .hero__sub strong {
-  color: var(--ink);
+  color: var(--void-ink);
   font-weight: 600;
 }
 
@@ -309,7 +347,7 @@ button {
   gap: 8px 22px;
   font-family: var(--mono);
   font-size: 0.76rem;
-  color: var(--muted);
+  color: var(--void-muted);
 }
 
 .hero__trust span {
@@ -328,7 +366,7 @@ button {
 }
 
 .video-shell {
-  border: 1px solid var(--line-strong);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 6px;
   overflow: hidden;
   background: #0b0e12;
@@ -347,7 +385,7 @@ button {
   margin-top: 14px;
   font-family: var(--mono);
   font-size: 0.74rem;
-  color: var(--muted);
+  color: var(--void-muted);
   text-align: right;
 }
 
@@ -361,14 +399,20 @@ button {
 .meter {
   max-width: 720px;
   margin: 0 auto;
-  background: #fff;
-  border: 1px solid var(--line-strong);
-  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius);
   padding: 34px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 32px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.meter:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .meter__status {
@@ -522,7 +566,7 @@ button {
   margin-top: 40px;
   background: #fff;
   border: 1px solid var(--line-strong);
-  border-radius: 6px;
+  border-radius: var(--radius);
   overflow: hidden;
 }
 
@@ -602,9 +646,15 @@ button {
   align-items: center;
   gap: 10px;
   padding: 10px 14px;
-  background: #fff;
-  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
   border-radius: var(--radius);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.band:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .band__name {
@@ -630,7 +680,7 @@ button {
 .cert__sheet {
   background: #fff;
   border: 1px solid var(--line-strong);
-  border-radius: 6px;
+  border-radius: var(--radius);
   padding: 10px;
   box-shadow: 0 22px 55px -32px rgba(15, 20, 27, 0.45);
 }
@@ -717,10 +767,16 @@ button {
 }
 
 .mode {
-  border: 1px solid var(--line-strong);
-  border-radius: 6px;
+  border-radius: var(--radius);
   padding: 26px;
-  background: #fff;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.mode:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .mode__name {
@@ -937,21 +993,51 @@ button {
 }
 
 .step {
+  position: relative;
   display: grid;
-  grid-template-columns: 88px 1fr;
-  gap: 28px;
-  padding: 30px 0;
-  border-top: 1px solid var(--line-strong);
+  grid-template-columns: 64px 1fr;
+  gap: 24px;
+  padding: 0 0 44px;
 }
 
 .step:last-child {
-  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 0;
+}
+
+.step::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  z-index: 1;
+}
+
+.step::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 16px;
+  bottom: 0;
+  width: 2px;
+  background: var(--line);
+}
+
+.step:last-child::after {
+  display: none;
 }
 
 .step__num {
   font-family: var(--mono);
   font-size: 0.9rem;
   color: var(--muted);
+  padding-left: 24px;
+  line-height: 1;
+  padding-top: 2px;
 }
 
 .step__num em {
@@ -1015,10 +1101,16 @@ button {
 }
 
 .mold__card {
-  background: #fff;
-  border: 1px solid var(--line-strong);
-  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius);
   padding: 34px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.mold__card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .mold__card h3 {
@@ -1059,20 +1151,23 @@ button {
 .cta {
   padding: 96px 0;
   text-align: center;
+  background: var(--void);
 }
 
 .cta__title {
+  font-family: var(--sans-display);
   font-size: clamp(1.8rem, 4.4vw, 2.9rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.05;
   max-width: 20ch;
   margin: 0 auto;
+  color: var(--void-ink);
 }
 
 .cta__sub {
   margin: 20px auto 0;
-  color: var(--ink-2);
+  color: var(--void-muted);
   max-width: 48ch;
 }
 
@@ -1095,9 +1190,9 @@ button {
 }
 
 .form input:focus {
-  outline: 2px solid var(--accent);
-  outline-offset: 1px;
-  border-color: transparent;
+  outline: none;
+  box-shadow: 0 0 0 4px var(--accent-glow);
+  border-color: var(--accent);
 }
 
 .form .btn {
@@ -1109,13 +1204,13 @@ button {
   margin-top: 12px;
   font-family: var(--mono);
   font-size: 0.72rem;
-  color: var(--muted);
+  color: var(--void-muted);
 }
 
 .form__done {
   margin-top: 12px;
   font-size: 0.95rem;
-  color: var(--accent-deep);
+  color: var(--accent);
   font-weight: 500;
 }
 
@@ -1128,8 +1223,12 @@ button {
 /* ---------- footer ---------- */
 .footer {
   padding: 40px 0 56px;
-  border-top: 1px solid var(--line);
-  background: var(--paper-2);
+  border-top: 1px solid var(--void-line);
+  background: var(--void);
+}
+
+.footer .wordmark {
+  color: var(--void-ink);
 }
 
 .footer__grid {
@@ -1141,14 +1240,14 @@ button {
 
 .footer__brand {
   max-width: 34ch;
-  color: var(--muted);
+  color: var(--void-muted);
   font-size: 0.88rem;
 }
 
 .footer__meta {
   font-family: var(--mono);
   font-size: 0.72rem;
-  color: var(--muted);
+  color: var(--void-muted);
   text-align: right;
   line-height: 1.8;
 }
@@ -1248,6 +1347,18 @@ button {
   }
 }
 
+/* ---------- scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 /* ---------- motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -1257,5 +1368,10 @@ button {
   * {
     transition: none !important;
     animation: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }

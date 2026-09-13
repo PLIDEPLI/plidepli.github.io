@@ -253,8 +253,9 @@
     "seed": 59,
     "file": "public/story-edits/antenna/score.m4a",
     "duration": 30,
-    "video_unchanged": true,
-    "audio_sha256": "SHA256=63e35158e330b0a4462faa3f451a93106c2dc8df2c9290c24268f722591d1355"
+    "video_unchanged": false,
+    "audio_sha256": "SHA256=63e35158e330b0a4462faa3f451a93106c2dc8df2c9290c24268f722591d1355",
+    "picture_update": "Re-edited with team-identified copper-foil antenna-tuning footage."
   },
   "onoff": {
     "title": "Careful steps",
@@ -355,8 +356,9 @@
     "seed": 79,
     "file": "public/story-edits/manufacturing/score.m4a",
     "duration": 30,
-    "video_unchanged": true,
-    "audio_sha256": "SHA256=ece8ae3f68ef14634bf1ead854c7dcda96c9233d68f75b9f4080041eb621decc"
+    "video_unchanged": false,
+    "audio_sha256": "SHA256=ece8ae3f68ef14634bf1ead854c7dcda96c9233d68f75b9f4080041eb621decc",
+    "picture_update": "Replaced workshop montage with an original six-stage planned-process animation."
   },
   "home": {
     "title": "Starting something",

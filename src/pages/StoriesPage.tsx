@@ -18,9 +18,9 @@ function ChapterMedia({ story, onPhoto }: { story: typeof STORIES[number]; onPho
   const photos = story.photos.map(photo => ({ src: BASE + photo.src, alt: `${photo.alt} ${photo.kind}.` }))
   return <div className="chapter-media">
     <div className="chapter-film">
-      <div className="media-heading"><h3>{story.id === 'pcb' ? 'A study of the boards' : 'A moment in the making'}</h3><span>30-second chapter film</span></div>
-      <video controls playsInline preload="none" poster={BASE + story.film.poster} src={BASE + story.film.src} aria-label={`${story.title} — 30-second film`} />
-      <p className="film-editorial-note">Edited from our workshop footage{['enclosure', 'pcb', 'antenna', 'manufacturing'].includes(story.id) ? ' and selected images' : ''}. Original instrumental soundtrack.</p>
+      <div className="media-heading"><h3>{story.id === 'manufacturing' ? 'The path to production' : story.id === 'pcb' ? 'A study of the boards' : 'A moment in the making'}</h3><span>{story.id === 'manufacturing' ? '30-second process animation' : '30-second chapter film'}</span></div>
+      <video controls playsInline preload="none" poster={BASE + story.film.poster} src={BASE + story.film.src} aria-label={`${story.title} — 30-second ${story.id === 'manufacturing' ? 'process animation' : 'film'}`} />
+      <p className="film-editorial-note">{story.id === 'manufacturing' ? 'Original animation of our planned manufacturing workflow. Simplified shapes and test displays are illustrative; this is not factory footage or measured test data.' : `Edited from our workshop footage${['enclosure', 'pcb', 'antenna'].includes(story.id) ? ' and selected images' : ''}.`} Original instrumental soundtrack.</p>
     </div>
     <div className="chapter-photo-collection">
       <div className="media-heading"><h3>The story in pictures</h3><span>{photos.length} selected images · Click to enlarge</span></div>

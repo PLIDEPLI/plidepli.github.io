@@ -351,46 +351,40 @@
         "height": 1200
       },
       {
-        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/05_内置天线调试/微信图片_2026-09-13_094730_007.jpg",
-        "caption": "Another measurement from the tuning process.",
-        "kind": "Workshop photograph",
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/07_制作过程/微信视频2026-09-13_094737_747.mp4",
+        "time": 8,
+        "rotate": true,
+        "caption": "Adjusting the copper foil on the antenna prototype.",
+        "kind": "Frame from workshop footage",
         "position": "50% 50%",
-        "src": "story-edits/antenna/photo-6.webp",
-        "width": 1600,
-        "height": 1200
+        "revision": "antenna-3",
+        "src": "story-edits/antenna/photo-6.webp?v=antenna-3",
+        "width": 1280,
+        "height": 720
       }
     ],
     "shots": [
       {
         "photo": 2,
         "duration": 5,
-        "label": "Start with the antenna",
+        "label": "The integrated antenna | workshop photograph",
         "kind": "photo",
         "chapter": "antenna"
       },
       {
-        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/05_内置天线调试/微信视频2026-09-13_094354_214.mp4",
-        "start": 7,
-        "duration": 7,
-        "label": "Connect it to the RF setup",
-        "rotate": false,
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/07_制作过程/微信视频2026-09-13_094737_747.mp4",
+        "start": 1,
+        "duration": 12,
+        "label": "Adjusting the copper foil on the antenna",
+        "rotate": true,
         "kind": "video"
       },
       {
-        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/05_内置天线调试/微信视频2026-09-13_094354_214.mp4",
-        "start": 17,
-        "duration": 6,
-        "label": "Adjust and inspect",
-        "rotate": false,
-        "kind": "video"
-      },
-      {
-        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/05_内置天线调试/微信视频2026-09-13_094434_866.mp4",
-        "start": 0,
-        "duration": 3,
-        "label": "Read the instruments",
-        "rotate": false,
-        "kind": "video"
+        "photo": 3,
+        "duration": 4,
+        "label": "Inside the housing | workshop photograph",
+        "kind": "photo",
+        "chapter": "antenna"
       },
       {
         "photo": 4,
@@ -402,11 +396,13 @@
       {
         "photo": 5,
         "duration": 5,
-        "label": "Antenna development continues",
+        "label": "Antenna development | workshop photograph",
         "kind": "photo",
         "chapter": "antenna"
       }
-    ]
+    ],
+    "revision": "antenna-3",
+    "editorial_note": "Copper-foil footage identified as antenna tuning by the PLIDEPLI team. Removed all formerly used RF-board tuning video."
   },
   "onoff": {
     "title": "Testing in progress",
@@ -478,7 +474,7 @@
     ]
   },
   "manufacturing": {
-    "title": "Making the next batch",
+    "title": "From parts to a finished kit",
     "photos": [
       {
         "source": "/Users/galaxy/Desktop/plidepli_growth/素材/07_制作过程/微信视频2026-09-13_094643_025.mp4",
@@ -491,14 +487,14 @@
         "height": 720
       },
       {
-        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/07_制作过程/微信视频2026-09-13_094737_747.mp4",
-        "time": 8,
-        "caption": "Assembling the board and shielding.",
-        "kind": "Frame from workshop footage",
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/04_电路板演进/微信图片_2026-09-13_094651_082.jpg",
+        "caption": "An assembled prototype board in its metal frame.",
+        "kind": "Workshop photograph",
         "position": "50% 50%",
-        "src": "story-edits/manufacturing/photo-2.webp",
-        "width": 720,
-        "height": 1280
+        "src": "story-edits/manufacturing/photo-2.webp?v=process-3",
+        "width": 900,
+        "height": 1600,
+        "revision": "process-3"
       },
       {
         "source": "/Users/galaxy/Desktop/plidepli_growth/素材/07_制作过程/微信图片_2026-09-13_094741_258.jpg",
@@ -510,46 +506,17 @@
         "height": 1200
       }
     ],
-    "shots": [
-      {
-        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/07_制作过程/微信视频2026-09-13_094643_025.mp4",
-        "start": 0.1,
-        "duration": 6.5,
-        "label": "Solder-paste printing",
-        "rotate": false,
-        "kind": "video"
-      },
-      {
-        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/07_制作过程/微信视频2026-09-13_094543_249.mp4",
-        "start": 5,
-        "duration": 6,
-        "label": "Work at the assembly bench",
-        "rotate": false,
-        "kind": "video"
-      },
-      {
-        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/07_制作过程/微信视频2026-09-13_094737_747.mp4",
-        "start": 1,
-        "duration": 8,
-        "label": "Fitting the board and shielding",
-        "rotate": true,
-        "kind": "video"
-      },
-      {
-        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/07_制作过程/微信视频2026-09-13_094619_670.mp4",
-        "start": 0.1,
-        "duration": 4.5,
-        "label": "Inspecting the assembly",
-        "rotate": true,
-        "kind": "video"
-      },
-      {
-        "photo": 3,
-        "duration": 5,
-        "label": "Mechanical parts | workshop photograph",
-        "kind": "photo",
-        "chapter": "manufacturing"
-      }
+    "shots": [],
+    "revision": "process-3",
+    "kind": "animation",
+    "renderer": "scripts/build-process-animation.py",
+    "stages": [
+      "Die-cast lower housing",
+      "Injection-molded upper cover",
+      "PCB fabrication",
+      "Assembly",
+      "Testing",
+      "Packaging"
     ]
   },
   "home": {

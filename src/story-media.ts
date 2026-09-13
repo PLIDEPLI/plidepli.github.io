@@ -53,8 +53,8 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/bench/film.mp4?score=scene-2",
-      "poster": "story-edits/bench/poster.webp"
+      "src": "story-edits/bench/film.mp4?v=scene-2",
+      "poster": "story-edits/bench/poster.webp?v=scene-2"
     }
   },
   "debugging": {
@@ -85,8 +85,8 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/debugging/film.mp4?score=scene-2",
-      "poster": "story-edits/debugging/poster.webp"
+      "src": "story-edits/debugging/film.mp4?v=scene-2",
+      "poster": "story-edits/debugging/poster.webp?v=scene-2"
     }
   },
   "enclosure": {
@@ -117,8 +117,8 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/enclosure/film.mp4?score=scene-2",
-      "poster": "story-edits/enclosure/poster.webp"
+      "src": "story-edits/enclosure/film.mp4?v=scene-2",
+      "poster": "story-edits/enclosure/poster.webp?v=scene-2"
     }
   },
   "pcb": {
@@ -149,8 +149,8 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/pcb/film.mp4?score=scene-2",
-      "poster": "story-edits/pcb/poster.webp"
+      "src": "story-edits/pcb/film.mp4?v=scene-2",
+      "poster": "story-edits/pcb/poster.webp?v=scene-2"
     }
   },
   "antenna": {
@@ -196,17 +196,17 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
         "position": "50% 50%"
       },
       {
-        "src": "story-edits/antenna/photo-6.webp",
-        "alt": "Another measurement from the tuning process.",
-        "kind": "Workshop photograph",
-        "width": 1600,
-        "height": 1200,
+        "src": "story-edits/antenna/photo-6.webp?v=antenna-3",
+        "alt": "Adjusting the copper foil on the antenna prototype.",
+        "kind": "Frame from workshop footage",
+        "width": 1280,
+        "height": 720,
         "position": "50% 50%"
       }
     ],
     "film": {
-      "src": "story-edits/antenna/film.mp4?score=scene-2",
-      "poster": "story-edits/antenna/poster.webp"
+      "src": "story-edits/antenna/film.mp4?v=antenna-3",
+      "poster": "story-edits/antenna/poster.webp?v=antenna-3"
     }
   },
   "onoff": {
@@ -237,8 +237,8 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/onoff/film.mp4?score=scene-2",
-      "poster": "story-edits/onoff/poster.webp"
+      "src": "story-edits/onoff/film.mp4?v=scene-2",
+      "poster": "story-edits/onoff/poster.webp?v=scene-2"
     }
   },
   "manufacturing": {
@@ -252,11 +252,11 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
         "position": "50% 50%"
       },
       {
-        "src": "story-edits/manufacturing/photo-2.webp",
-        "alt": "Assembling the board and shielding.",
-        "kind": "Frame from workshop footage",
-        "width": 720,
-        "height": 1280,
+        "src": "story-edits/manufacturing/photo-2.webp?v=process-3",
+        "alt": "An assembled prototype board in its metal frame.",
+        "kind": "Workshop photograph",
+        "width": 900,
+        "height": 1600,
         "position": "50% 50%"
       },
       {
@@ -269,8 +269,8 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/manufacturing/film.mp4?score=scene-2",
-      "poster": "story-edits/manufacturing/poster.webp"
+      "src": "story-edits/manufacturing/film.mp4?v=process-3",
+      "poster": "story-edits/manufacturing/poster.webp?v=process-3"
     }
   }
 }

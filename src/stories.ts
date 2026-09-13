@@ -78,7 +78,7 @@ export const STORIES: Story[] = [
     title: 'The antenna',
     hook: "Building the antenna in doesn't make the antenna problem disappear.",
     body: [
-      "The indoor antenna lives inside the booster. We use a network analyzer to tune its matching across the supported frequencies. An outdoor antenna receives the existing cellular signal.",
+      "The indoor antenna lives inside the booster. In this film, we adjust copper foil on the antenna prototype. We use a network analyzer to tune its matching across the supported frequencies. An outdoor antenna receives the existing cellular signal.",
       "We tune on a Keysight E5071C, sweeping S-parameters and SWR from 680 MHz to 2.5 GHz. A clean match on the bench is one thing; coverage across the whole unit is another.",
     ],
     facts: [
@@ -106,13 +106,13 @@ export const STORIES: Story[] = [
     id: 'manufacturing',
     num: '07',
     title: 'Making the next batch',
-    hook: "Preparing to build the next batch.",
+    hook: "From separate parts to a finished kit.",
     body: [
-      "These clips show solder-paste printing, hands-on assembly, and work on the shielding. The photos include formed metal parts from development. Getting a single unit working is the first milestone.",
+      "The animation maps the production route we are planning: a die-cast lower housing, an injection-molded upper cover, PCB fabrication, assembly, testing, and packaging. The workshop photographs below show our development work.",
       "The hard part is repeatability — every joint, every shield placement, every mechanical fit has to come out the same, unit after unit. A prototype is a starting point, not proof that production is ready.",
     ],
     facts: [
-      'Solder paste · assembly · shielding · metal parts',
+      'Casting · molding · PCB · assembly · test · pack',
       'Repeatability is the hard part',
       'Prototype ≠ production-ready',
     ],

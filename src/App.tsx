@@ -4,7 +4,6 @@ type FormStatus = 'idle' | 'submitting' | 'done' | 'error'
 
 const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID as string | undefined
 const BASE = import.meta.env.BASE_URL
-const EBAY_URL = 'https://ebay.io/m/HqC0BV'
 
 function Wordmark() {
   return (
@@ -213,6 +212,7 @@ function Ticker() {
 
 function App() {
   useEffect(() => {
+    document.documentElement.classList.add('reveal-active')
     const sections = document.querySelectorAll<HTMLElement>('.section')
     sections.forEach((el) => el.classList.add('reveal'))
 
@@ -229,7 +229,10 @@ function App() {
     )
 
     sections.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
+    return () => {
+      observer.disconnect()
+      document.documentElement.classList.remove('reveal-active')
+    }
   }, [])
 
   return (
@@ -278,14 +281,6 @@ function App() {
               <div className="hero__cta">
                 <a href="#cta" className="btn btn--primary">
                   Notify me at launch
-                </a>
-                <a
-                  href={EBAY_URL}
-                  className="btn btn--ghost"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Buy on eBay
                 </a>
                 <a href="#spec" className="btn btn--ghost">
                   Explore the specs
@@ -553,55 +548,65 @@ function App() {
             <span className="section__label">FCC certification</span>
             <h2 className="section__title">Read the grant.</h2>
             <p className="section__lede">
-              The authorization document is here, including the FCC ID, grantee,
-              and grant date.
+              The authorization is public record. Here are the core details, and
+              a direct link to the official FCC filing.
             </p>
 
             <div className="cert">
-              <a
-                className="cert__sheet"
-                href={`${BASE}fcc/grant-page-1.png`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open the full-resolution FCC grant"
-              >
-                <img
-                  src={`${BASE}fcc/grant-page-1.png`}
-                  alt="FCC Grant of Equipment Authorization for PLIDEPLI, FCC ID 2BWMS-L5-5B-2006"
-                  loading="lazy"
-                />
-              </a>
-              <div className="cert__facts">
-                <div className="cert__fact">
+              <div className="cert__table">
+                <div className="cert__row">
                   <span className="cert__label">FCC ID</span>
-                  <div className="cert__value cert__value--mono">2BWMS-L5-5B-2006</div>
+                  <span className="cert__value cert__value--mono">2BWMS-L5-5B-2006</span>
                 </div>
-                <div className="cert__fact">
+                <div className="cert__row">
                   <span className="cert__label">Grantee</span>
-                  <div className="cert__value">
-                    Light Folding Science and Technology Co., Ltd.
-                  </div>
+                  <span className="cert__value">Light Folding Science and Technology Co., Ltd.</span>
                 </div>
-                <div className="cert__fact">
+                <div className="cert__row">
                   <span className="cert__label">Date of grant</span>
-                  <div className="cert__value">Aug 19, 2026</div>
+                  <span className="cert__value">Aug 19, 2026</span>
                 </div>
-                <div className="cert__fact">
+                <div className="cert__row">
                   <span className="cert__label">Device class</span>
-                  <div className="cert__value">
-                    Part 20 wideband consumer booster (CMRS)
-                  </div>
+                  <span className="cert__value">Part 20 wideband consumer booster (CMRS)</span>
+                </div>
+                <div className="cert__row">
+                  <span className="cert__label">Model</span>
+                  <span className="cert__value">L5-5B-2006</span>
+                </div>
+                <div className="cert__row">
+                  <span className="cert__label">Rules covered</span>
+                  <span className="cert__value">47 CFR 20.21(a) · 20.21(g) — Parts 22H / 24E / 27</span>
+                </div>
+                <div className="cert__row">
+                  <span className="cert__label">Certification body</span>
+                  <span className="cert__value">KL-Certification GmbH</span>
                 </div>
               </div>
-              <p className="cert__note">
-                Click the image for the full-resolution grant.{' '}
+
+              <div className="cert__cta">
                 <a
-                  href={`${BASE}fcc/grant-page-2.png`}
+                  className="btn btn--primary"
+                  href="https://apps.fcc.gov/oetcf/tcb/reports/Tcb731GrantForm.cfm?mode=COPY&RequestTimeout=500&tcb_code=&application_id=%2FxeBkw1BpqfOIvNhtA4odg%3D%3D&fcc_id=2BWMS-L5-5B-2006"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  View page 2
+                  View the FCC grant
                 </a>
+                <a
+                  className="btn btn--ghost"
+                  href="https://apps.fcc.gov/oetcf/eas/reports/ViewExhibitReport.cfm?mode=Exhibits&RequestTimeout=500&calledFromFrame=N&application_id=%2FxeBkw1BpqfOIvNhtA4odg%3D%3D&fcc_id=2BWMS-L5-5B-2006"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View test exhibits
+                </a>
+              </div>
+
+              <p className="cert__note">
+                PLIDEPLI is the brand. The FCC grant is held by our Hong Kong
+                entity, Light Folding Science and Technology Co., Limited — the
+                same team, under the legal name on the filing.
               </p>
             </div>
           </div>
@@ -865,11 +870,6 @@ function App() {
             </p>
           </div>
           <div className="footer__meta">
-            <div>
-              <a href={EBAY_URL} target="_blank" rel="noopener noreferrer">
-                Buy on eBay
-              </a>
-            </div>
             <div>FCC ID 2BWMS-L5-5B-2006</div>
             <div>
               FCC grant held by Light Folding Science and Technology Co.,

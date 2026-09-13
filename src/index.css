@@ -340,6 +340,16 @@ button {
   flex-wrap: wrap;
 }
 
+.hero__cta .btn--ghost {
+  color: var(--void-ink);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.hero__cta .btn--ghost:hover {
+  border-color: var(--void-ink);
+  background: rgba(255, 255, 255, 0.06);
+}
+
 .hero__trust {
   margin-top: 26px;
   display: flex;
@@ -672,54 +682,41 @@ button {
 /* ---------- FCC grant ---------- */
 .cert {
   margin-top: 44px;
-  max-width: 660px;
+  max-width: 720px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.cert__sheet {
-  background: #fff;
-  border: 1px solid var(--line-strong);
+.cert__table {
+  background: var(--surface);
   border-radius: var(--radius);
-  padding: 10px;
-  box-shadow: 0 22px 55px -32px rgba(15, 20, 27, 0.45);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
 }
 
-.cert__sheet img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  background: #fff;
-}
-
-.cert__facts {
-  margin-top: 24px;
+.cert__row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 32px;
-}
-
-.cert__fact {
-  padding: 14px 0;
-  border-top: 1px solid var(--line);
-}
-
-.cert__fact:nth-last-child(-n + 2) {
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  align-items: baseline;
+  padding: 16px 22px;
   border-bottom: 1px solid var(--line);
+}
+
+.cert__row:last-child {
+  border-bottom: none;
 }
 
 .cert__label {
   display: block;
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   color: var(--muted);
-  margin-bottom: 3px;
+  letter-spacing: 0.02em;
 }
 
 .cert__value {
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   color: var(--ink);
   font-weight: 500;
   line-height: 1.4;
@@ -730,11 +727,22 @@ button {
   font-weight: 600;
 }
 
+.cert__cta {
+  margin-top: 28px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .cert__note {
-  margin-top: 16px;
+  margin-top: 18px;
   font-size: 0.86rem;
   color: var(--muted);
   text-align: center;
+  max-width: 56ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cert__note a {
@@ -744,17 +752,9 @@ button {
 }
 
 @media (max-width: 880px) {
-  .cert__facts {
+  .cert__row {
     grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .cert__fact:nth-last-child(-n + 2) {
-    border-bottom: none;
-  }
-
-  .cert__fact:last-child {
-    border-bottom: 1px solid var(--line);
+    gap: 6px;
   }
 }
 
@@ -1348,13 +1348,19 @@ button {
 }
 
 /* ---------- scroll reveal ---------- */
+/* 默认可见（禁用 JS 或截图时内容不消失），仅在 JS 激活后由 js 加 .reveal-active 才启动动画 */
 .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-active .reveal {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.reveal.is-visible {
+.reveal-active .reveal.is-visible {
   opacity: 1;
   transform: none;
 }

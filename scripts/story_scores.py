@@ -1,75 +1,115 @@
-"""Original instrumental scene scores, synthesized locally without external recordings."""
+"""Original country/electronic instrumental scores, synthesized without recordings.
+
+Warm plucked-string harmonics, gently sliding lead, alternating bass and brushed
+percussion establish the country feel. Soft pads and short electronic arpeggios
+add a restrained technology texture. These are synthesized instruments, not live
+acoustic recordings. No third-party melodies, samples, or music are used.
+"""
 from pathlib import Path
-import json, math, subprocess, wave
+import math, subprocess, wave
 import numpy as np
 
+MUSIC_VERSION = 'country-tech-4'
 SCENES = {
- 'bench': dict(title='Open windows', mood='Warm, spacious workshop introduction', bpm=72, instrument='keys', rhythm='ambient', step=1.5, notes=[0,2,1,3,1,2], chords=[[48,55,59,62],[53,60,64,67],[45,52,55,59],[43,50,55,57]], pad=.08, melody=.08, bass=.075, seed=11),
- 'debugging': dict(title='Measure and refine', mood='Focused electronic pulse for repeated adjustments', bpm=112, instrument='pluck', rhythm='pulse', step=.5, notes=[0,1,2,1,3,2,1,2], chords=[[50,57,60,64],[46,53,57,60],[53,60,64,67],[48,55,58,62]], pad=.035, melody=.067, bass=.13, seed=23),
- 'enclosure': dict(title='Form and light', mood='Airy electric keys and soft chimes for shape and detail', bpm=90, instrument='bell', rhythm='shimmer', step=1, notes=[0,3,2,1,2,3,1,2], chords=[[50,57,61,64],[45,52,57,59],[47,54,57,61],[43,50,54,57]], pad=.05, melody=.09, bass=.065, seed=37),
- 'pcb': dict(title='Traces', mood='Precise arpeggios that echo a circuit layout', bpm=104, instrument='digital', rhythm='ticks', step=.5, notes=[0,2,1,3,2,0,3,1], chords=[[45,52,55,59],[41,48,52,55],[48,55,59,62],[43,50,55,57]], pad=.025, melody=.075, bass=.10, seed=41),
- 'antenna': dict(title='Resonance', mood='Slow ambient layers and rounded resonant tones', bpm=80, instrument='bell', rhythm='ambient', step=2, notes=[0,2,3,1,2,0], chords=[[40,47,50,54],[48,55,59,62],[43,50,54,57],[38,45,50,52]], pad=.105, melody=.075, bass=.05, seed=59),
- 'onoff': dict(title='Careful steps', mood='Sparse, restrained keys for testing still in progress', bpm=68, instrument='felt', rhythm='minimal', step=2, notes=[0,1,3,2,1,0], chords=[[50,57,60,64],[43,50,53,57],[46,53,57,60],[45,52,57,59]], pad=.025, melody=.11, bass=.055, seed=67),
- 'manufacturing': dict(title='The next batch', mood='Steady forward rhythm for printing and assembly', bpm=120, instrument='pluck', rhythm='drive', step=.5, notes=[0,0,2,1,0,3,2,1], chords=[[43,50,53,57],[39,46,50,53],[46,53,57,60],[41,48,53,55]], pad=.035, melody=.06, bass=.15, seed=79),
- 'home': dict(title='Starting something', mood='Warm, optimistic melodic introduction to the team', bpm=100, instrument='keys', rhythm='warm', step=.75, notes=[0,2,3,2,1,3,2,1], chords=[[52,59,63,66],[49,56,59,63],[45,52,56,59],[47,54,59,61]], pad=.06, melody=.09, bass=.105, seed=83),
+ 'bench': dict(title='A sunny workbench', mood='Calm, cheerful country picking with soft electronic air', bpm=80, root=43, progression=[0,5,0,7], picking=True, tech=.014, steel=.052, swing=.035, seed=111),
+ 'debugging': dict(title='Small steps, bright ideas', mood='Easy country rhythm and a light electronic pulse', bpm=92, root=50, progression=[0,5,7,0], picking=False, tech=.026, steel=.044, swing=.025, seed=123),
+ 'enclosure': dict(title='Shape of a good day', mood='Warm strummed strings with clear, gentle digital chimes', bpm=84, root=48, progression=[0,5,0,7], picking=False, tech=.018, steel=.050, swing=.04, seed=137),
+ 'pcb': dict(title='Little trails', mood='Country fingerpicking threaded with delicate electronic arpeggios', bpm=88, root=45, progression=[0,7,5,0], picking=True, tech=.028, steel=.041, swing=.025, seed=141),
+ 'antenna': dict(title='Across the open air', mood='Relaxed country strings, soft sliding lead, spacious synth', bpm=80, root=50, progression=[0,5,7,0], picking=True, tech=.017, steel=.055, swing=.04, seed=159),
+ 'onoff': dict(title='A little closer', mood='Quiet, positive country picking with a restrained electronic glow', bpm=80, root=48, progression=[0,5,0,7], picking=True, tech=.012, steel=.040, swing=.035, seed=167),
+ 'manufacturing': dict(title='Made with a smile', mood='Lighthearted country strumming and a steady, gentle electronic rhythm', bpm=96, root=43, progression=[0,5,7,0], picking=False, tech=.025, steel=.046, swing=.025, seed=179),
+ 'home': dict(title='Welcome to our workbench', mood='Welcoming country melody and warm, optimistic electronic textures', bpm=88, root=43, progression=[0,5,7,0], picking=False, tech=.017, steel=.061, swing=.035, seed=183),
+ 'promo': dict(title='A connection worth making', mood='Calm, cheerful country/electronic theme for the product introduction', bpm=88, root=50, progression=[0,5,7,0], picking=False, tech=.024, steel=.053, swing=.03, seed=197),
 }
 
-def compose(chapter, destination, work):
- cfg=SCENES[chapter];sr=48000;duration=30;count=sr*duration
- mix=np.zeros((count,2),dtype=np.float64);rng=np.random.default_rng(cfg['seed']);beat=60/cfg['bpm']
+def compose(chapter, destination, work, duration=30):
+ cfg=SCENES[chapter];sr=48000;count=round(sr*duration);beat=60/cfg['bpm']
+ rng=np.random.default_rng(cfg['seed']);mix=np.zeros((count,2),dtype=np.float64)
  def hz(midi):return 440*2**((midi-69)/12)
- def place(start, signal, pan=0):
-  a=max(0,int(start*sr));n=min(len(signal),count-a)
+ def place(start,signal,amp=1,pan=0):
+  a=max(0,round(start*sr));n=min(len(signal),count-a)
   if n<=0:return
-  mix[a:a+n,0]+=signal[:n]*math.sqrt((1-pan)/2);mix[a:a+n,1]+=signal[:n]*math.sqrt((1+pan)/2)
- def tone(start,length,midi,amp,kind,pan=0):
-  if start>=duration:return
-  x=np.arange(min(int(length*sr),count-int(start*sr)))/sr;f=hz(midi);phase=2*np.pi*f*x
-  attack=1-np.exp(-x*(18 if kind=='pad' else 130))
-  if kind=='pad':
-   env=np.minimum(x/.65,1)*np.minimum((length-x)/.95,1)
-   sig=(np.sin(phase)+.18*np.sin(phase*2)+.12*np.sin(phase*1.002))*env
-  elif kind=='bass':sig=(np.sin(phase)+.13*np.sin(phase*2))*attack*np.exp(-x*3)
-  elif kind=='bell':sig=np.sin(phase+1.7*np.sin(phase*2)*np.exp(-x*3.3))*attack*np.exp(-x*2.2)
-  elif kind=='digital':sig=(np.sin(phase)+.32*np.sin(phase*2)+.12*np.sin(phase*4))*attack*np.exp(-x*7)
-  elif kind=='pluck':sig=(np.sin(phase)+.26*np.sin(phase*2)+.10*np.sin(phase*3))*attack*np.exp(-x*5.5)
-  elif kind=='felt':sig=(np.sin(phase)+.10*np.sin(phase*2)+.025*np.sin(phase*3))*attack*np.exp(-x*2.5)
-  else:sig=(np.sin(phase+.35*np.sin(phase*2)*np.exp(-x*4))+.12*np.sin(phase*3))*attack*np.exp(-x*2.7)
-  place(start,sig*amp,pan)
- def drum(start,kind,amp,pan=0):
-  n=int((.25 if kind=='kick' else .12)*sr);x=np.arange(n)/sr
-  if kind=='kick':sig=np.sin(2*np.pi*(46*x+1.3*(1-np.exp(-x*35))))*np.exp(-x*23)
+  mix[a:a+n,0]+=signal[:n]*amp*math.sqrt((1-pan)/2)
+  mix[a:a+n,1]+=signal[:n]*amp*math.sqrt((1+pan)/2)
+ def tone(start,length,midi,amp,kind='guitar',pan=0,slide=False):
+  if start<0 or start>=duration-.5:return
+  x=np.arange(min(round(length*sr),count-round(start*sr)))/sr
+  f=hz(midi);phase=2*np.pi*f*x
+  if kind=='guitar':
+   # Inharmonic upper partials and frequency-dependent damping suggest plucked strings.
+   sig=np.zeros_like(x)
+   for h in range(1,16):
+    strength=math.sin(math.pi*h*.21)/(h**1.15)
+    sig+=strength*np.sin(phase*h*math.sqrt(1+.000018*h*h)+.04*h)*np.exp(-x*(1.3+.36*h))
+   sig+=(.11*np.sin(2*np.pi*112*x)+.055*np.sin(2*np.pi*218*x))*np.exp(-x*18)
+   sig*=1-np.exp(-x*800)
+  elif kind=='steel':
+   # Small portamento and slow vibrato soften the sustained, country-style lead.
+   freq=f*(1-(.08 if slide else 0)*np.exp(-x*18))*(1+.0018*np.sin(2*np.pi*4.6*x)*np.minimum(x/.3,1))
+   phase=2*np.pi*np.cumsum(freq)/sr
+   sig=(np.sin(phase)+.24*np.sin(2*phase)+.08*np.sin(3*phase))*(1-np.exp(-x*25))*np.exp(-x*1.6)
+  elif kind=='pad':
+   env=np.minimum(x/.65,1)*np.clip((length-x)/.8,0,1)
+   sig=(np.sin(phase)+.14*np.sin(phase*1.002)+.09*np.sin(phase*2))*env
+  elif kind=='bass':
+   sig=(np.sin(phase)+.19*np.sin(phase*2)+.04*np.sin(phase*3))*(1-np.exp(-x*100))*np.exp(-x*3.2)
   else:
-   noise=rng.normal(0,1,n);noise=np.r_[0,np.diff(noise)]
-   sig=noise*np.exp(-x*(65 if kind=='hat' else 35))
-   if kind=='snare':sig=.45*sig+.3*np.sin(2*np.pi*180*x)*np.exp(-x*32)
-  place(start,sig*amp,pan)
- bars=math.ceil(duration/(4*beat))
- for bar in range(bars):
-  start=bar*4*beat;chord=cfg['chords'][bar%4] if start<25 else cfg['chords'][0]
-  for i,note in enumerate(chord):tone(start,4*beat+.8,note+12,cfg['pad']/3,'pad',(i-1.5)*.12)
-  bass_beats=[0,1.5,2,3.5] if cfg['rhythm']=='drive' else ([0,2] if cfg['rhythm'] in ['pulse','ticks','warm'] else [0])
-  for offset in bass_beats:tone(start+offset*beat,1.25,chord[0]-12,cfg['bass'],'bass')
-  offsets=np.arange(0,4,cfg['step'])
-  for k,offset in enumerate(offsets):
-   index=cfg['notes'][(k+bar*len(offsets))%len(cfg['notes'])]
-   register=12 if cfg['instrument']=='felt' else 24
-   tone(start+offset*beat,1.8,chord[index]+register,cfg['melody']*(.85 if k%2 else 1),cfg['instrument'],(-.3 if k%2 else .3))
-  # The home cue has a separate upper melody rather than only an arpeggio.
-  if chapter=='home':
-   for k,note in enumerate([chord[0]+24,chord[2]+12,chord[1]+24,chord[3]+12]):tone(start+k*beat+.15,1.3,note,.047,'bell',.1)
-  if bar==0:continue
-  rhythm=cfg['rhythm']
-  if rhythm in ['pulse','drive','warm']:
-   for offset in ([0,1,2,3] if rhythm=='drive' else [0,2]):drum(start+offset*beat,'kick',.11 if rhythm=='drive' else .07)
-   for offset in [1,3]:drum(start+offset*beat,'snare',.018 if rhythm=='drive' else .009)
-  if rhythm in ['pulse','drive','ticks','warm','shimmer']:
-   for k,offset in enumerate(np.arange(.5,4,.5 if rhythm!='shimmer' else 1)):
-    drum(start+offset*beat,'hat',(.009 if rhythm=='drive' else .005)*(.6 if k%2 else 1),.2)
- t=np.arange(count)/sr;mix*=np.minimum(t/.9,1)[:,None]*np.clip((duration-t)/2.2,0,1)[:,None]
+   sig=np.sin(phase+.32*np.sin(phase*2)*np.exp(-x*7))*(1-np.exp(-x*200))*np.exp(-x*5)
+  # Every individual voice releases smoothly, even before the master fade.
+  sig*=np.clip((length-x)/.08,0,1)
+  place(start,sig,amp,pan)
+ def percussion(start,kind,amp,pan=0):
+  length=.17 if kind=='brush' else .095;x=np.arange(round(length*sr))/sr
+  noise=rng.normal(0,1,len(x))
+  # Smooth the noise to keep the rhythm soft rather than metallic or hissy.
+  soft=(noise+np.roll(noise,1)+np.roll(noise,2))/3
+  if kind=='brush':sig=(soft*.8+.13*np.sin(2*np.pi*170*x))*np.exp(-x*28)*(1-np.exp(-x*800))
+  else:sig=(noise-soft)*np.exp(-x*55)*(1-np.exp(-x*800))
+  place(start,sig,amp,pan)
+ motif=[2,1,2,3,2,1,0,1] if cfg['picking'] else [0,1,2,1,3,2,1,0]
+ for bar in range(math.ceil((duration-2.5)/(4*beat))):
+  start=bar*4*beat
+  if start>duration-3:break
+  root=cfg['root']+cfg['progression'][bar%4]
+  if start>duration-7:root=cfg['root']+(7 if start<duration-4.5 else 0)
+  chord=[root,root+7,root+12,root+16,root+19]
+  for i,n in enumerate(chord[1:]):tone(start,4*beat+.6,n,.009,'pad',(i-1.5)*.18)
+  for k in [0,2]:tone(start+k*beat,1.3,root-12+(7 if k==2 else 0),.12,'bass')
+  # Alternating bass and a relaxed backbeat strum: the country rhythm foundation.
+  for k in [1,3]:
+   for i,n in enumerate(chord):
+    tone(start+k*beat+i*.014+rng.uniform(-.006,.006),1.8,n,.061 if cfg['picking'] else .079,'guitar',-.23+i*.07)
+   if bar>0:percussion(start+k*beat+.025,'brush',.017 if chapter!='onoff' else .010,-.1)
+  for k in range(8):
+   off=k*.5+(cfg['swing'] if k%2 else 0)
+   n=chord[[2,3,4,3,1,3,4,2][(k+bar)%8]]
+   tone(start+off*beat,1.5,n,.085 if cfg['picking'] else .040,'guitar',.24)
+   if bar>0 and k%2:percussion(start+off*beat,'shaker',.009,.32)
+  # Sparse digital notes share the harmony; they never dominate the acoustic part.
+  for k in [1,3,5,7]:
+   tone(start+k*.5*beat,1.2,chord[2+(k+bar)%3]+12,cfg['tech'],'digital',-.32)
+  if bar%2==1 or chapter in ['home','promo']:
+   melody=[root+12,root+16,root+19,root+21]
+   for k in range(4):
+    n=melody[motif[(bar*4+k)%len(motif)]]
+    tone(start+(k+.1)*beat,1.4,n,cfg['steel'],'steel',.06,slide=k==0)
+ # Resolve to the tonic, leave a short natural tail, and fade gently to silence.
+ end=duration-2.7
+ for i,n in enumerate([cfg['root'],cfg['root']+7,cfg['root']+12,cfg['root']+16,cfg['root']+19]):
+  tone(end+i*.018,2.7,n,.085,'guitar',-.2+i*.08)
+ tone(end+.12,2.4,cfg['root']+12,.045,'steel',0)
+ # Short stereo reflections create space without a long, muddy reverberation.
+ dry=mix.copy()
+ for seconds,gain in [(.083,.10),(.137,.07),(.211,.045)]:
+  shift=round(seconds*sr);mix[shift:]+=dry[:-shift,::-1]*gain
+ t=np.arange(count)/sr
+ mix*=np.minimum(t/.7,1)[:,None]*np.clip((duration-t)/1.4,0,1)[:,None]
  mix=np.tanh(mix)*.85
- wav=work/f'{chapter}-scene-score.wav'
- with wave.open(str(wav),'wb') as f:f.setnchannels(2);f.setsampwidth(2);f.setframerate(sr);f.writeframes((np.clip(mix,-1,1)*32767).astype('<i2').tobytes())
- destination.parent.mkdir(parents=True,exist_ok=True)
- subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i',str(wav),'-af','loudnorm=I=-20:TP=-2:LRA=8','-ar','48000','-c:a','aac','-b:a','160k','-map_metadata','-1',str(destination)],check=True)
- return cfg
+ work=Path(work);work.mkdir(parents=True,exist_ok=True)
+ wav=work/f'{chapter}-{MUSIC_VERSION}.wav'
+ with wave.open(str(wav),'wb') as f:
+  f.setnchannels(2);f.setsampwidth(2);f.setframerate(sr)
+  f.writeframes((np.clip(mix,-1,1)*32767).astype('<i2').tobytes())
+ destination=Path(destination);destination.parent.mkdir(parents=True,exist_ok=True)
+ subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i',str(wav),'-af','loudnorm=I=-20:TP=-2:LRA=7','-ar','48000','-c:a','aac','-b:a','160k','-map_metadata','-1',str(destination)],check=True)
+ return {**cfg,'style':'Calm, cheerful country + soft electronic','music_version':MUSIC_VERSION,'instrumentation':'Synthesized plucked strings, sliding lead, alternating bass, brushed percussion, soft pads and digital arpeggios'}

@@ -29,7 +29,7 @@ The distinguishing feature is the actual hardware and people. The installation d
 
 Each address has a real generated HTML entry with its own title, description, canonical and sharing metadata. Navigation works with direct links and page refresh on GitHub Pages, without a router rewrite dependency.
 
-Original source media are preserved. The journal now presents a curated selection with no more than six images per chapter. Eight 30-second edits (including the homepage) use distinct original instrumental scores selected for each scene; source audio is removed. The promotional film and its watermark remain as requested. See `story-media-editing.md` for the edit plan and provenance.
+Original source media are preserved. The journal now presents a curated selection with no more than six images per chapter. Eight 30-second edits (including the homepage) use distinct original instrumental scores selected for each scene; source audio is removed. The promotional film retains its original picture and watermark; its soundtrack now uses the same calm, cheerful country/electronic direction as the story films. The untouched original remains archived. See `story-media-editing.md` for the edit plan and provenance.
 
 The new product illustrations are WebP copies of the supplied renders, preserving their appearance and keeping the originals untouched. `docs/product-assets.json` maps the files. `public/product/kit.webp` comes from `渲染导出/散图/1.png`, the exact kit image selected by the user. One AI-generated cabin photograph provides a lifestyle banner and is labelled as an illustrative scene; it is not customer evidence. Its provenance and exact prompt are in `docs/image-generation.md`.
 

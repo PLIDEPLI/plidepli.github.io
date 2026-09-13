@@ -53,7 +53,7 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/bench/film.mp4?v=scene-2",
+      "src": "story-edits/bench/film.mp4?v=scene-2&music=country-tech-4",
       "poster": "story-edits/bench/poster.webp?v=scene-2"
     }
   },
@@ -85,7 +85,7 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/debugging/film.mp4?v=scene-2",
+      "src": "story-edits/debugging/film.mp4?v=scene-2&music=country-tech-4",
       "poster": "story-edits/debugging/poster.webp?v=scene-2"
     }
   },
@@ -117,7 +117,7 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/enclosure/film.mp4?v=scene-2",
+      "src": "story-edits/enclosure/film.mp4?v=scene-2&music=country-tech-4",
       "poster": "story-edits/enclosure/poster.webp?v=scene-2"
     }
   },
@@ -149,7 +149,7 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/pcb/film.mp4?v=scene-2",
+      "src": "story-edits/pcb/film.mp4?v=scene-2&music=country-tech-4",
       "poster": "story-edits/pcb/poster.webp?v=scene-2"
     }
   },
@@ -205,7 +205,7 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/antenna/film.mp4?v=antenna-3",
+      "src": "story-edits/antenna/film.mp4?v=antenna-3&music=country-tech-4",
       "poster": "story-edits/antenna/poster.webp?v=antenna-3"
     }
   },
@@ -237,7 +237,7 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/onoff/film.mp4?v=scene-2",
+      "src": "story-edits/onoff/film.mp4?v=scene-2&music=country-tech-4",
       "poster": "story-edits/onoff/poster.webp?v=scene-2"
     }
   },
@@ -269,7 +269,7 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/manufacturing/film.mp4?v=process-3",
+      "src": "story-edits/manufacturing/film.mp4?v=process-3&music=country-tech-4",
       "poster": "story-edits/manufacturing/poster.webp?v=process-3"
     }
   }

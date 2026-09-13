@@ -1,415 +1,263 @@
 {
   "bench": {
-    "title": "Open windows",
-    "mood": "Warm, spacious workshop introduction",
-    "bpm": 72,
-    "instrument": "keys",
-    "rhythm": "ambient",
-    "step": 1.5,
-    "notes": [
+    "title": "A sunny workbench",
+    "mood": "Calm, cheerful country picking with soft electronic air",
+    "bpm": 80,
+    "root": 43,
+    "progression": [
       0,
-      2,
-      1,
-      3,
-      1,
-      2
+      5,
+      0,
+      7
     ],
-    "chords": [
-      [
-        48,
-        55,
-        59,
-        62
-      ],
-      [
-        53,
-        60,
-        64,
-        67
-      ],
-      [
-        45,
-        52,
-        55,
-        59
-      ],
-      [
-        43,
-        50,
-        55,
-        57
-      ]
-    ],
-    "pad": 0.08,
-    "melody": 0.08,
-    "bass": 0.075,
-    "seed": 11,
+    "picking": true,
+    "tech": 0.014,
+    "steel": 0.052,
+    "swing": 0.035,
+    "seed": 111,
+    "style": "Calm, cheerful country + soft electronic",
+    "music_version": "country-tech-4",
+    "instrumentation": "Synthesized plucked strings, sliding lead, alternating bass, brushed percussion, soft pads and digital arpeggios",
     "file": "public/story-edits/bench/score.m4a",
     "duration": 30,
     "video_unchanged": true,
-    "audio_sha256": "SHA256=df5833f8577a4410404f6e7a87886e3a6df7538fc9c63d72df411bab21e1176e"
+    "video_sha256": "SHA256=be59520f311f9644807e9cb5781bf7f3807e9eb5d44a247a488aa5fddf7d49b3",
+    "audio_sha256": "SHA256=879e06679082fab7c51654b7d69308a60e82ad8bc8714c7579d4f5fa8bd755fd",
+    "loudness_check": {
+      "integrated_lufs": -19.78,
+      "true_peak_db": -6.82
+    }
   },
   "debugging": {
-    "title": "Measure and refine",
-    "mood": "Focused electronic pulse for repeated adjustments",
-    "bpm": 112,
-    "instrument": "pluck",
-    "rhythm": "pulse",
-    "step": 0.5,
-    "notes": [
+    "title": "Small steps, bright ideas",
+    "mood": "Easy country rhythm and a light electronic pulse",
+    "bpm": 92,
+    "root": 50,
+    "progression": [
       0,
-      1,
-      2,
-      1,
-      3,
-      2,
-      1,
-      2
+      5,
+      7,
+      0
     ],
-    "chords": [
-      [
-        50,
-        57,
-        60,
-        64
-      ],
-      [
-        46,
-        53,
-        57,
-        60
-      ],
-      [
-        53,
-        60,
-        64,
-        67
-      ],
-      [
-        48,
-        55,
-        58,
-        62
-      ]
-    ],
-    "pad": 0.035,
-    "melody": 0.067,
-    "bass": 0.13,
-    "seed": 23,
+    "picking": false,
+    "tech": 0.026,
+    "steel": 0.044,
+    "swing": 0.025,
+    "seed": 123,
+    "style": "Calm, cheerful country + soft electronic",
+    "music_version": "country-tech-4",
+    "instrumentation": "Synthesized plucked strings, sliding lead, alternating bass, brushed percussion, soft pads and digital arpeggios",
     "file": "public/story-edits/debugging/score.m4a",
     "duration": 30,
     "video_unchanged": true,
-    "audio_sha256": "SHA256=c418a85941186f6aecab91a9738364354f277a46351b2fb4183be0dbbd48d8f0"
+    "video_sha256": "SHA256=64fd4dd86c6458ea1027165572c80f6e49897ac877110d8d30fe7dca607a4f3e",
+    "audio_sha256": "SHA256=accc7720f42412cabb516f0eb007b61320ab67d4783d87fd068af55c0855b816",
+    "loudness_check": {
+      "integrated_lufs": -19.85,
+      "true_peak_db": -6.98
+    }
   },
   "enclosure": {
-    "title": "Form and light",
-    "mood": "Airy electric keys and soft chimes for shape and detail",
-    "bpm": 90,
-    "instrument": "bell",
-    "rhythm": "shimmer",
-    "step": 1,
-    "notes": [
+    "title": "Shape of a good day",
+    "mood": "Warm strummed strings with clear, gentle digital chimes",
+    "bpm": 84,
+    "root": 48,
+    "progression": [
       0,
-      3,
-      2,
-      1,
-      2,
-      3,
-      1,
-      2
+      5,
+      0,
+      7
     ],
-    "chords": [
-      [
-        50,
-        57,
-        61,
-        64
-      ],
-      [
-        45,
-        52,
-        57,
-        59
-      ],
-      [
-        47,
-        54,
-        57,
-        61
-      ],
-      [
-        43,
-        50,
-        54,
-        57
-      ]
-    ],
-    "pad": 0.05,
-    "melody": 0.09,
-    "bass": 0.065,
-    "seed": 37,
+    "picking": false,
+    "tech": 0.018,
+    "steel": 0.05,
+    "swing": 0.04,
+    "seed": 137,
+    "style": "Calm, cheerful country + soft electronic",
+    "music_version": "country-tech-4",
+    "instrumentation": "Synthesized plucked strings, sliding lead, alternating bass, brushed percussion, soft pads and digital arpeggios",
     "file": "public/story-edits/enclosure/score.m4a",
     "duration": 30,
-    "video_unchanged": false,
-    "audio_sha256": "SHA256=fc2b3353770e5f6df8860d444c4e1c67bd68701595238a545e091c1c12102ce4",
-    "picture_update": "Final six-second still changed from product rendering to a frame extracted from original enclosure footage."
+    "video_unchanged": true,
+    "video_sha256": "SHA256=8a8db5ebb40df2953923166015758c12467be2e9160692b05fff385c584a2376",
+    "audio_sha256": "SHA256=104daab6848afff02f2863189860aa67de05e36d39e1af0c1cc8abeb984088b5",
+    "loudness_check": {
+      "integrated_lufs": -19.86,
+      "true_peak_db": -6.63
+    }
   },
   "pcb": {
-    "title": "Traces",
-    "mood": "Precise arpeggios that echo a circuit layout",
-    "bpm": 104,
-    "instrument": "digital",
-    "rhythm": "ticks",
-    "step": 0.5,
-    "notes": [
+    "title": "Little trails",
+    "mood": "Country fingerpicking threaded with delicate electronic arpeggios",
+    "bpm": 88,
+    "root": 45,
+    "progression": [
       0,
-      2,
-      1,
-      3,
-      2,
-      0,
-      3,
-      1
+      7,
+      5,
+      0
     ],
-    "chords": [
-      [
-        45,
-        52,
-        55,
-        59
-      ],
-      [
-        41,
-        48,
-        52,
-        55
-      ],
-      [
-        48,
-        55,
-        59,
-        62
-      ],
-      [
-        43,
-        50,
-        55,
-        57
-      ]
-    ],
-    "pad": 0.025,
-    "melody": 0.075,
-    "bass": 0.1,
-    "seed": 41,
+    "picking": true,
+    "tech": 0.028,
+    "steel": 0.041,
+    "swing": 0.025,
+    "seed": 141,
+    "style": "Calm, cheerful country + soft electronic",
+    "music_version": "country-tech-4",
+    "instrumentation": "Synthesized plucked strings, sliding lead, alternating bass, brushed percussion, soft pads and digital arpeggios",
     "file": "public/story-edits/pcb/score.m4a",
     "duration": 30,
     "video_unchanged": true,
-    "audio_sha256": "SHA256=b141cc6372a24451aff4ded1c890f817fdb699539fb71634f720cab514617f05"
+    "video_sha256": "SHA256=bf6f2a35783fde9e02652502a2efe83a7daa9c9efb65bcf6f6ac78774da73956",
+    "audio_sha256": "SHA256=856e3740440c47ce63d152db65396f2592ed5c711dde0c363bac34ec8da20fd3",
+    "loudness_check": {
+      "integrated_lufs": -19.92,
+      "true_peak_db": -6.46
+    }
   },
   "antenna": {
-    "title": "Resonance",
-    "mood": "Slow ambient layers and rounded resonant tones",
+    "title": "Across the open air",
+    "mood": "Relaxed country strings, soft sliding lead, spacious synth",
     "bpm": 80,
-    "instrument": "bell",
-    "rhythm": "ambient",
-    "step": 2,
-    "notes": [
+    "root": 50,
+    "progression": [
       0,
-      2,
-      3,
-      1,
-      2,
+      5,
+      7,
       0
     ],
-    "chords": [
-      [
-        40,
-        47,
-        50,
-        54
-      ],
-      [
-        48,
-        55,
-        59,
-        62
-      ],
-      [
-        43,
-        50,
-        54,
-        57
-      ],
-      [
-        38,
-        45,
-        50,
-        52
-      ]
-    ],
-    "pad": 0.105,
-    "melody": 0.075,
-    "bass": 0.05,
-    "seed": 59,
+    "picking": true,
+    "tech": 0.017,
+    "steel": 0.055,
+    "swing": 0.04,
+    "seed": 159,
+    "style": "Calm, cheerful country + soft electronic",
+    "music_version": "country-tech-4",
+    "instrumentation": "Synthesized plucked strings, sliding lead, alternating bass, brushed percussion, soft pads and digital arpeggios",
     "file": "public/story-edits/antenna/score.m4a",
     "duration": 30,
-    "video_unchanged": false,
-    "audio_sha256": "SHA256=63e35158e330b0a4462faa3f451a93106c2dc8df2c9290c24268f722591d1355",
-    "picture_update": "Re-edited with team-identified copper-foil antenna-tuning footage."
+    "video_unchanged": true,
+    "video_sha256": "SHA256=f8ae7ed48926d277045444080967a8dd3310bcaf01f1093784d1dbaa80207fb7",
+    "audio_sha256": "SHA256=91562970b88b7302a5b91edb910f1e64301f2874094ebbfe600af12a047a12ab",
+    "loudness_check": {
+      "integrated_lufs": -19.72,
+      "true_peak_db": -6.13
+    }
   },
   "onoff": {
-    "title": "Careful steps",
-    "mood": "Sparse, restrained keys for testing still in progress",
-    "bpm": 68,
-    "instrument": "felt",
-    "rhythm": "minimal",
-    "step": 2,
-    "notes": [
+    "title": "A little closer",
+    "mood": "Quiet, positive country picking with a restrained electronic glow",
+    "bpm": 80,
+    "root": 48,
+    "progression": [
       0,
-      1,
-      3,
-      2,
-      1,
-      0
+      5,
+      0,
+      7
     ],
-    "chords": [
-      [
-        50,
-        57,
-        60,
-        64
-      ],
-      [
-        43,
-        50,
-        53,
-        57
-      ],
-      [
-        46,
-        53,
-        57,
-        60
-      ],
-      [
-        45,
-        52,
-        57,
-        59
-      ]
-    ],
-    "pad": 0.025,
-    "melody": 0.11,
-    "bass": 0.055,
-    "seed": 67,
+    "picking": true,
+    "tech": 0.012,
+    "steel": 0.04,
+    "swing": 0.035,
+    "seed": 167,
+    "style": "Calm, cheerful country + soft electronic",
+    "music_version": "country-tech-4",
+    "instrumentation": "Synthesized plucked strings, sliding lead, alternating bass, brushed percussion, soft pads and digital arpeggios",
     "file": "public/story-edits/onoff/score.m4a",
     "duration": 30,
     "video_unchanged": true,
-    "audio_sha256": "SHA256=f9c93d59fb9ff11febc455258e04163a4dda947050821944172d381034413fc9"
+    "video_sha256": "SHA256=9f37a1396bc86209667b20878ed3b4c261695c7b1f32356fbd55dbbb9363730e",
+    "audio_sha256": "SHA256=1d6c8dcea306c0d691479a1f3603f406d535636c83f6298312b2c183af8b8f03",
+    "loudness_check": {
+      "integrated_lufs": -20.11,
+      "true_peak_db": -7.37
+    }
   },
   "manufacturing": {
-    "title": "The next batch",
-    "mood": "Steady forward rhythm for printing and assembly",
-    "bpm": 120,
-    "instrument": "pluck",
-    "rhythm": "drive",
-    "step": 0.5,
-    "notes": [
+    "title": "Made with a smile",
+    "mood": "Lighthearted country strumming and a steady, gentle electronic rhythm",
+    "bpm": 96,
+    "root": 43,
+    "progression": [
       0,
-      0,
-      2,
-      1,
-      0,
-      3,
-      2,
-      1
+      5,
+      7,
+      0
     ],
-    "chords": [
-      [
-        43,
-        50,
-        53,
-        57
-      ],
-      [
-        39,
-        46,
-        50,
-        53
-      ],
-      [
-        46,
-        53,
-        57,
-        60
-      ],
-      [
-        41,
-        48,
-        53,
-        55
-      ]
-    ],
-    "pad": 0.035,
-    "melody": 0.06,
-    "bass": 0.15,
-    "seed": 79,
+    "picking": false,
+    "tech": 0.025,
+    "steel": 0.046,
+    "swing": 0.025,
+    "seed": 179,
+    "style": "Calm, cheerful country + soft electronic",
+    "music_version": "country-tech-4",
+    "instrumentation": "Synthesized plucked strings, sliding lead, alternating bass, brushed percussion, soft pads and digital arpeggios",
     "file": "public/story-edits/manufacturing/score.m4a",
     "duration": 30,
-    "video_unchanged": false,
-    "audio_sha256": "SHA256=ece8ae3f68ef14634bf1ead854c7dcda96c9233d68f75b9f4080041eb621decc",
-    "picture_update": "Replaced workshop montage with an original six-stage planned-process animation."
+    "video_unchanged": true,
+    "video_sha256": "SHA256=c5e7518239b60de07792d4c8cdc8fb7bacd62c9f07426d4f633331b70a8ce5ab",
+    "audio_sha256": "SHA256=43491580b62d0fffdf26d6c8185c7c93b68b2c7feeabb354de4dd3d9dfe81062",
+    "loudness_check": {
+      "integrated_lufs": -19.87,
+      "true_peak_db": -6.12
+    }
   },
   "home": {
-    "title": "Starting something",
-    "mood": "Warm, optimistic melodic introduction to the team",
-    "bpm": 100,
-    "instrument": "keys",
-    "rhythm": "warm",
-    "step": 0.75,
-    "notes": [
+    "title": "Welcome to our workbench",
+    "mood": "Welcoming country melody and warm, optimistic electronic textures",
+    "bpm": 88,
+    "root": 43,
+    "progression": [
       0,
-      2,
-      3,
-      2,
-      1,
-      3,
-      2,
-      1
+      5,
+      7,
+      0
     ],
-    "chords": [
-      [
-        52,
-        59,
-        63,
-        66
-      ],
-      [
-        49,
-        56,
-        59,
-        63
-      ],
-      [
-        45,
-        52,
-        56,
-        59
-      ],
-      [
-        47,
-        54,
-        59,
-        61
-      ]
-    ],
-    "pad": 0.06,
-    "melody": 0.09,
-    "bass": 0.105,
-    "seed": 83,
+    "picking": false,
+    "tech": 0.017,
+    "steel": 0.061,
+    "swing": 0.035,
+    "seed": 183,
+    "style": "Calm, cheerful country + soft electronic",
+    "music_version": "country-tech-4",
+    "instrumentation": "Synthesized plucked strings, sliding lead, alternating bass, brushed percussion, soft pads and digital arpeggios",
     "file": "public/story-edits/home/score.m4a",
     "duration": 30,
     "video_unchanged": true,
-    "audio_sha256": "SHA256=974ceaf93281e76c6f39baf3c50efc6f920f8fb745698ad89d8149da462a412b"
+    "video_sha256": "SHA256=6eb1092cc3d24ef3dff5fdf0461be3fe1ae2c968cd9f1d3009d8297e574bde0c",
+    "audio_sha256": "SHA256=b09248a16d274aaaf8168b1a5d51475ba566801e9b10731d1d28563fada8db88",
+    "loudness_check": {
+      "integrated_lufs": -20.23,
+      "true_peak_db": -5.96
+    }
+  },
+  "promo": {
+    "title": "A connection worth making",
+    "mood": "Calm, cheerful country/electronic theme for the product introduction",
+    "bpm": 88,
+    "root": 50,
+    "progression": [
+      0,
+      5,
+      7,
+      0
+    ],
+    "picking": false,
+    "tech": 0.024,
+    "steel": 0.053,
+    "swing": 0.03,
+    "seed": 197,
+    "style": "Calm, cheerful country + soft electronic",
+    "music_version": "country-tech-4",
+    "instrumentation": "Synthesized plucked strings, sliding lead, alternating bass, brushed percussion, soft pads and digital arpeggios",
+    "file": "public/video/promo-score.m4a",
+    "duration": 44.2,
+    "video_unchanged": true,
+    "video_sha256": "SHA256=663a28909424c154a95e593623afd45241ad656cbe969d13e7a814ca5fe8132a",
+    "audio_sha256": "SHA256=491e7fb5d090a6bc60a8fe7c8f8882c6308c9099e8e68a3f1dcc890d1dc7e7c5",
+    "loudness_check": {
+      "integrated_lufs": -20.14,
+      "true_peak_db": -7.31
+    }
   }
 }

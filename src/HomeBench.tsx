@@ -20,7 +20,7 @@ export default function HomeBench() {
       </div>
     </div>
     <div className="bench-films bench-film-single"><figure>
-      <video controls playsInline preload="none" poster={`${BASE}story-edits/home/poster.webp`} src={`${BASE}story-edits/home/film.mp4?score=scene-2`} aria-label="At the tuning bench — 30-second film" onPlay={pauseOthers} />
+      <video controls playsInline preload="none" poster={`${BASE}story-edits/home/poster.webp`} src={`${BASE}story-edits/home/film.mp4?music=country-tech-4`} aria-label="At the tuning bench — 30-second film" onPlay={pauseOthers} />
       <figcaption><span>At the tuning bench</span><span>30-second edit · Original instrumental soundtrack</span></figcaption>
     </figure></div>
     <figure className="bench-photograph"><button type="button" onClick={() => setPhotoOpen(true)} aria-label="Enlarge our Shenzhen RF workbench photo"><img src={`${BASE}bench/workbench.webp`} alt="Our green anti-static workbench in Shenzhen, with RF instruments and PLIDEPLI prototypes" width="1600" height="1200" loading="lazy" /><span>Explore the workbench<Icon name="plus" /></span></button><figcaption><span>The bench behind PLIDEPLI.</span><span>Shenzhen · Original team photograph</span></figcaption></figure>

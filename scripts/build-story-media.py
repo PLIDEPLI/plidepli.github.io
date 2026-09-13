@@ -4,7 +4,7 @@ All video source audio is discarded. Scene soundtracks are synthesized by story_
 """
 from pathlib import Path
 import argparse, json, subprocess, sys
-from story_scores import compose
+from story_scores import compose, MUSIC_VERSION
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -72,7 +72,7 @@ if __name__=='__main__':
   if not (OUT/c/'score.m4a').exists():compose(c,OUT/c/'score.m4a',WORK)
  for c,e in PLAN.items():export_photos(c,e)
  plan_file.write_text(json.dumps(PLAN,ensure_ascii=False,indent=2)+'\n')
- media={c:{'photos':[{'src':p['src'],'alt':p['caption'],'kind':p['kind'],'width':p['width'],'height':p['height'],'position':p['position']} for p in e['photos']], 'film':{'src':f"story-edits/{c}/film.mp4?v={e.get('revision', 'scene-2')}",'poster':f"story-edits/{c}/poster.webp?v={e.get('revision', 'scene-2')}"}} for c,e in PLAN.items() if c!='home'}
+ media={c:{'photos':[{'src':p['src'],'alt':p['caption'],'kind':p['kind'],'width':p['width'],'height':p['height'],'position':p['position']} for p in e['photos']], 'film':{'src':f"story-edits/{c}/film.mp4?v={e.get('revision', 'scene-2')}&music={MUSIC_VERSION}",'poster':f"story-edits/{c}/poster.webp?v={e.get('revision', 'scene-2')}"}} for c,e in PLAN.items() if c!='home'}
  types='export type StoryPhoto = { src: string; alt: string; kind: string; width: number; height: number; position: string }\nexport type StoryFilm = { src: string; poster: string }\n'
  (ROOT/'src/story-media.ts').write_text(types+'export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm }> = '+json.dumps(media,ensure_ascii=False,indent=2)+'\n')
  import concurrent.futures

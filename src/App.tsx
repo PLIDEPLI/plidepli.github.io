@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent } from 'react'
+import StoryCarousel from './StoryCarousel'
 
 type FormStatus = 'idle' | 'submitting' | 'done' | 'error'
 
@@ -689,37 +690,14 @@ function App() {
 
         {/* ---------- story ---------- */}
         <section className="section" id="story">
-          <div className="container story">
-            <aside className="story__aside">
-              <span className="section__label">Our story</span>
-              <h2 className="section__title">
-                RF engineers. Building under our own name.
-              </h2>
-            </aside>
-            <div className="story__body">
-              <p>
-                We're a small team in Shenzhen, with backgrounds in physics and
-                radio-frequency engineering. We've worked on RF systems for base
-                stations, phones, drones, and radar.
-              </p>
-              <p>
-                PLIDEPLI is our chance to take responsibility for the whole
-                product — from the circuit to the way it fits into your home.
-                We started with cellular reception because it's a problem we
-                know well. Building the indoor antenna into the booster removes
-                a separate installation step; it doesn't remove the need for an
-                outdoor antenna, careful placement, or an existing signal.
-              </p>
-              <p>
-                We'll share the tuning process, test results, and changes along
-                the way — including the setups that fall short and the tradeoffs
-                we make.
-              </p>
-              <blockquote className="story__pull">
-                Our first working units were CNC-machined from solid aluminum.
-                That's the prototype you see here.
-              </blockquote>
-            </div>
+          <div className="container">
+            <span className="section__label">Our story</span>
+            <h2 className="section__title">RF engineers. Building under our own name.</h2>
+            <p className="section__lede">
+              Seven chapters from the bench — the tuning, the failed revisions,
+              and the measurements behind each one.
+            </p>
+            <StoryCarousel />
           </div>
         </section>
 

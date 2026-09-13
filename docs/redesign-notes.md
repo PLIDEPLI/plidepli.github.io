@@ -24,12 +24,12 @@ The distinguishing feature is the actual hardware and people. The installation d
 
 - `/`: complete-kit hero, target price and signup; everyday use; product details and page links; installation overview; illustrative cabin scene; existing product film; team story and full-journal link; FCC documents, milestones, FAQ and signup.
 - `/product/`: five-view enlarged gallery, built-in antenna cutaway, three selectable antenna modes, component gallery and suitability checks.
-- `/stories/`: a polished founder origin story, seven chapters, a persistent desktop chapter directory, 27 selected images and seven 30-second films. Videos load on request; starting a film pauses the others. Images include clearly labelled workshop photographs, video frames and one product rendering.
+- `/stories/`: a polished founder origin story, seven chapters, a persistent desktop chapter directory, 27 selected images and seven 30-second films. Videos load on request; starting a film pauses the others. Images include clearly labelled workshop photographs, video frames.
 - `/installation/`: planning overview, outdoor antenna, selectable wall (5 steps), pole/rail (3 steps) and overhead (5 steps) mounting render sequences, image enlargement and connection checks.
 
 Each address has a real generated HTML entry with its own title, description, canonical and sharing metadata. Navigation works with direct links and page refresh on GitHub Pages, without a router rewrite dependency.
 
-Original source media are preserved. The journal now presents a curated selection with no more than six images per chapter. Eight 30-second edits (including the homepage) use only the original instrumental score; source audio is removed. The promotional film and its watermark remain as requested. See `story-media-editing.md` for the edit plan and provenance.
+Original source media are preserved. The journal now presents a curated selection with no more than six images per chapter. Eight 30-second edits (including the homepage) use distinct original instrumental scores selected for each scene; source audio is removed. The promotional film and its watermark remain as requested. See `story-media-editing.md` for the edit plan and provenance.
 
 The new product illustrations are WebP copies of the supplied renders, preserving their appearance and keeping the originals untouched. `docs/product-assets.json` maps the files. `public/product/kit.webp` comes from `渲染导出/散图/1.png`, the exact kit image selected by the user. One AI-generated cabin photograph provides a lifestyle banner and is labelled as an illustrative scene; it is not customer evidence. Its provenance and exact prompt are in `docs/image-generation.md`.
 

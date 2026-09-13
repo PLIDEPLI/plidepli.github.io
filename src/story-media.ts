@@ -53,7 +53,7 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/bench/film.mp4",
+      "src": "story-edits/bench/film.mp4?score=scene-2",
       "poster": "story-edits/bench/poster.webp"
     }
   },
@@ -85,7 +85,7 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/debugging/film.mp4",
+      "src": "story-edits/debugging/film.mp4?score=scene-2",
       "poster": "story-edits/debugging/poster.webp"
     }
   },
@@ -108,16 +108,16 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
         "position": "50% 50%"
       },
       {
-        "src": "story-edits/enclosure/photo-3.webp",
-        "alt": "The intended production design. Product rendering.",
-        "kind": "Product rendering",
-        "width": 1254,
-        "height": 1254,
+        "src": "story-edits/enclosure/photo-3.webp?v=frame-2",
+        "alt": "A closer look at the enclosure prototype.",
+        "kind": "Frame from workshop footage",
+        "width": 1280,
+        "height": 720,
         "position": "50% 50%"
       }
     ],
     "film": {
-      "src": "story-edits/enclosure/film.mp4",
+      "src": "story-edits/enclosure/film.mp4?score=scene-2",
       "poster": "story-edits/enclosure/poster.webp"
     }
   },
@@ -149,7 +149,7 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/pcb/film.mp4",
+      "src": "story-edits/pcb/film.mp4?score=scene-2",
       "poster": "story-edits/pcb/poster.webp"
     }
   },
@@ -205,7 +205,7 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/antenna/film.mp4",
+      "src": "story-edits/antenna/film.mp4?score=scene-2",
       "poster": "story-edits/antenna/poster.webp"
     }
   },
@@ -237,7 +237,7 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/onoff/film.mp4",
+      "src": "story-edits/onoff/film.mp4?score=scene-2",
       "poster": "story-edits/onoff/poster.webp"
     }
   },
@@ -269,7 +269,7 @@ export const STORY_MEDIA: Record<string, { photos: StoryPhoto[]; film: StoryFilm
       }
     ],
     "film": {
-      "src": "story-edits/manufacturing/film.mp4",
+      "src": "story-edits/manufacturing/film.mp4?score=scene-2",
       "poster": "story-edits/manufacturing/poster.webp"
     }
   }

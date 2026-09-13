@@ -37,7 +37,7 @@ npm run preview
 | `src/pages.css` | 多页设计、图库和手机布局 |
 | `src/story-editorial.css` | 创始故事、精选图集和短片排版 |
 | `src/story-media.ts` | 由剪辑脚本生成的精选素材索引 |
-| `public/story-edits/` | 8 支 30 秒成片、精选图片、封面和原创配乐 |
+| `public/story-edits/` | 8 支 30 秒成片、精选图片、封面和分场景原创配乐 |
 | `scripts/build-story-media.py` | 可复现剪辑、配乐合成与素材导出 |
 | `docs/story-media-editing.md` | 整理规则、素材来源、重建方法 |
 | `src/main.tsx` | React 入口和字体加载 |
@@ -83,4 +83,4 @@ VITE_CONTACT_EMAIL=你的公开联系邮箱
 - 新的实地测试结果应同时标明手机、运营商、频段、测试位置、安装条件和测量方法。
 - 桌面的原始说明书含历史品牌信息和需核对的说明，未直接发布为用户安装指南，详见设计记录。
 
-已生成的预览图位于桌面的 `plidepli-preview` 文件夹，最新截图以 `v5-` 开头。
+已生成的预览图位于桌面的 `plidepli-preview` 文件夹，最新截图以 `v6-` 开头。

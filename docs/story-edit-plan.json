@@ -180,13 +180,14 @@
         "height": 1200
       },
       {
-        "source": "/Users/galaxy/Desktop/plidepli-landing/public/product/booster.webp",
-        "caption": "The intended production design. Product rendering.",
-        "kind": "Product rendering",
+        "source": "/Users/galaxy/Desktop/plidepli_growth/素材/03_壳体演进/微信视频2026-09-13_094504_489.mp4",
+        "time": 5.5,
+        "caption": "A closer look at the enclosure prototype.",
+        "kind": "Frame from workshop footage",
         "position": "50% 50%",
-        "src": "story-edits/enclosure/photo-3.webp",
-        "width": 1254,
-        "height": 1254
+        "src": "story-edits/enclosure/photo-3.webp?v=frame-2",
+        "width": 1280,
+        "height": 720
       }
     ],
     "shots": [
@@ -224,7 +225,7 @@
       {
         "photo": 3,
         "duration": 6,
-        "label": "The production design | rendering",
+        "label": "The prototype up close | video still",
         "kind": "photo",
         "chapter": "enclosure"
       }

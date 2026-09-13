@@ -1,0 +1,413 @@
+{
+  "bench": {
+    "title": "Open windows",
+    "mood": "Warm, spacious workshop introduction",
+    "bpm": 72,
+    "instrument": "keys",
+    "rhythm": "ambient",
+    "step": 1.5,
+    "notes": [
+      0,
+      2,
+      1,
+      3,
+      1,
+      2
+    ],
+    "chords": [
+      [
+        48,
+        55,
+        59,
+        62
+      ],
+      [
+        53,
+        60,
+        64,
+        67
+      ],
+      [
+        45,
+        52,
+        55,
+        59
+      ],
+      [
+        43,
+        50,
+        55,
+        57
+      ]
+    ],
+    "pad": 0.08,
+    "melody": 0.08,
+    "bass": 0.075,
+    "seed": 11,
+    "file": "public/story-edits/bench/score.m4a",
+    "duration": 30,
+    "video_unchanged": true,
+    "audio_sha256": "SHA256=df5833f8577a4410404f6e7a87886e3a6df7538fc9c63d72df411bab21e1176e"
+  },
+  "debugging": {
+    "title": "Measure and refine",
+    "mood": "Focused electronic pulse for repeated adjustments",
+    "bpm": 112,
+    "instrument": "pluck",
+    "rhythm": "pulse",
+    "step": 0.5,
+    "notes": [
+      0,
+      1,
+      2,
+      1,
+      3,
+      2,
+      1,
+      2
+    ],
+    "chords": [
+      [
+        50,
+        57,
+        60,
+        64
+      ],
+      [
+        46,
+        53,
+        57,
+        60
+      ],
+      [
+        53,
+        60,
+        64,
+        67
+      ],
+      [
+        48,
+        55,
+        58,
+        62
+      ]
+    ],
+    "pad": 0.035,
+    "melody": 0.067,
+    "bass": 0.13,
+    "seed": 23,
+    "file": "public/story-edits/debugging/score.m4a",
+    "duration": 30,
+    "video_unchanged": true,
+    "audio_sha256": "SHA256=c418a85941186f6aecab91a9738364354f277a46351b2fb4183be0dbbd48d8f0"
+  },
+  "enclosure": {
+    "title": "Form and light",
+    "mood": "Airy electric keys and soft chimes for shape and detail",
+    "bpm": 90,
+    "instrument": "bell",
+    "rhythm": "shimmer",
+    "step": 1,
+    "notes": [
+      0,
+      3,
+      2,
+      1,
+      2,
+      3,
+      1,
+      2
+    ],
+    "chords": [
+      [
+        50,
+        57,
+        61,
+        64
+      ],
+      [
+        45,
+        52,
+        57,
+        59
+      ],
+      [
+        47,
+        54,
+        57,
+        61
+      ],
+      [
+        43,
+        50,
+        54,
+        57
+      ]
+    ],
+    "pad": 0.05,
+    "melody": 0.09,
+    "bass": 0.065,
+    "seed": 37,
+    "file": "public/story-edits/enclosure/score.m4a",
+    "duration": 30,
+    "video_unchanged": false,
+    "audio_sha256": "SHA256=fc2b3353770e5f6df8860d444c4e1c67bd68701595238a545e091c1c12102ce4",
+    "picture_update": "Final six-second still changed from product rendering to a frame extracted from original enclosure footage."
+  },
+  "pcb": {
+    "title": "Traces",
+    "mood": "Precise arpeggios that echo a circuit layout",
+    "bpm": 104,
+    "instrument": "digital",
+    "rhythm": "ticks",
+    "step": 0.5,
+    "notes": [
+      0,
+      2,
+      1,
+      3,
+      2,
+      0,
+      3,
+      1
+    ],
+    "chords": [
+      [
+        45,
+        52,
+        55,
+        59
+      ],
+      [
+        41,
+        48,
+        52,
+        55
+      ],
+      [
+        48,
+        55,
+        59,
+        62
+      ],
+      [
+        43,
+        50,
+        55,
+        57
+      ]
+    ],
+    "pad": 0.025,
+    "melody": 0.075,
+    "bass": 0.1,
+    "seed": 41,
+    "file": "public/story-edits/pcb/score.m4a",
+    "duration": 30,
+    "video_unchanged": true,
+    "audio_sha256": "SHA256=b141cc6372a24451aff4ded1c890f817fdb699539fb71634f720cab514617f05"
+  },
+  "antenna": {
+    "title": "Resonance",
+    "mood": "Slow ambient layers and rounded resonant tones",
+    "bpm": 80,
+    "instrument": "bell",
+    "rhythm": "ambient",
+    "step": 2,
+    "notes": [
+      0,
+      2,
+      3,
+      1,
+      2,
+      0
+    ],
+    "chords": [
+      [
+        40,
+        47,
+        50,
+        54
+      ],
+      [
+        48,
+        55,
+        59,
+        62
+      ],
+      [
+        43,
+        50,
+        54,
+        57
+      ],
+      [
+        38,
+        45,
+        50,
+        52
+      ]
+    ],
+    "pad": 0.105,
+    "melody": 0.075,
+    "bass": 0.05,
+    "seed": 59,
+    "file": "public/story-edits/antenna/score.m4a",
+    "duration": 30,
+    "video_unchanged": true,
+    "audio_sha256": "SHA256=63e35158e330b0a4462faa3f451a93106c2dc8df2c9290c24268f722591d1355"
+  },
+  "onoff": {
+    "title": "Careful steps",
+    "mood": "Sparse, restrained keys for testing still in progress",
+    "bpm": 68,
+    "instrument": "felt",
+    "rhythm": "minimal",
+    "step": 2,
+    "notes": [
+      0,
+      1,
+      3,
+      2,
+      1,
+      0
+    ],
+    "chords": [
+      [
+        50,
+        57,
+        60,
+        64
+      ],
+      [
+        43,
+        50,
+        53,
+        57
+      ],
+      [
+        46,
+        53,
+        57,
+        60
+      ],
+      [
+        45,
+        52,
+        57,
+        59
+      ]
+    ],
+    "pad": 0.025,
+    "melody": 0.11,
+    "bass": 0.055,
+    "seed": 67,
+    "file": "public/story-edits/onoff/score.m4a",
+    "duration": 30,
+    "video_unchanged": true,
+    "audio_sha256": "SHA256=f9c93d59fb9ff11febc455258e04163a4dda947050821944172d381034413fc9"
+  },
+  "manufacturing": {
+    "title": "The next batch",
+    "mood": "Steady forward rhythm for printing and assembly",
+    "bpm": 120,
+    "instrument": "pluck",
+    "rhythm": "drive",
+    "step": 0.5,
+    "notes": [
+      0,
+      0,
+      2,
+      1,
+      0,
+      3,
+      2,
+      1
+    ],
+    "chords": [
+      [
+        43,
+        50,
+        53,
+        57
+      ],
+      [
+        39,
+        46,
+        50,
+        53
+      ],
+      [
+        46,
+        53,
+        57,
+        60
+      ],
+      [
+        41,
+        48,
+        53,
+        55
+      ]
+    ],
+    "pad": 0.035,
+    "melody": 0.06,
+    "bass": 0.15,
+    "seed": 79,
+    "file": "public/story-edits/manufacturing/score.m4a",
+    "duration": 30,
+    "video_unchanged": true,
+    "audio_sha256": "SHA256=ece8ae3f68ef14634bf1ead854c7dcda96c9233d68f75b9f4080041eb621decc"
+  },
+  "home": {
+    "title": "Starting something",
+    "mood": "Warm, optimistic melodic introduction to the team",
+    "bpm": 100,
+    "instrument": "keys",
+    "rhythm": "warm",
+    "step": 0.75,
+    "notes": [
+      0,
+      2,
+      3,
+      2,
+      1,
+      3,
+      2,
+      1
+    ],
+    "chords": [
+      [
+        52,
+        59,
+        63,
+        66
+      ],
+      [
+        49,
+        56,
+        59,
+        63
+      ],
+      [
+        45,
+        52,
+        56,
+        59
+      ],
+      [
+        47,
+        54,
+        59,
+        61
+      ]
+    ],
+    "pad": 0.06,
+    "melody": 0.09,
+    "bass": 0.105,
+    "seed": 83,
+    "file": "public/story-edits/home/score.m4a",
+    "duration": 30,
+    "video_unchanged": true,
+    "audio_sha256": "SHA256=974ceaf93281e76c6f39baf3c50efc6f920f8fb745698ad89d8149da462a412b"
+  }
+}

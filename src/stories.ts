@@ -16,9 +16,9 @@ export const STORIES: Story[] = [
     id: 'bench',
     num: '01',
     title: 'The bench',
-    hook: 'Meet the people and the place behind PLIDEPLI.',
+    hook: 'Meet the people and the place behind Plidépli.',
     body: [
-      "We're a small RF team in Shenzhen. Between us we've designed and tuned RF systems for base stations, phones, drones, and radar. This green anti-static bench — oscilloscope, spectrum analyzer, and all — is where PLIDEPLI is built, and where most of the footage you'll see comes from.",
+      "We're a small RF team in Shenzhen. Between us we've designed and tuned RF systems for base stations, phones, drones, and radar. This green anti-static bench — oscilloscope, spectrum analyzer, and all — is where Plidépli is built, and where most of the footage you'll see comes from.",
       "These are our own workshop photos and development clips. Explore the boards, antenna tuning, and enclosure iterations below.",
     ],
     facts: [

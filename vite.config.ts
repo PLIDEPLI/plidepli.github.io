@@ -11,6 +11,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
+        fcc: fileURLToPath(new URL('./fcc/index.html', import.meta.url)),
         home: fileURLToPath(new URL('./index.html', import.meta.url)),
         product: fileURLToPath(new URL('./product/index.html', import.meta.url)),
         stories: fileURLToPath(new URL('./stories/index.html', import.meta.url)),

@@ -1,0 +1,151 @@
+/* September editorial pass: readable type and one consistent product palette. */
+body { font-size: 18px; line-height: 1.75; }
+html { scroll-padding-top: 112px; }
+.header-inner { height: 88px; gap: 28px; }
+.header nav { font-size: 16px; gap: 32px; }
+.header nav a { white-space: nowrap; }
+.button, .signup-form .button { font-size: 14px; }
+.signup-form input { font-size: 16px; }
+.hero-description, .product-lede, .section-heading > p, .intro-grid > p:last-child,
+.film-grid > div > p:not(.eyebrow), .bench-introduction p, .split-feature > div > p:not(.eyebrow),
+.mode-information p, .fit-grid p, .preflight-grid p, .mount-summary p, .mount-sequence p,
+.chapter-intro, .chapter-narrative p, .story-opening.origin-story .origin-copy p,
+.installation-hero-grid > div > p:not(.eyebrow), .stories-hero-grid > div > p:not(.eyebrow),
+.evidence-copy > p:not(.eyebrow), .faq-list details p, .roadmap p, .power-check ol,
+.page-crosslink > .container > p { font-size: 17px; line-height: 1.85; }
+.teaser-main p, .teaser-side p, .component-grid p, .lifestyle-content > p:not(.eyebrow),
+.step-description, .mode-note p, .campaign-note p, .measurement-note p { font-size: 16px; line-height: 1.8; }
+.small-print, .hero-condition, .signup-note, .render-note, .product-free, .product-price > span,
+.guide-status, .film-editorial-note, .fit-bottom p, .spec-sheet > p, .final-disclaimer,
+.footer-bottom, .lifestyle-credit, .breadcrumb, .launch-status, .hero-price > span,
+.inside-image figcaption, .mode-visual > span, .inline-fact span, .mount-step-number,
+.split-feature > div > p.small-print { font-size: 13px; line-height: 1.7; }
+.hero-bottom, .product-points li, .text-link, .next-chapter, .chapter-index nav a,
+.faq-list summary, .segmented-controls button { font-size: 15px; }
+.eyebrow, .chapter-heading .eyebrow, .product-detail-copy .eyebrow,
+.chapter-index > p, .chapter-index nav a > span, .preflight-grid article > span { font-size: 14px; }
+.curated-photos figcaption > p, .photo-viewer figcaption, .setup-diagram figcaption,
+.bench-films figcaption, .stories-hero-grid figcaption { font-size: 14px; line-height: 1.7; }
+.curated-photos figcaption > span, .media-heading > span, .setup-diagram figcaption > span,
+.bench-films figcaption > span:last-child, .gallery-main > span, .chapter-photos button > span { font-size: 13px; }
+.media-heading h3 { font-size: 17px; }
+.media-heading { flex-wrap: wrap; }
+.kit-heading { font-size: 20px; font-family: var(--display); margin-bottom: 20px; line-height: 1.4; }
+.kit-hero .product-frame { background: #fff; border: 1px solid #c6d7df; border-radius: 10px; padding: 28px 12px; overflow: hidden; }
+.kit-hero .product-frame > img { mix-blend-mode: normal; height: auto; }
+.hero-product figcaption { display: block; text-align: center; font-size: 13px; }
+.hero-condition { max-width: 450px; }
+.gallery-thumbs { grid-template-columns: repeat(4,minmax(0,1fr)); }
+.gallery-thumbs span { font-size: 13px; line-height: 1.45; }
+.product-points { grid-template-columns: 1fr; }
+.product-subnav { background: #dce8ee; border-color: #b8ccd7; }
+.product-subnav > div { font-size: 16px; font-weight: 500; gap: 44px; }
+.inline-fact { align-items: start; }
+.inline-fact strong { font-size: 28px; line-height: 1.25; }
+.mode-visual { padding: 12px; }
+.mode-visual img { height: auto; aspect-ratio: 16 / 10; object-fit: contain; }
+.component-grid { grid-template-columns: repeat(5,minmax(0,1fr)); gap: 20px; }
+.component-grid img { height: 170px; }
+.component-grid h3 { font-size: 23px; }
+.optional-accessories { margin-top: 52px; border-top: 1px solid var(--line); padding-top: 32px; }
+.optional-accessories > div { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; margin-top: 24px; }
+.optional-accessories p:not(.eyebrow) { color: var(--muted); font-size: 16px; }
+.optional-accessories strong { display: block; color: var(--ink); margin-bottom: 8px; }
+.installation-step-nav { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); padding-block: 30px; gap: 24px; border-bottom: 1px solid var(--line); }
+.installation-step-nav a { font-size: 15px; line-height: 1.5; padding: 8px 0; }
+.installation-step-nav span { display: block; color: var(--accent-dark); font-family: var(--display); margin-bottom: 10px; font-size: 22px; }
+.indoor-mode-guide { background: var(--paper); }
+.indoor-mode-guide h2 { margin-bottom: 45px; }
+.power-check { background: #fff; }
+.performance-guide { background: var(--paper); }
+.comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.comparison-grid article { border-top: 2px solid #8dcbbf; padding-top: 24px; }
+.comparison-grid article > span { color: var(--accent-dark); font-size: 14px; }
+.comparison-grid h3 { margin-block: 15px; }
+.comparison-grid p { color: var(--muted); font-size: 17px; }
+.workshop-carousel { min-width: 0; position: relative; }
+.workshop-slide { position: relative; }
+.workshop-badge { position: absolute; top: 18px; left: 18px; background: #071e2deb; color: #ecfff9; padding: 12px 16px; border-radius: 5px; font-size: 14px; line-height: 1.6; }
+.workshop-carousel:focus-visible { outline: 3px solid #178fba; outline-offset: 6px; }
+.carousel-controls { display: flex; align-items: center; gap: 10px; margin-top: 15px; }
+.carousel-controls > span { font-size: 14px; color: var(--muted); margin-right: auto; }
+.carousel-controls button { width: 46px; height: 44px; border: 1px solid #b8ccd7; background: transparent; border-radius: 4px; }
+.carousel-controls button:hover { background: #dce8ee; }
+.journal-layout { grid-template-columns: 210px minmax(0,1fr); gap: 56px; }
+.chapter-index { top: 116px; }
+.chapter-film, .bench-film-single { max-width: 860px; margin-inline: auto; }
+.chapter-film video { display: block; aspect-ratio: 16 / 9; }
+.photo-essay .chapter-photos { grid-template-columns: 1fr; gap: 35px; }
+.photo-essay img { aspect-ratio: 4 / 3; object-fit: contain; }
+.measurement-note ol { padding-left: 23px; margin-block: 15px; font-size: 16px; }
+.measurement-note strong { font-size: 18px; }
+.assembly-flow { margin-top: 45px; border-top: 1px solid var(--line); padding-top: 15px; }
+.assembly-flow .chapter-photos { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.assembly-flow img { object-fit: contain; }
+.fcc-breadcrumb { padding-top: 10px; }
+.evidence-section { padding-top: 35px; }
+.evidence-copy h1 { font-size: clamp(40px,4.2vw,58px); }
+.certificate-card { margin: 30px 0 20px; display: grid; grid-template-columns: 140px 1fr; gap: 24px; align-items: center; padding: 20px; border: 1px solid #b8ccd7; border-radius: 8px; background: #fff; color: var(--ink); }
+.certificate-card:hover { border-color: var(--accent-dark); box-shadow: 0 8px 25px #1230440b; }
+.certificate-card img { width: 100%; height: auto; border: 1px solid var(--line); }
+.certificate-card > span > * { display: block; }
+.certificate-card strong { font-family: var(--display); font-size: 23px; line-height: 1.25; margin: 10px 0; }
+.certificate-card small, .certificate-card > span > span { font-size: 13px; }
+.certificate-card .certificate-action { display: flex; align-items: center; gap: 10px; color: var(--accent-dark); margin-top: 20px; font-weight: 600; }
+.spec-sheet dt, .spec-sheet dd, .document-links a { font-size: 15px; }
+.spec-sheet dd > span { font-size: 13px; }
+.footer-top { padding-bottom: 32px; }
+.footer-top > div { display: flex; align-items: center; gap: 40px; }
+.footer-top p { font-size: 15px; margin: 0; }
+@media(max-width: 1150px) {
+  .menu-toggle { display: block; }
+  .header .site-nav { display: none; }
+  .header .site-nav.is-open { position: absolute; top: 100%; left: 0; right: 0; display: flex; flex-direction: column; gap: 0; padding: 12px 32px 20px; background: var(--navy); border-bottom: 1px solid #ffffff22; box-shadow: 0 12px 25px #071e2d33; }
+  .header .site-nav a { padding: 13px 0; }
+  .component-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 32px 24px; }
+  .journal-layout { grid-template-columns: 180px minmax(0,1fr); gap: 36px; }
+}
+@media(max-width: 850px) {
+  .header-inner { height: 76px; }
+  .product-subnav > div { gap: 20px; flex-wrap: wrap; font-size: 15px; }
+  .installation-step-nav { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px 25px; }
+  .component-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .journal-layout { display: block; }
+  .chapter-index { position: static; margin-block: 32px 0; }
+  .chapter-index nav { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 25px; }
+  .chapter-film, .bench-film-single { max-width: 860px; }
+  .certificate-card { grid-template-columns: 105px 1fr; gap: 18px; padding: 15px; }
+}
+@media(max-width: 600px) {
+  body { font-size: 17px; }
+  .header-inner { gap: 10px; }
+  .header .button-header { font-size: 12px; padding-inline: 10px; }
+  .kit-heading { font-size: 18px; margin-bottom: 15px; }
+  .kit-hero .product-frame { padding: 20px 10px; }
+  .hero-product figcaption { font-size: 12px; }
+  .gallery-thumbs { gap: 6px; }
+  .gallery-thumbs span { font-size: 12px; }
+  .gallery-thumbs button { padding: 5px; }
+  .product-points { grid-template-columns: 1fr; }
+  .product-subnav > div { justify-content: start; gap: 12px 24px; }
+  .component-grid img { height: 155px; }
+  .component-grid h3 { font-size: 22px; }
+  .component-grid { gap: 30px 16px; }
+  .optional-accessories > div, .comparison-grid { grid-template-columns: 1fr; gap: 28px; }
+  .segmented-controls { display: flex; }
+  .segmented-controls button { flex: 1; padding: 10px 8px; font-size: 13px; }
+  .mount-tabs { align-items: stretch; }
+  .workshop-badge { font-size: 13px; top: 12px; left: 12px; padding: 10px 12px; }
+  .chapter-index nav a { font-size: 14px; }
+  .chapter-heading h2 { font-size: 39px; }
+  .media-heading { gap: 6px 20px; }
+  .assembly-flow .chapter-photos { grid-template-columns: 1fr; }
+  .curated-photos figcaption > p { font-size: 14px; }
+  .footer-top > div { display: block; }
+  .footer-top p { margin-top: 20px; }
+  .certificate-card strong { font-size: 21px; }
+  .spec-sheet dt { max-width: 100px; }
+}
+@media(prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

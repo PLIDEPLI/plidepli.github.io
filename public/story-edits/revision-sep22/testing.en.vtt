@@ -1,0 +1,21 @@
+WEBVTT
+
+00:00.000 --> 00:03.000
+Inside our testing workflow.
+Development footage from the bench.
+
+00:03.000 --> 00:10.000
+1. Check amplifier gain across
+the supported cellular bands.
+
+00:10.000 --> 00:20.000
+2. Use a signal generator and spectrum analyzer
+to assess output power and spectral purity.
+
+00:20.000 --> 00:27.000
+3. Check built-in antenna isolation
+and connectivity.
+
+00:27.000 --> 00:30.000
+Test conditions and numerical results
+belong in the measurement report.

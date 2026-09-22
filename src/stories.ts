@@ -1,3 +1,4 @@
+import { REVISED_PHOTOS } from './revised-story-media'
 import { STORY_MEDIA, type StoryPhoto, type StoryFilm } from './story-media'
 
 type Story = {
@@ -8,10 +9,10 @@ type Story = {
   body: string[]
   facts: string[]
   photos: StoryPhoto[]
-  film: StoryFilm
+  film?: StoryFilm
 }
 
-export const STORIES: Story[] = [
+const CHAPTERS: Story[] = [
   {
     id: 'bench',
     num: '01',
@@ -44,7 +45,7 @@ export const STORIES: Story[] = [
   },
   {
     id: 'enclosure',
-    num: '03',
+    num: '04',
     title: 'The enclosure',
     hook: 'This enclosure has been through more than five versions.',
     body: [
@@ -57,12 +58,11 @@ export const STORIES: Story[] = [
       'Material & placement are RF questions',
     ],
     photos: STORY_MEDIA.enclosure.photos,
-    film: STORY_MEDIA.enclosure.film,
   },
   {
     id: 'pcb',
-    num: '04',
-    title: 'The boards',
+    num: '03',
+    title: 'Board evolution',
     hook: "Five cellular bands. Many rounds at the bench.",
     body: [
       "Five bands and a built-in antenna on one board means routing, spacing, and shielding all shape the signal. These photos document several stages of our board development.",
@@ -70,7 +70,6 @@ export const STORIES: Story[] = [
     ],
     facts: ['Five bands, one board', 'Routing · spacing · shielding', 'Revisions ≠ performance'],
     photos: STORY_MEDIA.pcb.photos,
-    film: STORY_MEDIA.pcb.film,
   },
   {
     id: 'antenna',
@@ -78,8 +77,8 @@ export const STORIES: Story[] = [
     title: 'The antenna',
     hook: "Building the antenna in doesn't make the antenna problem disappear.",
     body: [
-      "The indoor antenna lives inside the booster. In this film, we adjust copper foil on the antenna prototype. We use a network analyzer to tune its matching across the supported frequencies. An outdoor antenna receives the existing cellular signal.",
-      "We tune on a Keysight E5071C, sweeping S-parameters and SWR from 680 MHz to 2.5 GHz. A clean match on the bench is one thing; coverage across the whole unit is another.",
+      "Our first antenna had no ground plate, and the match was poor. Adding a ground structure improved it. But reducing the antenna height to make a thinner enclosure changed that match again.",
+      "We then refined the copper foil and ground topology together, restoring a good match in the thinner profile. The animation explains this development sequence; the final scene shows the actual copper-foil adjustment. Numerical VSWR results need their own measurement record.",
     ],
     facts: [
       'Indoor antenna only — outdoor still required',
@@ -87,7 +86,7 @@ export const STORIES: Story[] = [
       '680 MHz – 2.5 GHz · S-params & SWR',
     ],
     photos: STORY_MEDIA.antenna.photos,
-    film: STORY_MEDIA.antenna.film,
+    film: { src: 'story-edits/revision-sep22/antenna-development.mp4', poster: 'story-edits/revision-sep22/antenna-poster.webp' },
   },
   {
     id: 'onoff',
@@ -95,8 +94,8 @@ export const STORIES: Story[] = [
     title: 'Testing in progress',
     hook: 'A working prototype is the beginning of the testing.',
     body: [
-      "A booster can only amplify the signal that already exists outdoors. It can't create one. So the honest test is boring: same spot, same phone, booster off, then booster on.",
-      "The footage here shows development work at the bench. We are still preparing controlled home RSRP and speed comparisons. When those measurements are ready, we will share the conditions and the results — including the ones that tell us what needs to improve.",
+      "Our bench checks ask three different questions: how much gain the amplifier provides across the supported bands; how it behaves at higher output with a signal generator and spectrum analyzer; and how the built-in antenna connects and stays isolated from the outdoor side.",
+      "These development clips introduce that testing workflow. They do not replace a measurement report. Controlled home comparisons will follow with the same phone, carrier, and location, recording both the conditions and the results.",
     ],
     facts: ['Same spot · same phone', 'Off vs on', 'RSRP & speed tests coming'],
     photos: STORY_MEDIA.onoff.photos,
@@ -120,5 +119,7 @@ export const STORIES: Story[] = [
     film: STORY_MEDIA.manufacturing.film,
   },
 ]
+
+export const STORIES: Story[] = CHAPTERS.sort((a, b) => a.num.localeCompare(b.num)).map(story => ({ ...story, photos: REVISED_PHOTOS[story.id] ?? story.photos }))
 
 export const STORY_PHOTO_COUNT = STORIES.reduce((total, story) => total + story.photos.length, 0)

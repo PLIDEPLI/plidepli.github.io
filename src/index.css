@@ -139,16 +139,16 @@ summary { cursor: pointer; list-style: none; } summary::-webkit-details-marker {
 .faq-list summary { display: flex; align-items: center; justify-content: space-between; gap: 25px; padding: 22px 0; font-size: 14px; font-weight: 500; line-height: 1.5; } .faq-list summary svg { width: 17px; }
 .faq-list details > p { color: var(--muted); font-size: 13px; line-height: 1.8; padding: 0 30px 23px 0; }
 .contact-note { margin-top: 28px; font-size: 12px; color: var(--muted); } .contact-note a { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); margin-top: 10px; } .contact-note a svg { width: 15px; }
-.final-cta { background: var(--navy); color: #fff; padding: 85px 0; } .final-cta-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 90px; align-items: center; }
+.final-cta { background: var(--navy); color: #fff; padding: 43px 0; } .final-cta-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 45px; align-items: center; }
 .final-cta .launch-status { color: #b6d6d7; margin-bottom: 22px; } .final-cta h2 { font-size: clamp(37px,3.7vw,52px); }
 .final-cta-grid > div > p:last-child { max-width: 360px; color: #a8c1cd; font-size: 13px; margin-top: 24px; } .final-signup { min-width: 0; }
 .final-price { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 23px; } .final-price > span { font-size: 12px; color: #b6ccd6; }
 .final-price strong { font-family: var(--display); font-size: 33px; font-weight: 500; line-height: 1.1; letter-spacing: -.025em; } .final-price strong span { display: block; font-family: 'Inter',sans-serif; text-align: right; font-size: 10px; color: #8eaeba; margin-top: 6px; letter-spacing: 0; }
 .final-cta-grid > .final-signup > .final-disclaimer { font-size: 10px; max-width: 410px; margin-top: 23px; color: #93afbd; }
-.footer { background: #061925; color: #fff; padding: 47px 0 24px; } .footer-top { display: flex; justify-content: space-between; align-items: start; gap: 30px; }
+.footer { background: #061925; color: #fff; padding: 24px 0 12px; } .footer-top { display: flex; justify-content: space-between; align-items: start; gap: 30px; }
 .footer-top .wordmark { font-size: 20px; } .footer-top p { font-size: 11px; color: #94aebc; margin-top: 19px; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 25px; font-size: 11px; color: #aec1cc; } .footer-links button { padding: 0; background: transparent; font-size: inherit; color: inherit; } .footer-links a:hover,.footer-links button:hover { color: #fff; }
-.footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 43px; padding-top: 21px; border-top: 1px solid #ffffff17; font-size: 9px; color: #88a2b0; }
+.footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 22px; padding-top: 11px; border-top: 1px solid #ffffff17; font-size: 9px; color: #88a2b0; }
 .privacy-dialog { border: 0; border-radius: 12px; padding: 0; width: min(570px,calc(100% - 36px)); max-height: 85dvh; color: var(--ink); box-shadow: 0 20px 80px #0004; }
 .privacy-dialog::backdrop { background: #001522b8; backdrop-filter: blur(4px); } .privacy-content { padding: 42px; position: relative; }
 .dialog-close { position: absolute; right: 14px; top: 10px; font-size: 28px; line-height: 1; padding: 8px; background: transparent; }
@@ -210,9 +210,9 @@ summary { cursor: pointer; list-style: none; } summary::-webkit-details-marker {
   .milestone-marker { position: absolute; left: 0; top: 0; margin: 0; } .milestone-status { display: block; padding-top: 2px; } .roadmap h3 { font-size: 22px; margin: 8px 0; } .roadmap p { font-size: 12px; }
   .campaign-note { display: block; margin-top: 28px; font-size: 10px; } .campaign-note > p + p { margin-top: 14px; }
   .faq-grid { display: block; } .faq-list { margin-top: 30px; } .faq-list summary { font-size: 13px; padding-block: 20px; gap: 16px; } .faq-list details > p { font-size: 12px; padding-right: 5px; }
-  .final-cta { padding: 54px 0; } .final-cta h2 { font-size: 37px; } .final-cta-grid { gap: 32px; } .final-cta-grid > div > p:last-child { font-size: 12px; margin-top: 19px; }
+  .final-cta { padding: 28px 0; } .final-cta h2 { font-size: 37px; } .final-cta-grid { gap: 18px; } .final-cta-grid > div > p:last-child { font-size: 12px; margin-top: 19px; }
   .final-price > span { font-size: 11px; } .final-price strong { font-size: 29px; } .final-cta-grid > .final-signup > .final-disclaimer { font-size: 9px; }
-  .footer { padding: 34px 0 23px; } .footer-top { display: block; } .footer-links { max-width: none; justify-content: start; margin-top: 27px; gap: 18px 22px; font-size: 10px; }
-  .footer-bottom { margin-top: 27px; font-size: 8px; gap: 8px; flex-direction: column; } .privacy-content { padding: 34px 24px; } .privacy-content h2 { font-size: 29px; }
+  .footer { padding: 18px 0 12px; } .footer-top { display: block; } .footer-links { max-width: none; justify-content: start; margin-top: 27px; gap: 18px 22px; font-size: 10px; }
+  .footer-bottom { margin-top: 14px; padding-top: 11px; font-size: 8px; gap: 8px; flex-direction: column; } .privacy-content { padding: 34px 24px; } .privacy-content h2 { font-size: 29px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *,*::before,*::after { transition: none !important; animation: none !important; } }

@@ -94,7 +94,7 @@ html { scroll-padding-top: 112px; }
 .certificate-card .certificate-action { display: flex; align-items: center; gap: 10px; color: var(--accent-dark); margin-top: 20px; font-weight: 600; }
 .spec-sheet dt, .spec-sheet dd, .document-links a { font-size: 15px; }
 .spec-sheet dd > span { font-size: 13px; }
-.footer-top { padding-bottom: 32px; }
+.footer-top { padding-bottom: 16px; }
 .footer-top > div { display: flex; align-items: center; gap: 40px; }
 .footer-top p { font-size: 15px; margin: 0; }
 @media(max-width: 1150px) {
@@ -142,7 +142,7 @@ html { scroll-padding-top: 112px; }
   .assembly-flow .chapter-photos { grid-template-columns: 1fr; }
   .curated-photos figcaption > p { font-size: 14px; }
   .footer-top > div { display: block; }
-  .footer-top p { margin-top: 20px; }
+  .footer-top p { margin-top: 10px; }
   .certificate-card strong { font-size: 21px; }
   .spec-sheet dt { max-width: 100px; }
 }

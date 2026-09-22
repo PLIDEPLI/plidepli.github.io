@@ -118,7 +118,7 @@ export default function App() {
       </>}
       <section className="final-cta" id="cta"><div className="container final-cta-grid"><div><p className="launch-status"><span />Coming to Kickstarter</p><h2>Great things start<br />with a connection.</h2><p>Join the launch list. Help a small engineering team take the next step.</p></div><div className="final-signup"><div className="final-price"><span>Plidépli cellular booster</span><strong>{CAMPAIGN_PRICE}<span>target price</span></strong></div><EmailForm id="footer" onPrivacy={() => setPrivacy(true)} /></div></div></section>
     </main>
-    <footer className="footer"><div className="container"><div className="footer-bottom"><span>© {new Date().getFullYear()}</span></div></div></footer>
+    <footer className="footer"><div className="container"><div className="footer-bottom"><span>© {new Date().getFullYear()}</span><span>Light Folding Science and Technology Co., Limited · Hong Kong</span></div></div></footer>
     {privacy && <PrivacyDialog onClose={() => setPrivacy(false)} />}
   </>
 }

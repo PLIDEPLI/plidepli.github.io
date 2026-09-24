@@ -32,11 +32,11 @@ def export_photos(chapter,entry):
   item.update({'src':str(target.relative_to(ROOT/'public'))+('?v='+item['revision'] if item.get('revision') else '?v=frame-2' if chapter=='enclosure' and i==3 else ''),'width':ww,'height':hh})
 
 def lower_third(chapter,title,label):
- image=Image.new('RGBA',(1280,720),(0,0,0,0));d=ImageDraw.Draw(image)
- d.rectangle((0,640,1280,720),fill='#071e2d');d.rectangle((36,664,39,698),fill='#30d8b7')
+ image=Image.new('RGBA',(960,720),(0,0,0,0));d=ImageDraw.Draw(image)
+ d.rectangle((0,640,960,720),fill='#071e2d');d.rectangle((36,664,39,698),fill='#30d8b7')
  d.text((55,652),title,font=ImageFont.truetype(BOLD,22),fill='#ffffff')
  d.text((55,682),label,font=ImageFont.truetype(FONT,17),fill='#b7ced8')
- d.text((1110,665),'PLIDEPLI',font=ImageFont.truetype(BOLD,23),fill='#ffffff')
+ d.text((800,665),'PLIDEPLI',font=ImageFont.truetype(BOLD,23),fill='#ffffff')
  target=WORK/f'{chapter}-overlay-{abs(hash(label))}.png';image.save(target);return target
 
 def film(chapter,entry):
@@ -52,7 +52,7 @@ def film(chapter,entry):
   else:args+=['-ss',str(shot['start'])]
   args+=['-i',str(src),'-i',str(lower_third(chapter,entry['title'],shot['label']))]
   rotate='transpose=2,' if shot.get('rotate') else ''
-  filters=f'[0:v]{rotate}scale=1280:640:force_original_aspect_ratio=decrease:force_divisible_by=2,pad=1280:720:(ow-iw)/2:0:color=0x071e2d,setsar=1,fps=30,format=yuv420p[footage];[footage][1:v]overlay=0:0:format=auto,format=yuv420p[out]'
+  filters=f'[0:v]{rotate}scale=960:640:force_original_aspect_ratio=increase:force_divisible_by=2,crop=960:640,pad=960:720:0:0:color=0x071e2d,setsar=1,fps=30,format=yuv420p[footage];[footage][1:v]overlay=0:0:format=auto,format=yuv420p[out]'
   target=WORK/f'{chapter}-part-{i}.mp4'
   args+=['-filter_complex',filters,'-filter_complex_threads','1','-map','[out]','-an','-t',str(shot['duration']),'-c:v','libx264','-preset','fast','-crf','23','-threads','2','-map_metadata','-1',str(target)]
   run(args);parts.append(target)

@@ -1,0 +1,326 @@
+/* September 24 revision: clearer navigation, brochure-led installation, and a horizontal story index. */
+.header nav { gap: 38px; font-size: 17px; }
+.header nav a { padding: 10px 2px; }
+.product-page-hero { padding-top: 58px; }
+.product-subnav { position: sticky; top: 88px; z-index: 12; box-shadow: 0 8px 22px #071e2d0a; }
+.product-subnav > div { justify-content: center; gap: 14px; padding-block: 12px; }
+.product-subnav a { border: 1px solid transparent; border-radius: 6px; padding: 10px 16px; font-weight: 600; }
+.product-subnav a:hover, .product-subnav a:focus-visible { color: var(--ink); background: #fff; border-color: #b8ccd7; }
+.rotate-180 { transform: rotate(180deg); }
+
+.installation-page-hero { padding: 64px 0 58px; }
+.installation-hero-grid { padding-top: 0; }
+.installation-note { border-left: 2px solid var(--accent-dark); padding-left: 18px; }
+.before-start-visual { background: #fff; border: 1px solid #c7d9e0; border-radius: 10px; padding: 22px; }
+.before-start-visual img { width: 100%; height: min(550px,48vw); object-fit: contain; }
+.signal-guidance { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 72px; align-items: start; }
+.signal-copy > p { color: var(--muted); font-size: 17px; line-height: 1.8; margin-top: 20px; }
+.signal-copy > p:first-of-type { margin-top: 28px; }
+.signal-copy > .signal-tower-link { text-align: left; }
+.signal-guidance aside p { color: var(--muted); font-size: 16px; line-height: 1.75; margin-top: 16px; }
+.signal-guidance aside { padding: 30px; background: var(--paper); border-radius: 8px; margin-top: 50px; }
+.signal-guidance aside h3 { font-size: 23px; line-height: 1.3; text-wrap: pretty; }
+
+.outdoor-antenna-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 32px; }
+.outdoor-antenna-grid article { display: grid; grid-template-columns: 150px 1fr; gap: 26px; background: #fff; border: 1px solid #c7d9e0; border-radius: 10px; padding: 28px; }
+.outdoor-antenna-grid .antenna-outline { display: flex; align-items: center; justify-content: center; background: var(--paper); border-radius: 8px; padding: 10px; }
+.outdoor-antenna-grid .antenna-outline img { width: 100%; height: 150px; object-fit: contain; }
+.outdoor-antenna-grid h3 { font-size: 25px; }
+.outdoor-antenna-grid article > div p { color: var(--muted); font-size: 16px; line-height: 1.85; margin-top: 16px; }
+.outdoor-antenna-grid .antenna-install { grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; min-height: 210px; margin-top: 8px; padding: 22px; border-top: 1px solid var(--line); }
+.outdoor-antenna-grid .antenna-install img { width: 100%; height: 200px; object-fit: contain; }
+
+.mount-step-image { background: #fff; border: 1px solid var(--line); }
+.mount-step-image img { aspect-ratio: 1; }
+.mount-sequence p { line-height: 1.85; }
+
+.indoor-antenna-explorer { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+.indoor-antenna-visual { min-height: 430px; display: flex; align-items: center; justify-content: center; background: #fff; border: 1px solid #c7d9e0; border-radius: 10px; padding: 22px; overflow: hidden; }
+.indoor-antenna-visual > img { width: 100%; height: 390px; object-fit: contain; }
+.indoor-antenna-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 35px; }
+.indoor-antenna-tabs button { min-height: 48px; padding: 11px 16px; border: 1px solid #b8ccd7; border-radius: 6px; background: #fff; font-weight: 600; }
+.indoor-antenna-tabs button:hover { border-color: var(--accent-dark); }
+.indoor-antenna-tabs button[aria-pressed=true] { color: #fff; background: var(--ink); border-color: var(--ink); }
+.indoor-antenna-copy h3 { font-size: 31px; }
+.indoor-antenna-copy p { color: var(--muted); font-size: 17px; line-height: 1.9; margin-top: 22px; }
+.illustration-pending { width: 100%; min-height: 300px; }
+
+.workshop-badge { position: static; display: inline-block; margin: 0 0 16px; padding: 10px 14px; background: var(--navy); color: #ecfff9; border-radius: 5px; font-size: 14px; line-height: 1.55; }
+.stories-hero-grid { padding-top: 58px; }
+.journal-layout { display: block; }
+.chapter-index { position: sticky; top: 88px; z-index: 11; margin: 0; background: #fff; border-block: 1px solid var(--line); box-shadow: 0 8px 22px #071e2d0a; }
+.chapter-index > .container { display: flex; align-items: center; gap: 24px; }
+.chapter-index > .container > p { flex: none; margin: 0; color: var(--muted); font-size: 14px; }
+.chapter-index nav { display: flex; flex-direction: row; flex: 1; min-width: 0; overflow-x: auto; border: 0; scrollbar-width: thin; }
+.chapter-index nav a { flex: 1 0 auto; justify-content: center; gap: 8px; padding: 18px 13px; border: 0; border-left: 1px solid var(--line); font-size: 14px; white-space: nowrap; }
+.chapter-index nav a:last-child { border-right: 1px solid var(--line); }
+.chapter-index nav a:hover, .chapter-index nav a:focus-visible { background: var(--paper); color: var(--accent-dark); }
+.story-chapter { scroll-margin-top: 165px; padding: 82px 0; }
+.chapter-grid { display: grid; grid-template-columns: minmax(0,.88fr) minmax(0,1.12fr); gap: 72px; align-items: start; }
+.story-chapter:nth-child(even) .chapter-copy { order: 2; }
+.story-chapter:nth-child(even) .chapter-visual { order: 1; }
+.chapter-copy { min-width: 0; }
+.chapter-visual { width: 100%; max-width: 620px; min-width: 0; justify-self: center; }
+.chapter-heading h2 { font-size: clamp(42px,4vw,58px); }
+.chapter-intro { max-width: 620px; }
+.chapter-narrative { margin-bottom: 0; }
+.chapter-film { max-width: 600px; }
+.chapter-film video { aspect-ratio: 4 / 3; object-fit: contain; background: transparent; border-radius: 6px; }
+.chapter-film.is-wide video { aspect-ratio: 16 / 9; }
+.bench-film-single video { aspect-ratio: 4 / 3; object-fit: contain; background: transparent; }
+.chapter-photo-collection { margin-top: 24px; }
+.chapter-photos { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+.photo-essay .chapter-photos { grid-template-columns: 1fr 1fr; }
+.photo-essay img { aspect-ratio: 4 / 3; }
+.assembly-flow .chapter-photos { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.next-chapter { margin-top: 36px; }
+
+/* Type follows the available column width. Each span is a complete phrase. */
+h1, h2, h3 { text-wrap: balance; word-break: normal; overflow-wrap: normal; }
+h2 { font-size: clamp(32px, 3.6vw, 48px); line-height: 1.14; }
+h3 { line-height: 1.25; }
+.phrase-heading { container-type: inline-size; width: 100%; }
+.phrase-heading > span { display: block; font-size: clamp(26px, 9.2cqi, 52px); line-height: 1.14; }
+.section-heading { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); }
+.section-heading > div, .split-feature > div, .product-detail-copy, .origin-heading { min-width: 0; }
+.product-detail-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 48px; }
+.product-detail-copy { padding-top: 12px; }
+.stories-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; }
+.origin-heading h2 { font-size: clamp(32px, 3vw, 42px); max-width: 19ch; }
+.chapter-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; }
+.chapter-heading h2 { font-size: clamp(32px, 3.2vw, 46px); }
+.chapter-narrative { padding-left: 0; border-left: 0; }
+.chapter-narrative h3 { font-size: 24px; max-width: 32ch; }
+.chapter-intro, .chapter-narrative p { line-height: 1.8; }
+.chapter-visual { max-width: 560px; }
+.lifestyle-content .phrase-heading { max-width: 620px; }
+.lifestyle-content .phrase-heading > span { font-size: clamp(26px, 8.6cqi, 50px); }
+.product-subnav a { background: #fff; border-color: #b8ccd7; white-space: nowrap; }
+.product-subnav a:hover, .product-subnav a:focus-visible { background: var(--ink); color: #fff; }
+.product-subnav ~ section { scroll-margin-top: 170px; }
+
+/* Reserve justification for substantial reading columns, not short UI copy. */
+.origin-copy p, .chapter-narrative p, .signal-copy p,
+.mount-sequence p, .indoor-antenna-copy p, .faq-list details p {
+  text-align: justify;
+  text-align-last: start;
+  text-justify: inter-word;
+  hyphens: auto;
+  hyphenate-limit-chars: 8 4 4;
+}
+p { text-wrap: pretty; }
+.outdoor-antenna-grid article { grid-template-columns: 100px minmax(0, 1fr); gap: 22px; padding: 26px; }
+.outdoor-antenna-grid .antenna-outline { align-self: start; padding: 8px; }
+.outdoor-antenna-grid .antenna-outline img { height: 120px; }
+.outdoor-antenna-grid h3 { font-size: 24px; }
+.antenna-availability { display: block; color: var(--accent-dark); font-size: 14px; margin-top: 8px; }
+.outdoor-antenna-grid .antenna-install { padding: 18px 0 0; }
+.phone-tabs { margin-bottom: 16px; }
+.phone-band-guide { min-width: 0; }
+.before-start-visual { min-height: 360px; display: grid; align-items: center; }
+.before-start-visual img { height: auto; max-height: 500px; }
+.android-band-instructions { padding: 24px; }
+.android-band-instructions h3 { font-size: 28px; }
+.android-band-instructions p { margin-top: 24px; color: var(--muted); font-size: 17px; line-height: 1.85; }
+.installation-details { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 18px; }
+.installation-details summary { cursor: pointer; font-size: 16px; color: var(--ink); font-weight: 500; }
+.installation-details p { margin-top: 18px; }
+.indoor-mode-guide h2 { margin-bottom: 0; }
+.indoor-antenna-copy h3 { font-size: 28px; }
+
+
+.document-links a.fcc-record { font-size: 16px; padding-block: 16px; color: var(--accent-dark); text-decoration: underline; text-underline-offset: 4px; }
+/* A single heading group and an accompanying paragraph form the home introduction. */
+.intro-section { padding: 76px 0; }
+.intro-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 88px; align-items: center; }
+.intro-grid .intro-heading .eyebrow { margin: 0 0 20px; font-size: 14px; line-height: 1.6; font-weight: 500; }
+.intro-heading .eyebrow span { display: inline-block; }
+.intro-grid h2 { font-size: clamp(32px, 3.1vw, 44px); line-height: 1.17; max-width: 24ch; }
+.intro-grid > p.intro-copy { font-size: 17px; line-height: 1.8; max-width: 54ch; }
+
+.installation-step-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 32px; padding-block: 24px; }
+.installation-step-nav a { display: flex; gap: 16px; align-items: center; min-height: 94px; padding: 18px 10px; border-bottom: 1px solid var(--line); text-align: left; transition: background .15s; }
+.installation-step-nav a:hover, .installation-step-nav a:focus-visible { background: var(--paper); }
+.installation-step-nav .installation-nav-number { flex: 0 0 32px; margin: 0; font-size: 23px; line-height: 1; }
+.installation-step-nav .installation-nav-label { margin: 0; color: var(--ink); font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.5; text-wrap: pretty; }
+.before-install, .outdoor-install, .mounting-section, .indoor-mode-guide, .power-check, .performance-guide { padding-block: 76px; }
+:is(.before-install, .outdoor-install, .mounting-section, .indoor-mode-guide, .power-check, .performance-guide) h2 { font-size: clamp(30px, 3vw, 42px); line-height: 1.18; }
+:is(.before-install, .outdoor-install, .mounting-section, .indoor-mode-guide, .power-check, .performance-guide) .eyebrow { margin-bottom: 14px; }
+:is(.outdoor-install, .mounting-section, .indoor-mode-guide, .performance-guide) .section-heading { display: block; max-width: 760px; margin-bottom: 36px; }
+:is(.outdoor-install, .mounting-section, .indoor-mode-guide, .performance-guide) .section-heading > p { max-width: 68ch; margin-top: 22px; line-height: 1.8; }
+.inline-link { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; overflow-wrap: anywhere; }
+.inline-link:hover { color: var(--ink); }
+.outdoor-antenna-grid article { grid-template-columns: 80px minmax(0, 1fr); gap: 20px 24px; grid-template-rows: auto 1fr auto; align-items: center; }
+.outdoor-antenna-grid .antenna-outline img { height: 85px; }
+.antenna-description { align-self: start; grid-column: 1 / -1; color: var(--muted); font-size: 17px; line-height: 1.75; text-align: left; }
+.outdoor-antenna-grid .antenna-install { margin-top: 0; align-self: end; }
+.mount-tabs { margin-bottom: 24px; }
+.mount-summary { display: block; margin-bottom: 32px; }
+.mount-summary h3 { font-size: 24px; }
+.mount-summary p { margin-top: 10px; max-width: 68ch; line-height: 1.75; }
+.mount-sequence { display: grid; grid-template-columns: 1fr; gap: 0; max-width: 1020px; }
+.mount-sequence > li { display: grid; grid-template-columns: 164px minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: 36px; padding: 24px 0; border-top: 1px solid var(--line); }
+.mount-step-image { grid-column: 1; grid-row: 1 / 3; align-self: start; }
+.mount-sequence .mount-step-heading { grid-column: 2; align-self: start; padding: 4px 0 0; }
+.mount-sequence h3 { margin-top: 8px; font-size: 24px; }
+.mount-sequence > li > p { grid-column: 2; max-width: 65ch; margin-top: 14px; font-size: 17px; line-height: 1.75; }
+.indoor-antenna-copy h3 { text-wrap: pretty; }
+.indoor-antenna-copy p { line-height: 1.8; }
+.power-check .split-feature { align-items: center; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 64px; }
+.power-check li { line-height: 1.8; }
+.power-check img { height: 340px; }
+.performance-guide .instruction-tip { max-width: 75ch; line-height: 1.8; }
+.comparison-grid { gap: 56px; }
+.comparison-grid h3 { font-size: 24px; }
+.comparison-grid p { line-height: 1.8; max-width: 54ch; }
+
+@media(max-width: 1100px) {
+  .outdoor-antenna-grid { grid-template-columns: 1fr; }
+  .outdoor-antenna-grid article { grid-template-columns: 80px minmax(0, 1fr); padding: 24px; }
+  .chapter-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 42px; }
+  .stories-hero-grid { gap: 36px; }
+  .product-detail-grid { gap: 36px; }
+}
+
+@media(max-width: 850px) {
+  .intro-grid { grid-template-columns: 1fr; gap: 26px; }
+  .intro-grid > p.intro-copy { max-width: 64ch; }
+  .intro-grid h2 { max-width: 24ch; }
+  .intro-section { padding-block: 56px; }
+  .installation-step-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .signal-guidance aside { margin-top: 0; max-width: 680px; }
+  .power-check .split-feature { grid-template-columns: 1fr; gap: 30px; }
+  .power-check img { max-width: 420px; justify-self: start; }
+
+  .product-subnav, .chapter-index { top: 76px; }
+  .product-detail-grid { grid-template-columns: 1fr; }
+  .product-detail-copy .phrase-heading { max-width: 650px; }
+  .section-heading { grid-template-columns: 1fr; gap: 24px; }
+  .section-heading > p { max-width: 60ch; }
+  .stories-hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .stories-hero-grid > div { max-width: 650px; }
+  .workshop-carousel { width: 100%; max-width: 650px; }
+  .story-opening.origin-story > .container { grid-template-columns: 1fr; gap: 32px; }
+  .origin-heading h2 { max-width: 24ch; }
+  .installation-hero-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+  .phone-band-guide { max-width: 600px; width: 100%; }
+  .signal-guidance, .indoor-antenna-explorer { grid-template-columns: 1fr; gap: 35px; }
+  .outdoor-antenna-grid { grid-template-columns: 1fr; }
+  .chapter-index > .container > p { display: none; }
+  .chapter-index > .container { width: 100%; }
+  .chapter-index nav a { flex: 0 0 auto; }
+  .chapter-grid { grid-template-columns: 1fr; gap: 34px; }
+  .story-chapter:nth-child(even) .chapter-copy, .story-chapter:nth-child(even) .chapter-visual { order: initial; }
+  .chapter-visual { max-width: 680px; justify-self: start; }
+}
+
+@media(max-width: 600px) {
+  .component-grid { grid-template-columns: 1fr; gap: 0; }
+  .component-grid > article { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 10px 20px; padding: 24px 0; border-top: 1px solid var(--line); }
+  .component-grid > article > div { grid-column: 1; grid-row: 1 / 3; align-self: start; padding: 8px; }
+  .component-grid > article img { height: 82px; }
+  .component-grid > article h3 { grid-column: 2; margin: 0; font-size: 21px; text-wrap: pretty; }
+  .component-grid > article p { grid-column: 2; margin: 0; font-size: 16px; line-height: 1.7; }
+
+  .intro-grid { display: grid; gap: 24px; }
+  .intro-grid .intro-heading .eyebrow { font-size: 13px; margin-bottom: 16px; }
+  .intro-grid h2 { font-size: 32px; }
+  .intro-grid > p.intro-copy { margin: 0; font-size: 16px; }
+  .before-install, .outdoor-install, .mounting-section, .indoor-mode-guide, .power-check, .performance-guide { padding-block: 52px; }
+  .signal-copy > p { font-size: 16px; }
+  .signal-guidance aside { padding: 24px; }
+  .mount-sequence > li { grid-template-columns: 104px minmax(0, 1fr); grid-template-rows: auto auto; gap: 18px; padding-block: 24px; }
+  .mount-step-image { grid-row: 1; }
+  .mount-sequence .mount-step-heading { align-self: center; padding: 0; }
+  .mount-sequence h3 { font-size: 21px; text-wrap: pretty; }
+  .mount-sequence > li > p { grid-column: 1 / -1; margin-top: 0; font-size: 16px; }
+  .outdoor-antenna-grid h3 { font-size: 22px; }
+  .antenna-description { font-size: 16px; }
+
+  h2, .chapter-heading h2 { font-size: clamp(30px, 8.5vw, 36px); }
+  .installation-hero-grid h1 { font-size: clamp(36px, 10vw, 42px); }
+  .origin-heading h2 { font-size: 32px; }
+  .section-heading { margin-bottom: 32px; }
+  .teaser-grid { grid-template-columns: 1fr; }
+  .teaser-side > a { grid-template-columns: 42% minmax(0, 1fr); }
+  .teaser-side > a > div { padding: 18px; }
+  .teaser-side h3 { font-size: 22px; }
+  .teaser-main h3 { font-size: 26px; }
+  .product-page-hero { padding-top: 35px; }
+  .product-subnav > div { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; }
+  .product-subnav a { flex: 0 0 auto; padding: 8px 11px; font-size: 12px; }
+  .installation-page-hero { padding: 42px 0; }
+  .before-start-visual { padding: 10px; }
+  .before-start-visual img { height: auto; }
+  .installation-step-nav { grid-template-columns: 1fr; gap: 0; padding-block: 12px; }
+  .installation-step-nav a { min-height: 70px; padding: 15px 8px; }
+  .signal-guidance { gap: 28px; }
+  .outdoor-antenna-grid article { grid-template-columns: 64px minmax(0, 1fr); gap: 18px; padding: 22px; }
+  .outdoor-antenna-grid .antenna-outline { width: 64px; }
+  .outdoor-antenna-grid .antenna-outline img { height: 70px; }
+  .outdoor-antenna-grid .antenna-install { min-height: 160px; padding: 16px 0 0; }
+  .outdoor-antenna-grid .antenna-install img { height: 150px; }
+  .mount-tabs { overflow-x: auto; }
+  .mount-tabs button { flex: 1 0 118px; }
+  .indoor-antenna-visual { min-height: 270px; padding: 10px; }
+  .indoor-antenna-visual > img { height: 260px; }
+  .indoor-antenna-tabs { grid-template-columns: 1fr 1fr; }
+  .android-band-instructions { padding: 12px; }
+  .before-start-visual { min-height: 300px; }
+
+  .mount-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .mount-tabs button { min-width: 0; padding: 12px 6px; text-wrap: balance; }
+  .indoor-antenna-copy p, .signal-guidance > p, .signal-guidance aside p,
+  .mount-sequence p, .chapter-intro, .chapter-narrative p { font-size: 16px; line-height: 1.8; }
+  .stories-hero-grid { padding-top: 35px; }
+  .workshop-badge { font-size: 13px; margin-bottom: 12px; }
+  .chapter-index nav a { padding: 14px 12px; font-size: 13px; }
+  .story-chapter { scroll-margin-top: 145px; padding: 52px 0; }
+  .chapter-film video { aspect-ratio: 4 / 3; }
+  .chapter-photos, .photo-essay .chapter-photos { grid-template-columns: 1fr; }
+}
+
+/* Publication review: readable diagrams and supporting installation details. */
+.guide-image-button { display: block; width: 100%; border: 0; background: transparent; padding: 0; color: var(--accent-dark); cursor: zoom-in; }
+.guide-image-button img { width: 100%; object-fit: contain; }
+.guide-image-button > span { display: block; margin-top: 12px; font-size: 14px; text-decoration: underline; text-underline-offset: 3px; }
+.indoor-antenna-visual .guide-image-button img { height: 340px; }
+.outdoor-connection-notes { max-width: 760px; }
+.outdoor-connection-notes p { color: var(--muted); font-size: 17px; line-height: 1.8; }
+.phone-reading-steps { margin-top: 24px; padding-left: 22px; color: var(--muted); font-size: 16px; line-height: 1.8; }
+.phone-reading-steps li + li { margin-top: 8px; }
+.phone-reading-steps code { white-space: nowrap; color: var(--ink); }
+.footer-bottom a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 600px) {
+  .indoor-antenna-visual .guide-image-button img { height: 240px; }
+  .indoor-antenna-visual.is-empty { display: none; }
+  .outdoor-connection-notes p { font-size: 16px; }
+}
+.photo-viewport { max-height: 66dvh; overflow: auto; overscroll-behavior: contain; }
+.photo-viewport img { width: 100%; max-height: 66dvh; object-fit: contain; }
+.photo-viewport.is-zoomed img { width: max(100%, 1100px); max-width: none; max-height: none; }
+.photo-zoom { display: block; margin: 16px auto 0; padding: 8px 20px; border: 1px solid #ffffff70; border-radius: 4px; color: #fff; background: transparent; }
+.contact-note, .contact-note a { font-size: 16px; }
+@media (max-width: 600px) {
+  .story-opening.origin-story .origin-copy p { font-size: 16px; line-height: 1.8; }
+  .chapter-photos, .photo-essay .chapter-photos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 14px; }
+  .curated-photos figcaption > p { font-size: 14px; line-height: 1.65; }
+  .photo-viewport.is-zoomed img { width: max(100%, 850px); }
+}
+@media (min-width: 601px) and (max-width: 850px) {
+  .bench-opening { grid-template-columns: 1fr; gap: 28px; }
+  .lifestyle-content .phrase-heading { max-width: 400px; }
+  .lifestyle-content .phrase-heading > span { font-size: 32px; }
+  .lifestyle-content > p:not(.eyebrow) { max-width: 340px; }
+}
+
+.spec-note { margin-top: 24px; color: var(--muted); font-size: 14px; line-height: 1.75; }
+.chapter-photo-collection .chapter-photos > figure:only-child { grid-column: 1 / -1; }
+.chapter-photo-collection .chapter-photos > figure:only-child img { aspect-ratio: 16 / 9; }
+@media (max-width: 600px) {
+  .origin-copy p, .chapter-narrative p, .signal-copy p,
+  .mount-sequence p, .indoor-antenna-copy p, .faq-list details p {
+    text-align: left;
+    hyphens: none;
+  }
+}

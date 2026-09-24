@@ -9,11 +9,10 @@ import InstallationPage from './pages/InstallationPage'
 import FccPage from './pages/FccPage'
 import { ProductTeaser, LifestyleSection } from './HomeSections'
 
-import { CAMPAIGN_PRICE } from './product-info'
+import { CAMPAIGN_PRICE, CONTACT_EMAIL } from './product-info'
 
 const BASE = import.meta.env.BASE_URL
 const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID as string | undefined
-const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL as string | undefined
 
 
 
@@ -57,7 +56,7 @@ function EmailForm({ id, onPrivacy }: { id: string; onPrivacy: () => void }) {
 
 const INSTALL_STEPS = [
   { title: 'Find your outdoor signal', body: 'Mount the outdoor antenna where your existing cellular signal is strongest. Route its cable inside.' },
-  { title: 'Connect your Plidépli', body: 'Connect the outdoor antenna cable to the booster, then connect the supplied 5V power adapter.' },
+  { title: 'Connect your Plidépli', body: 'Connect the outdoor antenna cable to the OUTDOOR port. Select internal mode, then connect the supplied power adapter.' },
   { title: 'Bring the signal indoors', body: 'The built-in indoor antenna distributes the amplified signal. Check reception and adjust placement for your space.' },
 ]
 
@@ -95,10 +94,10 @@ export default function App() {
       <a href={BASE} aria-label="Plidépli home"><Wordmark /></a>
       <nav id="site-navigation" className={menuOpen ? 'site-nav is-open' : 'site-nav'} aria-label="Main navigation">
         <a href={BASE} aria-current={page === '' ? 'page' : undefined}>Home</a>
-        <a href={`${BASE}product/`} aria-current={page === 'product' ? 'page' : undefined}>The booster</a>
+        <a href={`${BASE}product/`} aria-current={page === 'product' ? 'page' : undefined}>The Booster</a>
         <a href={`${BASE}installation/`} aria-current={page === 'installation' ? 'page' : undefined}>Installation</a>
-        <a href={`${BASE}stories/`} aria-current={page === 'stories' ? 'page' : undefined}>Our story</a>
-        <a href={`${BASE}fcc/`} aria-current={page === 'fcc' ? 'page' : undefined} onClick={() => setMenuOpen(false)}>FCC & specs</a>
+        <a href={`${BASE}stories/`} aria-current={page === 'stories' ? 'page' : undefined}>Our Story</a>
+        <a href={`${BASE}fcc/`} aria-current={page === 'fcc' ? 'page' : undefined} onClick={() => setMenuOpen(false)}>FCC & Specs</a>
       </nav>
       <div className="header-actions"><a className="button button-header" href="#cta" onClick={() => setMenuOpen(false)}>Launch updates<Icon name="arrow" /></a><button className="menu-toggle" type="button" aria-controls="site-navigation" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}><span /><span /></button></div>
     </div></header>
@@ -106,19 +105,19 @@ export default function App() {
       {page === 'product' ? <ProductPage /> : page === 'stories' ? <StoriesPage /> : page === 'installation' ? <InstallationPage /> : page === 'fcc' ? <FccPage /> : <>
       <section className="hero" id="top"><div className="container hero-grid">
         <div className="hero-intro"><p className="launch-status"><span />Coming to Kickstarter</p><h1>Better signal.<br />Less to install.</h1><p className="hero-description">Meet the cellular booster with the indoor antenna built in. Made for a better connection in your home or cabin.</p></div>
-        <figure className="hero-product kit-hero"><p className="kit-heading">Meet the Plidépli signal booster kit.</p><div className="product-frame"><img src={`${BASE}product/kit.webp`} width="1672" height="941" alt="Plidépli kit rendering with signal booster, outdoor antenna, cable, power adapter and packaging" fetchPriority="high" /></div><figcaption>Product rendering</figcaption></figure>
+        <figure className="hero-product kit-hero"><p className="kit-heading">Meet the Plidépli signal booster kit.</p><div className="product-frame"><img src={`${BASE}product/kit.webp`} width="1672" height="941" alt="Plidépli kit rendering with signal booster, outdoor antenna, cable, power adapter and packaging" fetchPriority="high" /></div><figcaption>Product rendering · Final contents at launch</figcaption></figure>
         <div className="hero-action"><div className="hero-price"><span>Target price</span><strong>{CAMPAIGN_PRICE}</strong></div><EmailForm id="hero" onPrivacy={() => setPrivacy(true)} /><p className="hero-condition">For fixed US installations. Outdoor antenna included in the kit. An existing outdoor signal is required.</p></div>
-      </div><div className="container hero-bottom"><a href={`${BASE}fcc/`}><Icon name="check" />FCC Part 20 certified</a><span>Five cellular bands</span><span>Indoor antenna built in</span><a href="#product">Explore the booster<Icon name="arrow" /></a></div></section>
-      <section className="intro-section"><div className="container intro-grid"><p className="eyebrow">A little less hardware.<br />A little more connection.</p><h2>For the calls you shouldn’t<br className="desktop-break" /> have to take outside.</h2><p>Thick walls. A basement office. A cabin just beyond easy reception. Plidépli is built around one idea: bringing your existing outdoor signal into the space where you actually use your phone.</p></div></section>
+      </div></section>
+      <section className="intro-section" id="why-plidepli"><div className="container intro-grid"><div className="intro-heading"><p className="eyebrow"><span>A little less hardware.</span> <span>A little more connection.</span></p><h2>For the calls you shouldn’t have to take outside.</h2></div><p className="intro-copy">Thick walls. A basement office. A cabin just beyond easy reception. Plidépli is built around one idea: bringing your existing outdoor signal into the space where you actually use your phone.</p></div></section>
       <ProductTeaser />
       <Installation />
       <LifestyleSection />
-      <section className="film-section" id="film"><div className="container film-grid"><div><h2>One small change<br />to your setup.</h2><p>Explore the built-in antenna and installation options in our product visualization.</p><button className="text-button" type="button" onClick={() => { video.current?.scrollIntoView({ block: 'center', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); video.current?.focus(); video.current?.play().catch(() => {}) }}><span className="play-icon"><Icon name="play" /></span>Watch the product film</button></div><video ref={video} controls playsInline preload="none" poster={`${BASE}video/poster.jpg`} tabIndex={0} aria-label="Plidépli 44-second product film"><source src={`${BASE}video/promo-country-tech.mp4?music=country-tech-4`} type="video/mp4" />Your browser does not support video playback.</video></div></section>
+      <section className="film-section" id="film"><div className="container film-grid"><div><h2>One small change<br />to your setup.</h2><p>Explore the built-in antenna and installation options in our product visualization.</p><button className="text-button" type="button" onClick={() => { video.current?.scrollIntoView({ block: 'center', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); video.current?.focus(); video.current?.play().catch(() => {}) }}><span className="play-icon"><Icon name="play" /></span>Watch the product film</button></div><video ref={video} controls playsInline preload="none" poster={`${BASE}video/poster.jpg`} tabIndex={0} aria-label="Plidépli 44-second product film"><source src={`${BASE}video/promo-country-tech.mp4?v=clean-master-sep23`} type="video/mp4" />Your browser does not support video playback.</video></div></section>
       <HomeBench />
       </>}
       <section className="final-cta" id="cta"><div className="container final-cta-grid"><div><p className="launch-status"><span />Coming to Kickstarter</p><h2>Great things start<br />with a connection.</h2><p>Join the launch list. Help a small engineering team take the next step.</p></div><div className="final-signup"><div className="final-price"><span>Plidépli cellular booster</span><strong>{CAMPAIGN_PRICE}<span>target price</span></strong></div><EmailForm id="footer" onPrivacy={() => setPrivacy(true)} /></div></div></section>
     </main>
-    <footer className="footer"><div className="container"><div className="footer-bottom"><span>© {new Date().getFullYear()}</span><span>Light Folding Science and Technology Co., Limited · Hong Kong</span></div></div></footer>
+    <footer className="footer"><div className="container"><div className="footer-bottom"><span>© {new Date().getFullYear()} Plidépli</span><span>Light Folding Science and Technology Co., Limited · Hong Kong</span><a href={`mailto:${CONTACT_EMAIL}`}>Contact us</a></div></div></footer>
     {privacy && <PrivacyDialog onClose={() => setPrivacy(false)} />}
   </>
 }

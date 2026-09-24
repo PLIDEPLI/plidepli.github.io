@@ -65,7 +65,7 @@ const CHAPTERS: Story[] = [
     title: 'Board evolution',
     hook: "Five cellular bands. Many rounds at the bench.",
     body: [
-      "Five bands and a built-in antenna on one board means routing, spacing, and shielding all shape the signal. These photos document several stages of our board development.",
+      "Fitting five cellular bands and a built-in antenna into one device means routing, spacing, and shielding all shape the signal. These photos document several stages of our board development.",
       "Each revision gives us another opportunity to refine the layout and test the assembled hardware.",
     ],
     facts: ['Five bands, one board', 'Routing · spacing · shielding', 'Revisions ≠ performance'],
@@ -107,7 +107,7 @@ const CHAPTERS: Story[] = [
     title: 'Making the next batch',
     hook: "From separate parts to a finished kit.",
     body: [
-      "The animation maps the production route we are planning: a die-cast lower housing, an injection-molded upper cover, PCB fabrication, assembly, testing, and packaging. The workshop photographs below show our development work.",
+      "The animation maps the production route we are planning: a die-cast lower housing, an injection-molded upper cover, PCB fabrication, assembly, testing, and packaging. The workshop photograph below shows our development work.",
       "The hard part is repeatability — every joint, every shield placement, every mechanical fit has to come out the same, unit after unit. A prototype is a starting point, not proof that production is ready.",
     ],
     facts: [

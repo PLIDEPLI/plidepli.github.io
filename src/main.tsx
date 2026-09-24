@@ -11,6 +11,7 @@ import './home-refinements.css'
 import './story-editorial.css'
 import './revision-sep22.css'
 import './brand-refinements.css'
+import './revision-sep24.css'
 import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(

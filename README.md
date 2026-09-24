@@ -1,8 +1,8 @@
 # PLIDEPLI 品牌网站
 
-面向美国用户的 Kickstarter 预热网站。React + TypeScript + Vite，四个独立页面静态部署到 GitHub Pages，字体自托管。
+面向美国用户的 Kickstarter 预热网站。React + TypeScript + Vite，五个独立页面静态部署到 GitHub Pages，字体自托管。
 
-页面地址：`/` 首页、`/product/` 产品详情、`/stories/` 完整故事、`/installation/` 安装图解。Vite 会为每个地址生成真实的 HTML 文件，支持直接打开、刷新和独立分享。
+页面地址：`/` 首页、`/product/` 产品详情、`/stories/` 完整故事、`/installation/` 安装图解、`/fcc/` FCC 资料和规格。Vite 会为每个地址生成真实的 HTML 文件，支持直接打开、刷新和独立分享。
 
 ## 本地查看
 
@@ -26,7 +26,7 @@ npm run preview
 | `src/App.tsx` | 首页、表单、安装示意图、FAQ 和隐私说明 |
 | `src/index.css` | 配色、字体、电脑及手机布局 |
 | `src/stories.ts` | 七章研发日志文案及原始媒体引用 |
-| `src/pages/StoriesPage.tsx` | 完整七章故事、27 张精选图片、7 支 30 秒短片、章节目录 |
+| `src/pages/StoriesPage.tsx` | 完整七章故事、精选图片、5 支 30 秒短片、章节目录 |
 | `src/pages/ProductPage.tsx` | 产品图库、结构、三种模式、套装和适用条件 |
 | `src/pages/InstallationPage.tsx` | 墙面、横杆、顶部三套安装步骤图解 |
 | `src/HomeSections.tsx` | 首页产品入口和生活场景横幅 |
@@ -37,14 +37,14 @@ npm run preview
 | `src/pages.css` | 多页设计、图库和手机布局 |
 | `src/story-editorial.css` | 创始故事、精选图集和短片排版 |
 | `src/story-media.ts` | 由剪辑脚本生成的精选素材索引 |
-| `public/video/promo-country-tech.mp4` | 产品宣传片的新配乐副本，原始 `promo.mp4` 保留 |
+| `public/video/promo-country-tech.mp4` | 2026-09-23 提供的高清无水印产品宣传片 |
 | `public/story-edits/` | 8 支 30 秒成片、精选图片、封面和乡村与科技融合的分场景原创配乐 |
 | `scripts/build-story-media.py` | 可复现剪辑、配乐合成与素材导出 |
 | `scripts/build-process-animation.py` | 第 7 章六阶段原创制造流程动画 |
 | `docs/story-media-editing.md` | 整理规则、素材来源、重建方法 |
 | `src/main.tsx` | React 入口和字体加载 |
 | `public/stories/` | 原有研发照片与视频 |
-| `public/video/` | 宣传片与封面；目前按要求保留原视频 |
+| `public/video/` | 高清无水印宣传片与重新生成的封面 |
 | `public/fcc/` | FCC 授权书、完整测试报告及原有截图 |
 | `public/product/` | 套装、零件、安装步骤的压缩图片及场景图 |
 | `public/bench/` | 首页指定的两段未剪辑原视频、视频封面和工作台照片 |
@@ -64,7 +64,7 @@ VITE_CONTACT_EMAIL=你的公开联系邮箱
 
 `VITE_FORMSPREE_ID` 沿用现有 Formspree 配置。表单只发送用户主动填写的邮箱和表单位置信息，不自动提交测试数据。成功、失败、重试、提交中与超时均有处理。
 
-`VITE_CONTACT_EMAIL` 可选。提供真实地址后，FAQ、页脚和隐私说明会显示联系入口；未配置时隐藏，不使用虚构邮箱。
+`VITE_CONTACT_EMAIL` 可选，用于覆盖公开联系邮箱。默认使用 2026-09-24 画册提供的 `lightfolding1@gmail.com`，显示在 FAQ、页脚和隐私说明中。
 
 上线环境在 GitHub 仓库 Settings → Secrets and variables → Actions → Variables 中配置同名变量。现有工作流已接入这两个变量。修改变量后需重新构建。
 

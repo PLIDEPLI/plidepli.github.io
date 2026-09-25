@@ -122,7 +122,7 @@ export default function App() {
       </>}
       <section className="final-cta" id="cta"><div className="container final-cta-grid"><div><h2>Be there on<br />launch day.</h2><p>One email when we go live on Kickstarter.</p></div><div className="final-signup"><div className="final-price"><span>Early-bird price</span><strong>{CAMPAIGN_PRICE}</strong><span className="price-later"><s>{LATER_PRICE}</s> later price · {EARLY_BIRD_SAVING}. (No payment today)</span></div><EmailForm id="footer" onPrivacy={() => setPrivacy(true)} showPrivacyNote={false} /></div></div></section>
     </main>
-    <footer className="footer"><div className="container"><div className="footer-bottom"><span>© {new Date().getFullYear()} Plidépli</span><span>Light Folding Science and Technology Co., Limited · Hong Kong</span><nav className="footer-nav" aria-label="Footer"><a href={`${BASE}fcc/`}>FCC & Specs</a><button type="button" onClick={() => setPrivacy(true)}>Privacy</button><a href={`mailto:${CONTACT_EMAIL}`}>Contact us</a></nav></div></div></footer>
+    <footer className="footer"><div className="container"><div className="footer-bottom"><span className="footer-left"><span>© {new Date().getFullYear()} Plidépli</span><a href="mailto:sales@lightfolding.com">sales@lightfolding.com</a></span><span>Light Folding Science and Technology Co., Limited · Hong Kong</span></div></div></footer>
     {privacy && <PrivacyDialog onClose={() => setPrivacy(false)} />}
   </>
 }

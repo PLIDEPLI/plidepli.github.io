@@ -6,7 +6,7 @@ html { scroll-padding-top: 112px; }
 .header nav a { white-space: nowrap; }
 .button, .signup-form .button { font-size: 14px; }
 .signup-form input { font-size: 16px; }
-.hero-description, .product-lede, .section-heading > p, .intro-grid > p:last-child,
+.hero-description, .product-lede, .section-heading > p,
 .film-grid > div > p:not(.eyebrow), .bench-introduction p, .split-feature > div > p:not(.eyebrow),
 .mode-information p, .fit-grid p, .preflight-grid p, .mount-summary p, .mount-sequence p,
 .chapter-intro, .chapter-narrative p, .story-opening.origin-story .origin-copy p,
@@ -14,7 +14,7 @@ html { scroll-padding-top: 112px; }
 .evidence-copy > p:not(.eyebrow), .faq-list details p, .roadmap p, .power-check ol,
 .page-crosslink > .container > p { font-size: 17px; line-height: 1.85; }
 .teaser-main p, .teaser-side p, .component-grid p, .lifestyle-content > p:not(.eyebrow),
-.step-description, .mode-note p, .campaign-note p, .measurement-note p { font-size: 16px; line-height: 1.8; }
+.step-description, .campaign-note p, .measurement-note p { font-size: 16px; line-height: 1.8; }
 .small-print, .hero-condition, .signup-note, .render-note, .product-free, .product-price > span,
 .guide-status, .film-editorial-note, .fit-bottom p, .spec-sheet > p, .final-disclaimer,
 .footer-bottom, .lifestyle-credit, .breadcrumb, .launch-status, .hero-price > span,

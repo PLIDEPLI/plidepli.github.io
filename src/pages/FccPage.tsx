@@ -1,8 +1,8 @@
 import Icon from '../components/Icon'
-import { CAMPAIGN_PRICE } from '../product-info'
+import { CAMPAIGN_PRICE, LATER_PRICE } from '../product-info'
 const BASE = import.meta.env.BASE_URL
 import { CONTACT_EMAIL } from '../product-info'
-const FCC_URL = 'https://apps.fcc.gov/oetcf/eas/reports/GenericSearchResult.cfm?RequestTimeout=500'
+const FCC_URL = 'https://fccid.io/2BWMS-L5-5B-2006'
 const FAQS = [
   ['Will this work in my home?', 'Plidépli is designed for fixed installations in US homes and cabins where a usable cellular signal is available outside. Your carrier’s local bands must match B12, B13, B5, B4, or B2. Walls, layout, and antenna placement affect the indoor result.'],
   ['What if there is no signal outside?', 'A booster amplifies an existing signal. It cannot create cellular coverage where there is no usable outdoor signal. Check reception at the planned outdoor antenna location before choosing a booster.'],
@@ -10,7 +10,7 @@ const FAQS = [
   ['Which carriers and networks are supported?', 'The supported bands are B12, B13, B5, B4, and B2. Compatibility with Verizon, AT&T, T-Mobile, or another provider depends on the bands used at your location. A carrier name or a 5G icon alone does not confirm compatibility.'],
   ['Can I use it in a moving vehicle?', 'Plidépli is designed for fixed installations. It is not offered as an in-motion vehicle booster. The current campaign focuses on homes and cabins.'],
   ['What do I need to do before using it?', 'Register the booster with your wireless provider and obtain their consent before use. Use the approved antennas and cables and follow the installation instructions, including antenna separation requirements.'],
-  ['What will it cost, and what comes in the box?', `Our target campaign price is ${CAMPAIGN_PRICE}. The kit includes the booster, mounting kit, directional outdoor antenna, 50 ft (15 m) coaxial cable, power adapter, and installation guide. Optional accessories are separate. Joining the launch list does not place an order.`],
+  ['What will it cost, and what comes in the box?', `Our Kickstarter early-bird price is ${CAMPAIGN_PRICE}, 22% off the later price of ${LATER_PRICE}. The kit includes the booster, mounting kit, directional outdoor antenna, 50 ft (15 m) coaxial cable, power adapter, and installation guide. Optional accessories are separate. Joining the launch list does not place an order.`],
   ['When will it ship? What will the production version look like?', 'We have working prototypes and are preparing for production tooling. The campaign will help fund injection molds, die-casting tools, and the first production run. Our CNC prototypes will develop into a die-cast lower housing with an injection-molded antenna cover. Final milestones, shipping estimates, and warranty terms will be published with the campaign.'],
 ]
 export default function FccPage() {

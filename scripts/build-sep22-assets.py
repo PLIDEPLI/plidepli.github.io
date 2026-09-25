@@ -29,7 +29,7 @@ with zipfile.ZipFile(ROOT / '网站修改 2026-9-22.pptx') as deck:
 
 for mode, timestamp in [('external', 22), ('dual', 24.5)]:
     run('ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-ss', timestamp,
-        '-i', ROOT / 'public/video/promo.mp4', '-frames:v', '1',
+        '-i', ROOT / 'public/video/promo-country-tech.mp4', '-frames:v', '1',
         '-vf', 'crop=iw:ih*0.8:0:0,scale=1280:-1', '/tmp/plidepli-mode.png')
     run('cwebp', '-quiet', '-q', '88', '/tmp/plidepli-mode.png', '-o', ROOT / f'public/product/mode-{mode}.webp')
 

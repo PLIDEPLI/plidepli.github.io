@@ -49,7 +49,7 @@ python3 scripts/build-story-media.py --only debugging
 
 第 7 章由 `scripts/build-process-animation.py` 绘制六阶段原创工艺动画，完整导出脚本会自动调用该渲染器。
 
-首页产品宣传片现已替换为 2026-09-23 提供的 44.3 秒高清无水印成片：`public/video/promo-country-tech.mp4`。`public/video/promo.mp4` 同步为该成片，网站封面及产品模式抽帧也由此版本重新生成。故事章节短片继续使用独立配乐；已校正的天线镜头与制造流程动画保持不变。
+首页产品宣传片现已替换为 2026-09-23 提供的 44.3 秒高清无水印成片：`public/video/promo-country-tech.mp4`。原先与之逐字节相同的重复文件 `public/video/promo.mp4` 已于 2026-09-25 删除（站点从未引用），脚本统一改读 `promo-country-tech.mp4`；网站封面及产品模式抽帧也由此版本重新生成。故事章节短片继续使用独立配乐；已校正的天线镜头与制造流程动画保持不变。
 
 
 ## 2026-09-25 网页审校后的当前展示

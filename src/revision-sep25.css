@@ -1,0 +1,209 @@
+/* September 25 home revision: early-bird pricing, three-mode cards, film, bench, minimal final CTA and footer links. */
+
+/* Early-bird price: one left-aligned row — label, price, later price (wraps only when narrow). Same in the hero and final CTA. */
+.hero-price { row-gap: 2px; }
+.hero-price .price-later { font-size: 14px; color: var(--muted); }
+.hero-price .price-later s { text-decoration-thickness: 1px; }
+
+/* Hero: three trust conditions, one per line, each with a check mark. */
+.hero-condition { max-width: 540px; margin-top: 16px; }
+.hero-condition > span { display: flex; align-items: flex-start; gap: 10px; line-height: 1.6; }
+.hero-condition > span + span { margin-top: 6px; }
+
+
+
+/* Desktop hero: tighter left column, a larger kit image, and both columns ending on the same line. */
+@media (min-width: 851px) {
+  .hero .launch-status { margin-bottom: 18px; }
+  .hero-description { margin-top: 18px; max-width: 500px; }
+  .hero-action { margin-top: 22px; }
+  .hero-price { margin-bottom: 14px; }
+  .hero-product { align-self: end; max-width: 540px; justify-self: end; }
+  .kit-heading { margin-bottom: 16px; }
+  .kit-hero .product-frame { padding: 22px 12px; }
+  .kit-hero .product-frame > img { height: auto; aspect-ratio: 1.55; object-fit: cover; object-position: center; }
+  .hero-product figcaption { padding-top: 12px; line-height: 1.4; }
+}
+.hero-condition svg { width: 15px; height: 15px; flex: none; margin-top: calc((1.6em - 15px) / 2); color: var(--accent-dark); }
+
+/* Kit image frame: Privacy in the lower-left corner, the film button in the lower-right. */
+.kit-hero .product-frame { position: relative; }
+.hero-film-button { position: absolute; right: 12px; bottom: 10px; z-index: 1; display: flex; gap: 10px; margin: 0; padding: 4px 16px 4px 4px; background: #ffffffeb; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); font-size: 14px; box-shadow: 0 4px 14px #071e2d12; }
+.hero-film-button:hover { border-color: #9dd4c8; color: var(--accent-dark); }
+.hero-film-button .play-icon { width: 30px; height: 30px; border-color: #9dd4c8; background: #eef9f5; color: var(--accent-dark); }
+.hero-film-button .play-icon svg { width: 13px; }
+.frame-privacy { position: absolute; left: 16px; bottom: 12px; padding: 0; background: none; color: var(--muted); font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
+.frame-privacy:hover { color: var(--accent-dark); }
+
+/* Teaser: the white-background antenna rendering blends into the card surface. */
+.teaser-main .teaser-image img { mix-blend-mode: multiply; }
+
+/* Three antenna modes: same drawing, same angle, one change per card. */
+.modes-section { background: var(--paper); }
+.mode-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.mode-cards { position: relative; }
+.mode-dots { display: none; }
+.mode-card { display: flex; flex-direction: column; min-width: 0; background: #fff; border: 1px solid #c7d9e0; border-radius: 10px; overflow: hidden; }
+.mode-card-image { display: block; width: 100%; padding: 14px 14px 6px; background: #fff; border-bottom: 1px solid var(--line); cursor: zoom-in; }
+.mode-card-image img { width: 100%; height: auto; aspect-ratio: 1600 / 1014; object-fit: contain; }
+.mode-card-body { padding: 22px 26px 28px; }
+.mode-card-label { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.mode-card-label > span:first-child { font-family: var(--display); font-size: 15px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dark); }
+.mode-tag { border: 1px solid #b8ccd7; border-radius: 999px; padding: 2px 11px; font-size: 13px; line-height: 1.6; color: var(--muted); white-space: nowrap; }
+.mode-card:first-child .mode-tag { border-color: #9dd4c8; background: #eef9f5; color: var(--accent-dark); }
+.mode-card h3 { font-size: 25px; margin-top: 14px; }
+.mode-card-body > p:last-child { margin-top: 10px; color: var(--muted); font-size: 16px; line-height: 1.75; }
+.modes-note { margin-top: 24px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+
+/* Film: the rendering note. */
+.film-grid > div > p.film-note { margin-top: 26px; max-width: 370px; font-size: 13px; line-height: 1.7; }
+
+/* Bench: two columns on desktop — heading and story text left, the 4:3 film right. */
+.bench-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 560px); grid-template-areas: "head media" "body media"; column-gap: clamp(40px, 6vw, 88px); align-items: start; }
+.bench-head { grid-area: head; }
+.bench-head h2 { font-size: clamp(38px, 4vw, 55px); }
+.bench-media { grid-area: media; align-self: center; width: 100%; }
+.bench-media video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: var(--navy); border-radius: 8px; }
+.bench-body { grid-area: body; margin-top: 30px; }
+.bench-body h3 { font-size: 27px; line-height: 1.25; max-width: 520px; }
+.bench-body > p { margin-top: 20px; color: var(--muted); font-size: 17px; line-height: 1.85; }
+.bench-more { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+.bench-more strong { font-size: 16px; font-weight: 500; line-height: 1.6; }
+.bench-more:hover .button { background: #22485d; }
+
+/* Final CTA: heading, one line and the signup form — nothing else. */
+.final-cta { padding: 52px 0; }
+/* Same structure as the hero price block, recoloured for the navy band. */
+.final-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; margin-bottom: 14px; }
+.final-price > span:first-child { font-size: 13px; color: #b6ccd6; }
+.final-price strong { font-family: var(--display); font-size: 30px; font-weight: 500; letter-spacing: -.035em; color: #fff; }
+.final-price .price-later { font-size: 14px; color: #8eaeba; }
+.final-price .price-later s { text-decoration-thickness: 1px; }
+.signup-note button { margin-left: 0; }
+.final-cta-grid { align-items: center; }
+.final-cta-grid > div > p:last-child { margin-top: 18px; font-size: 17px; line-height: 1.7; max-width: none; }
+
+/* Home rhythm: the four home sections sit a little tighter than the global .section (84 / 64 / 52px). */
+.product-teaser, .modes-section, .installation, .bench-section { padding-block: 76px; }
+.film-section { padding: 56px 0; }
+@media (min-width: 851px) {
+  .hero-grid { padding-top: 56px; padding-bottom: 48px; }
+  .lifestyle-section { min-height: 520px; }
+  .lifestyle-content { padding-block: 70px; }
+}
+
+/* Footer links. */
+.footer-nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.footer-nav button { padding: 0; background: none; color: inherit; font-size: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.footer-nav button:hover, .footer-nav a:hover { color: #fff; }
+
+@media (max-width: 1100px) {
+  .bench-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 440px); column-gap: 48px; }
+  .mode-cards { gap: 18px; }
+  .mode-card-body { padding: 20px 20px 24px; }
+  .mode-card h3 { font-size: 22px; }
+}
+@media (max-width: 850px) {
+  .product-teaser, .modes-section, .installation, .bench-section { padding-block: 58px; }
+  .bench-layout { display: block; }
+  .bench-media { margin-top: 28px; max-width: 620px; }
+  .bench-body { max-width: 640px; }
+  .mode-cards { grid-template-columns: 1fr; gap: 20px; }
+  .mode-card { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: center; }
+  .mode-card-image { height: 100%; display: flex; align-items: center; border-bottom: 0; border-right: 1px solid var(--line); padding: 12px; }
+}
+@media (max-width: 600px) {
+  .product-teaser, .modes-section, .installation, .bench-section { padding-block: 48px; }
+  .film-section { padding: 40px 0; }
+  .bench-media { margin-top: 24px; }
+  .bench-body { margin-top: 26px; }
+  .bench-body h3 { font-size: 25px; }
+  .bench-body > p { font-size: 16px; }
+  /* Phones: one swipeable track with the next card peeking in, plus pagination dots. */
+  .mode-cards { display: flex; gap: 14px; margin-inline: -20px; padding: 0 20px 4px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 20px; scrollbar-width: none; }
+  .mode-cards::-webkit-scrollbar { display: none; }
+  .mode-card { display: flex; flex: 0 0 86%; scroll-snap-align: start; }
+  .mode-dots { display: flex; justify-content: center; gap: 2px; margin-top: 14px; }
+  .mode-dots button { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; padding: 0; background: none; }
+  .mode-dots span { display: block; width: 8px; height: 8px; border-radius: 999px; background: #b8ccd7; transition: width .2s, background .2s; }
+  .mode-dots button[aria-current=true] span { width: 22px; background: var(--accent-dark); }
+  .mode-card-image { border-right: 0; border-bottom: 1px solid var(--line); padding: 10px 10px 4px; }
+  .mode-card-body { padding: 18px 18px 22px; }
+  .mode-card h3 { font-size: 22px; }
+  .modes-note { margin-top: 18px; font-size: 13px; }
+  .final-cta { padding: 40px 0; }
+  .final-cta-grid { gap: 20px; }
+  .final-price strong { font-size: 27px; }
+  .final-price .price-later { font-size: 13px; }
+  .hero-film-button { right: 8px; bottom: 6px; gap: 8px; padding: 3px 12px 3px 3px; font-size: 12px; }
+  .hero-film-button .play-icon { width: 26px; height: 26px; }
+  .hero-film-button .play-icon svg { width: 12px; }
+  .frame-privacy { left: 12px; bottom: 8px; font-size: 12px; }
+  .final-cta-grid > div > p:last-child { font-size: 16px; margin-top: 14px; }
+  .hero-price .price-later { font-size: 13px; }
+  .footer-nav { gap: 6px 16px; }
+}
+
+/* Install films (1280×720, 60s): shared frame — same radius and navy letterbox as the bench film. */
+.install-film { margin: 0; width: 100%; }
+.install-film video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: var(--navy); border-radius: 8px; }
+
+/* Home bench, second row: "To your home" — film left (kept smaller than the bench film), text right. */
+.bench-install { display: grid; grid-template-columns: minmax(0, 560px) minmax(0, 1fr); grid-template-areas: "media head" "media body"; grid-template-rows: auto auto; column-gap: clamp(40px, 6vw, 88px); align-content: center; margin-top: 64px; padding-top: 64px; border-top: 1px solid var(--line); }
+.bench-install-media { grid-area: media; align-self: center; margin: 0; width: 100%; }
+.bench-install-head { grid-area: head; align-self: end; max-width: 520px; }
+.bench-install-copy { grid-area: body; align-self: start; }
+.bench-install-media video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: var(--navy); border-radius: 8px; }
+.bench-install-copy { max-width: 520px; }
+.bench-install-head .eyebrow { margin-bottom: 14px; }
+.bench-install-head h3 { font-size: 27px; line-height: 1.25; }
+.bench-install-copy > p:not(.small-print) { margin-top: 18px; color: var(--muted); font-size: 17px; line-height: 1.85; }
+.bench-install-cta { margin-top: 22px; }
+.bench-install-copy .small-print { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; }
+
+/* Installation page: "What's in the box" between the band check and the six steps. */
+.kit-contents { padding-block: 72px; }
+.kit-contents-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 560px); column-gap: clamp(40px, 6vw, 88px); align-items: center; }
+.kit-contents h2 { font-size: clamp(30px, 3vw, 42px); line-height: 1.18; }
+.kit-contents .eyebrow { margin-bottom: 14px; }
+.kit-contents-copy > p { margin-top: 20px; max-width: 480px; color: var(--muted); font-size: 17px; line-height: 1.8; }
+.kit-contents-list { margin: 24px 0 0; padding: 0; list-style: none; max-width: 480px; border-top: 1px solid var(--line); }
+.kit-contents-list li { padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 16px; line-height: 1.5; color: var(--ink); }
+.kit-contents + .installation-step-nav { border-top: 1px solid var(--line); }
+
+/* Installation Step 4: the two-options film under the antenna explorer, aligned to its columns. */
+.indoor-mode-film { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 56px; align-items: center; margin-top: 56px; padding-top: 56px; border-top: 1px solid var(--line); }
+.indoor-mode-film-copy h3 { font-size: 25px; line-height: 1.25; }
+.indoor-mode-film-copy > p:not(.small-print) { margin-top: 16px; color: var(--muted); font-size: 16px; line-height: 1.75; }
+.mode-list { margin: 22px 0 0; border-top: 1px solid var(--line); }
+.mode-list > div { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.mode-list dt { font-family: var(--display); font-size: 14px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dark); line-height: 1.7; }
+.mode-list dd { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
+.indoor-mode-film-copy .small-print { margin-top: 16px; font-size: 13px; }
+
+@media (max-width: 1100px) {
+  .bench-install { grid-template-columns: minmax(0, 440px) minmax(0, 1fr); column-gap: 48px; }
+  .kit-contents-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 440px); column-gap: 48px; }
+  .indoor-mode-film { gap: 40px; }
+}
+@media (max-width: 850px) {
+  .bench-install { display: block; margin-top: 48px; padding-top: 48px; }
+  .bench-install-head, .bench-install-copy { max-width: 640px; }
+  .bench-install-media { max-width: 560px; margin-top: 24px; }
+  .bench-install-copy { margin-top: 8px; }
+  .kit-contents { padding-block: 52px; }
+  .kit-contents-grid { display: block; }
+  .kit-contents-film { max-width: 560px; margin-top: 28px; }
+  .indoor-mode-film { grid-template-columns: 1fr; gap: 26px; margin-top: 44px; padding-top: 44px; }
+  .indoor-mode-film .install-film { max-width: 620px; }
+}
+@media (max-width: 600px) {
+  .bench-install { margin-top: 40px; padding-top: 40px; }
+  .bench-install-head h3 { font-size: 25px; }
+  .bench-install-copy > p:not(.small-print) { font-size: 16px; }
+  .kit-contents { padding-block: 44px; }
+  .kit-contents-copy > p { font-size: 16px; }
+  .kit-contents-list li { font-size: 15px; }
+  .mode-list > div { grid-template-columns: 80px minmax(0, 1fr); gap: 12px; }
+  .indoor-mode-film-copy h3 { font-size: 23px; }
+}

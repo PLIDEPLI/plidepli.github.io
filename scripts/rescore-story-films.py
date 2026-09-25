@@ -10,7 +10,7 @@ report_path=ROOT/'docs/scene-scores.json'
 report=json.loads(report_path.read_text()) if report_path.exists() else {}
 for chapter in SCENES:
  if args.only and chapter not in args.only:continue
- source=ROOT/'public/video/promo.mp4' if chapter=='promo' else OUT/chapter/'film.mp4'
+ source=ROOT/'public/video/promo-country-tech.mp4' if chapter=='promo' else OUT/chapter/'film.mp4'
  film=ROOT/'public/video/promo-country-tech.mp4' if chapter=='promo' else source
  score=ROOT/'public/video/promo-score.m4a' if chapter=='promo' else OUT/chapter/'score.m4a'
  duration=44.2 if chapter=='promo' else 30

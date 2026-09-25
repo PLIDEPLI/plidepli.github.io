@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import PhotoViewer, { type Photo } from '../components/PhotoViewer'
 
 const BASE = import.meta.env.BASE_URL
@@ -62,6 +62,14 @@ export default function InstallationPage() {
   const [indoor, setIndoor] = useState(0)
   const selected = MOUNTS[mount]
   const selectedIndoor = INDOOR_ANTENNAS[indoor]
+  // One film plays at a time on this page.
+  useEffect(() => {
+    const pauseOthers = (event: Event) => {
+      if (event.target instanceof HTMLVideoElement) document.querySelectorAll('video').forEach(video => { if (video !== event.target) video.pause() })
+    }
+    document.addEventListener('play', pauseOthers, true)
+    return () => document.removeEventListener('play', pauseOthers, true)
+  }, [])
 
   return <>
     <section className="installation-page-hero" id="top"><div className="container installation-hero-grid">
@@ -70,6 +78,17 @@ export default function InstallationPage() {
         <div className="segmented-controls phone-tabs" role="group" aria-label="Phone type">{(['iphone', 'android'] as const).map(type => <button type="button" key={type} aria-pressed={phone === type} onClick={() => setPhone(type)}>{type === 'iphone' ? 'iPhone' : 'Android'}</button>)}</div>
         <div className="before-start-visual" aria-live="polite">{phone === 'iphone' ? <button type="button" className="guide-image-button" onClick={() => setGuidePhoto({ src: `${BASE}brochure/before-getting-started.png`, alt: "How to check your cellular band on iPhone" })} aria-label="Enlarge the iPhone band-check guide"><img src={`${BASE}brochure/before-getting-started.png`} alt="Dial *3001#12345#* and press Call. Open All Metrics, select LTE, then look for Band Info or Band." width="1742" height="1873" /><span>Enlarge guide</span></button> : <div className="android-band-instructions"><h3>On Android</h3><p>Open LTE Discovery, tap “SIGNALS,” and look for the LTE band number.</p><p>Compare it with the supported bands listed here. If the band is unavailable, check your phone’s network settings or ask your carrier.</p></div>}</div>
       </div>
+    </div></section>
+
+    <section className="section kit-contents" id="in-the-box"><div className="container kit-contents-grid">
+      <div className="kit-contents-copy">
+        <header className="installation-heading"><p className="eyebrow">Before you begin</p><h2>What's in the box.</h2></header>
+        <p>Unpack the kit and check every part against the installation guide before you start.</p>
+        <ul className="kit-contents-list"><li>Booster with built-in indoor antenna</li><li>Directional outdoor antenna</li><li>Coaxial cable</li><li>Power adapter</li><li>Mounting hardware</li></ul>
+      </div>
+      <figure className="install-film kit-contents-film">
+        <video controls playsInline preload="none" poster={`${BASE}install/unboxing-poster.webp`} src={`${BASE}install/unboxing.mp4`} aria-label="Unboxing — 60-second film of the kit contents"><track kind="captions" src={`${BASE}install/unboxing.en.vtt`} srcLang="en" label="English" default /></video>
+      </figure>
     </div></section>
 
     <nav className="installation-step-nav container" aria-label="Six installation steps">{[
@@ -110,6 +129,21 @@ export default function InstallationPage() {
         <div className={`indoor-antenna-visual${selectedIndoor.image ? "" : " is-empty"}`}>{selectedIndoor.image ? <button type="button" className="guide-image-button" onClick={() => setGuidePhoto({ src: `${BASE}brochure/${selectedIndoor.image}`, alt: selectedIndoor.alt })} aria-label={`Enlarge ${selectedIndoor.name.toLowerCase()} antenna illustration`}><img src={`${BASE}brochure/${selectedIndoor.image}`} alt={selectedIndoor.alt} loading="lazy" /><span>Enlarge illustration</span></button> : <div className="illustration-pending" aria-hidden="true" />}</div>
         <div className="indoor-antenna-copy"><div className="indoor-antenna-tabs" role="group" aria-label="Indoor antenna type">{INDOOR_ANTENNAS.map((item, index) => <button type="button" key={item.name} aria-pressed={indoor === index} onClick={() => setIndoor(index)}>{item.name}</button>)}</div><div aria-live="polite"><h3>{selectedIndoor.heading}</h3><p>{selectedIndoor.text}</p></div>
           {(indoor === 2 || indoor === 3) && <details className="installation-details"><summary>Placement notes</summary>{indoor === 2 ? <><p>Aim the panel toward the area where you need signal and away from the outdoor antenna.</p><p>Mount it at approximately the height where you normally use your phone.</p></> : <><p>Install the ceiling antenna at least 6.6 ft (2 m) above the floor, away from metal ductwork, concrete columns, and other dense materials that can block the signal.</p><p>Keep it away from large electronic devices, such as servers and power distribution panels, that could cause interference.</p></>}</details>}
+        </div>
+      </div>
+      <div className="indoor-mode-film">
+        <figure className="install-film">
+          <video controls playsInline preload="none" poster={`${BASE}install/installation-options-poster.webp`} src={`${BASE}install/installation-options.mp4`} aria-label="Two installation options — 60-second film"><track kind="captions" src={`${BASE}install/installation-options.en.vtt`} srcLang="en" label="English" default /></video>
+        </figure>
+        <div className="indoor-mode-film-copy">
+          <h3>Two setups, one booster.</h3>
+          <p>The film installs the booster twice: first with its built-in antenna, then with a separate indoor panel. Set the mode before you connect power.</p>
+          <dl className="mode-list">
+            <div><dt>Internal</dt><dd>The built-in antenna covers the room around the booster.</dd></div>
+            <div><dt>External</dt><dd>A separate indoor antenna covers a room away from the booster.</dd></div>
+            <div><dt>Dual</dt><dd>Both indoor antennas work together.</dd></div>
+          </dl>
+          <p className="small-print">The white panel antenna shown is optional and sold separately.</p>
         </div>
       </div>
     </div></section>

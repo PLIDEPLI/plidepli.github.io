@@ -130,13 +130,6 @@ p { text-wrap: pretty; }
 
 
 .document-links a.fcc-record { font-size: 16px; padding-block: 16px; color: var(--accent-dark); text-decoration: underline; text-underline-offset: 4px; }
-/* A single heading group and an accompanying paragraph form the home introduction. */
-.intro-section { padding: 76px 0; }
-.intro-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 88px; align-items: center; }
-.intro-grid .intro-heading .eyebrow { margin: 0 0 20px; font-size: 14px; line-height: 1.6; font-weight: 500; }
-.intro-heading .eyebrow span { display: inline-block; }
-.intro-grid h2 { font-size: clamp(32px, 3.1vw, 44px); line-height: 1.17; max-width: 24ch; }
-.intro-grid > p.intro-copy { font-size: 17px; line-height: 1.8; max-width: 54ch; }
 
 .installation-step-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 32px; padding-block: 24px; }
 .installation-step-nav a { display: flex; gap: 16px; align-items: center; min-height: 94px; padding: 18px 10px; border-bottom: 1px solid var(--line); text-align: left; transition: background .15s; }
@@ -183,10 +176,6 @@ p { text-wrap: pretty; }
 }
 
 @media(max-width: 850px) {
-  .intro-grid { grid-template-columns: 1fr; gap: 26px; }
-  .intro-grid > p.intro-copy { max-width: 64ch; }
-  .intro-grid h2 { max-width: 24ch; }
-  .intro-section { padding-block: 56px; }
   .installation-step-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .signal-guidance aside { margin-top: 0; max-width: 680px; }
   .power-check .split-feature { grid-template-columns: 1fr; gap: 30px; }
@@ -222,10 +211,6 @@ p { text-wrap: pretty; }
   .component-grid > article h3 { grid-column: 2; margin: 0; font-size: 21px; text-wrap: pretty; }
   .component-grid > article p { grid-column: 2; margin: 0; font-size: 16px; line-height: 1.7; }
 
-  .intro-grid { display: grid; gap: 24px; }
-  .intro-grid .intro-heading .eyebrow { font-size: 13px; margin-bottom: 16px; }
-  .intro-grid h2 { font-size: 32px; }
-  .intro-grid > p.intro-copy { margin: 0; font-size: 16px; }
   .before-install, .outdoor-install, .mounting-section, .indoor-mode-guide, .power-check, .performance-guide { padding-block: 52px; }
   .signal-copy > p { font-size: 16px; }
   .signal-guidance aside { padding: 24px; }
@@ -240,7 +225,7 @@ p { text-wrap: pretty; }
   h2, .chapter-heading h2 { font-size: clamp(30px, 8.5vw, 36px); }
   .installation-hero-grid h1 { font-size: clamp(36px, 10vw, 42px); }
   .origin-heading h2 { font-size: 32px; }
-  .section-heading { margin-bottom: 32px; }
+  .section-heading { margin-bottom: 28px; }
   .teaser-grid { grid-template-columns: 1fr; }
   .teaser-side > a { grid-template-columns: 42% minmax(0, 1fr); }
   .teaser-side > a > div { padding: 18px; }
